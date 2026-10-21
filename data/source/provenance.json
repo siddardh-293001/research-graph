@@ -1,0 +1,13 @@
+{
+  "source_kind": "recovered_clean_metadata",
+  "input_path": "data/processed/papers_clean.parquet",
+  "input_sha256": "54d205c52f5f34a67e5eb503588a898d9dbdc237d7a80b2234030690f3934425",
+  "output_sha256": "d0e65b155553e021fc5ad7d0bc156bffbc601c6751a6ba531c3bd2a73dfa6fdf",
+  "rows": 876,
+  "removed_derived_columns": [
+    "paper_category",
+    "abstract_length",
+    "title_normalized"
+  ],
+  "limitations": "Recovered from previously cleaned metadata. Original raw OpenAlex snapshot and discarded records are unavailable. This is not a new source collection."
+}
