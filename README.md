@@ -167,6 +167,13 @@ ranking methods, read-only SQLite metadata, FAISS and a verified ONNX copy of
 the pinned MiniLM model. The measured 50-query comparison preserved retrieval
 results. The research and Streamlit environments remain available separately.
 
+The repository includes checksummed serving data under `deploy/release-parts`.
+To run that frozen release without rebuilding the research corpus, use
+`python scripts/restore_release.py` followed by `python scripts/fetch_model.py`
+and the frontend build above. A new release is published with
+`python scripts/pack_release.py`; the Docker build restores these parts and
+verifies every checksum before serving.
+
 The deployment targets Render's free compute plan; `render.yaml`, `Dockerfile`,
 the manual GitHub Actions deployment and `infra/render` implement that policy.
 No paid service or inference credits are required. The user confirmed a Render
@@ -177,5 +184,6 @@ of charging overages. Free instances sleep when idle. See
 `python -m src.verify` now also checks release parity, serving memory, actual
 HTTP, infrastructure configuration and desktop/mobile Chromium behavior. Install
 the browser once with `cd web && npx playwright install chromium`. Terraform and
-the cached official Render schema are required for infrastructure validation.
+its initialized provider are required for infrastructure validation; the official
+Render schema is saved under `infra/render`.
 Subsequent sections will extend and run self-verification before completion.

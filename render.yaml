@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: researchgraph
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /readyz
+    autoDeployTrigger: "off"
+    envVars:
+      - key: RESEARCHGRAPH_RELEASE
+        value: /app/release
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"

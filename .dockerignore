@@ -1,0 +1,21 @@
+# Explicit build-context allowlist; credentials, notebooks and source snapshots stay out.
+**
+!Dockerfile
+!requirements-serving.txt
+!src/
+!src/__init__.py
+!src/api.py
+!src/public_engine.py
+!scripts/
+!scripts/fetch_model.py
+!scripts/restore_release.py
+!web/
+!web/package.json
+!web/package-lock.json
+!web/index.html
+!web/vite.config.js
+!web/src/
+!web/src/**
+!deploy/
+!deploy/release-parts/
+!deploy/release-parts/*
