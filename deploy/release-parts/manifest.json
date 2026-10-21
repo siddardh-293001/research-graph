@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "release_sha256": "27ed352b3f5da29219575feb7665eb57e0cf644d9c5cb8729d08aeff88835641",
+  "archive_sha256": "413d2c3a983cc5903904e0b6d968239486474517c5bf23a77c7160e8870975ad",
+  "parts": [
+    {
+      "file": "release-000.part",
+      "bytes": 20971520,
+      "sha256": "ec34f49800b445a19940dc035406f5f0cba4a0334d46f59098138b3ca5128c14"
+    },
+    {
+      "file": "release-001.part",
+      "bytes": 20971520,
+      "sha256": "e89cd2e49b0227296e28107d2f9496f39f97c127810f105a54edf6a649b56f1c"
+    },
+    {
+      "file": "release-002.part",
+      "bytes": 20971520,
+      "sha256": "d5cf04761d5a3360472023a0e46789e09ab70a9e049d0cd93669b1b836e30dad"
+    },
+    {
+      "file": "release-003.part",
+      "bytes": 17162345,
+      "sha256": "a6d5035447faa9f7d1989897672a10f442c290a111c9a7d09956c2c58d5e06f8"
+    }
+  ]
+}
