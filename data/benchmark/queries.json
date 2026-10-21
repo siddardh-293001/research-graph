@@ -1,0 +1,1007 @@
+{
+  "version": "0.1-provisional",
+  "status": "assistant_authored_metadata_seed_benchmark",
+  "source_corpus_sha256": "a8ece2677f7a0e64f39fc4389affc23e6c2d1bee5c81f5a158cd28e75f42d5c8",
+  "scope": "Known-paper and topic discovery seed set with incomplete relevance judgments. Not independently reviewed. No ranking output was used to generate labels.",
+  "grade_scale": {
+    "0": "not relevant",
+    "1": "partial background",
+    "2": "relevant",
+    "3": "directly relevant"
+  },
+  "queries": [
+    {
+      "query_id": "Q001",
+      "query": "Which methods reduce fabricated facts in language model outputs?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4390602555",
+          "grade": 3,
+          "paper_title": "A Comprehensive Survey of Hallucination Mitigation Techniques in Large Language Models",
+          "evidence_excerpt": "As Large Language Models (LLMs) continue to advance in their ability to write human-like text, a key challenge remains around their tendency to hallucinate generating content that appears factual but is ungrounded. This issue of hallucination is arguably the biggest hindrance to safely deploying these powerful LLMs into real-world production systems that impact people's lives. The journey toward widespread adoption of LLMs in practical settings heavily relies on addressing and mitigating hallucinations. Unlike traditional AI systems focused on limited tasks, LLMs have been exposed to vast amounts of online text data during training. While this allows them to display impressive language fluency, it also means they are capable of extrapolating information from the biases in training data, misinterpreting ambiguous prompts, or modifying the information to align superficially with the input. This becomes hugely alarming when we rely on language generation capabilities for sensitive applica",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4404534210",
+          "grade": 2,
+          "paper_title": "A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions",
+          "evidence_excerpt": "The emergence of large language models (LLMs) has marked a significant breakthrough in natural language processing (NLP), fueling a paradigm shift in information acquisition. Nevertheless, LLMs are prone to hallucination, generating plausible yet nonfactual content. This phenomenon raises significant concerns over the reliability of LLMs in real-world information retrieval (IR) systems and has attracted intensive research to detect and mitigate such hallucinations. Given the open-ended general-purpose attributes inherent to LLMs, LLM hallucinations present distinct challenges that diverge from prior task-specific models. This divergence highlights the urgency for a nuanced understanding and comprehensive overview of recent advances in LLM hallucinations. In this survey, we begin with an innovative taxonomy of hallucination in the era of LLM and then delve into the factors contributing to hallucinations. Subsequently, we present a thorough overview of hallucination detection methods and",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q002",
+      "query": "How has retrieval augmented generation evolved and what are its open research directions?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403578737",
+          "grade": 3,
+          "paper_title": "A Comprehensive Survey of Retrieval-Augmented Generation (RAG): Evolution, Current Landscape and Future Directions",
+          "evidence_excerpt": "This paper presents a comprehensive study of Retrieval-Augmented Generation (RAG), tracing its evolution from foundational concepts to the current state of the art. RAG combines retrieval mechanisms with generative language models to enhance the accuracy of outputs, addressing key limitations of LLMs. The study explores the basic architecture of RAG, focusing on how retrieval and generation are integrated to handle knowledge-intensive tasks. A detailed review of the significant technological advancements in RAG is provided, including key innovations in retrieval-augmented language models and applications across various domains such as question-answering, summarization, and knowledge-based tasks. Recent research breakthroughs are discussed, highlighting novel methods for improving retrieval efficiency. Furthermore, the paper examines ongoing challenges such as scalability, bias, and ethical concerns in deployment. Future research directions are proposed, focusing on improving the robust",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q003",
+      "query": "How can retrieval and generation combine different input and output modalities?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416291690",
+          "grade": 3,
+          "paper_title": "A Comprehensive Survey on Multimodal RAG: All Combinations of Modalities as Input and Output",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is an important way to mitigate hallucination in large language models (LLMs) by integrating relevant external knowledge. With the advance of multimodal LLMs, retrieval augmentation now extends not only textual tasks but also multimodal ones. In this paper, we conduct a comprehensive survey of the most recent work on multimodal RAG (MM-RAG) in the sense that it has a full coverage of almost all the combinations of modalities as input and output, whereas existing survey papers typically focus on one or two modalities. Based on different input-output modality combinations, we present a taxonomy of MM-RAG methods which gives us a much clearer picture of their key technical components. Facilitated by such a taxonomy, we identify four essential stages of the workflow of MM-RAG, summarize common approaches to each stage, and discuss optimization strategies for each modality. To provide a holistic understanding and practical guidance for building MM-RAG sy",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4415152171",
+          "grade": 2,
+          "paper_title": "A Survey of Multimodal Retrieval-Augmented Generation",
+          "evidence_excerpt": "Multimodal Retrieval-Augmented Generation (MRAG) enhances large language models (LLMs) by integrating multimodal data (text, images, videos) into retrieval and generation processes, overcoming the limitations of text-only Retrieval-Augmented Generation (RAG). While RAG improves response accuracy by incorporating external textual knowledge, MRAG extends this framework to include multimodal retrieval and generation, leveraging contextual information from diverse data types. This approach reduces hallucinations and enhances question-answering systems by grounding responses in factual, multimodal knowledge. Recent studies show MRAG outperforms traditional RAG, especially in scenarios requiring both visual and textual understanding. This survey reviews MRAG's essential components, datasets, evaluation methods, and limitations, providing insights into its construction and improvement. It also identifies challenges and future research directions, highlighting MRAG's potential to revolutionize",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q004",
+      "query": "How can a dataset discovery tool explain its recommendations using a knowledge graph?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416196623",
+          "grade": 3,
+          "paper_title": "A Graph RAG Approach to Enhance Explainability in Dataset Discovery",
+          "evidence_excerpt": "Abstract Discovering relevant datasets in large, heterogeneous data ecosystems, such as Data Lakes or Data spaces, is a complex task, often hindered by a lack of transparency and user-centric explanations in the discovery process. Explainability is critical for enabling users to understand why specific datasets are recommended, what information they contain, and how they align with user-defined criteria and preferences. To address these challenges, this work proposes a novel Graph Retrieval-Augmented Generation (Graph RAG) framework to enhance explainability in a platform for discovery of summary data sources. The proposed approach leverages a Knowledge Graph (KG) to interpret user requests, extracting relevant contextual information. These enriched requests are then transformed by a Large Language Model (LLM) into actionable dataset queries for a dataset discovery platform. Candidate solutions are evaluated and enriched with statistical insights on value distributions and contextual k",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q005",
+      "query": "How can graph retrieval connect information spread across multiple research documents?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4411447250",
+          "grade": 3,
+          "paper_title": "A Knowledge Graph-based RAG for Cross-Document Information Extraction",
+          "evidence_excerpt": "Extracting information from multiple complex documents, such as research papers is challenging due to LLMs’ limited context size and their difficulty linking distant concepts. To address this, A propose a Knowledge-Graph-based Retrieval-Augmented Generation (RAG) system that builds a knowledge graph from research papers and uses task-specific retrieval methods—combining vector and graph search. This approach not only enhances retrieval but also provides a structured, interpretable representation of information. Our results show that the structured search method outperforms traditional techniques in managing cross-document context, leading to more effective and detailed extraction, and ultimately aiding the comprehension of complex documents.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q006",
+      "query": "How can external evidence help detect fabricated news stories?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406458547",
+          "grade": 3,
+          "paper_title": "A Large Language Model-based Fake News Detection Framework with RAG Fact-Checking",
+          "evidence_excerpt": "The widespread dissemination of online misinformation poses significant threats to the public interest, highlighting the urgent need for effective fake news detection. In the era of Large Language Models (LLMs), the rise of AI-generated fake news has intensified this issue, making misinformation more pervasive and harder to control. While fact-checking offers a promising solution by leveraging external knowledge, efficiently linking claims within news articles to relevant external facts remains a significant challenge. To address this, we propose a mis-information detection framework FCRV (Full-Context Retrieval and Verification) that constructs a \"full-context\" for news articles by integrating LLM-based claim extraction with Retrieval-Augmented Generation (RAG) for fact-checking. We implemented an LLM pipeline for human-like extraction of key claims from datasets, significantly improving extraction quality over traditional methods. Our retrieval workflow effectively detects fictitious",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q007",
+      "query": "How can medical assistants on wearable devices reduce retrieval memory and energy costs?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7124177984",
+          "grade": 3,
+          "paper_title": "A Memory-Efficient Retrieval Architecture for RAG-Enabled Wearable Medical LLMs-Agents",
+          "evidence_excerpt": "With powerful and integrative large language models (LLMs), medical AI agents have demonstrated unique advantages in providing personalized medical consultations, continuous health monitoring, and precise treatment plans. RetrievalAugmented Generation (RAG) integrates personal medical documents into LLMs by an external retrievable database to address the costly retraining or fine-tuning issues in deploying customized agents. While deploying medical agents in edge devices ensures privacy protection, RAG implementations impose substantial memory access and energy consumption during the retrieval stage. This paper presents a hierarchical retrieval architecture for edge RAG, leveraging a two-stage retrieval scheme that combines approximate retrieval for candidate set generation, followed by high-precision retrieval on pre-selected document embeddings. The proposed architecture significantly reduces energy consumption and external memory access while maintaining retrieval accuracy. Simulati",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q008",
+      "query": "How can multiple language model agents check software requirements against regulations?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7116688751",
+          "grade": 3,
+          "paper_title": "A Multi-Agent RAG Framework for Regulatory Compliance Checking of Software Requirements",
+          "evidence_excerpt": "Ensuring compliance with regulations poses considerable challenges for software development, particularly during the requirements specification phase. Traditional methods rely heavily on manual inspections that are time-consuming and prone to errors. This research proposes an innovative framework that leverages the synergy of multiple AI agents to automate software requirement compliance verification partially. The framework integrates Large Language Models (LLMs), prompt engineering, and Retrieval-Augmented Generation (RAG) to analyze, detect, and revise non-compliant requirements. The core of our proposal lies in multi-agent communication, where distinct AI agents collaborate to achieve the overarching goal of compliance checking. LLMs comprehend requirements specifications, while prompt engineering guides LLMs toward compliance-related aspects. The RAG techniques detect non-compliant requirements and suggest changes. Finally, a robust Human-in-the-Loop mechanism ensures accuracy, re",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q009",
+      "query": "How can images and insurance policies support post-disaster housing damage assessment?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7117367262",
+          "grade": 3,
+          "paper_title": "A Multimodal RAG Framework for Housing Damage Assessment: Collaborative Optimization of Image Encoding and Policy Vector Retrieval",
+          "evidence_excerpt": "After natural disasters, accurate evaluations of damage to housing are important for insurance claims response and planning of resources. In this work, we introduce a novel multimodal retrieval-augmented generation (MM-RAG) framework. On top of classical RAG architecture, we further the framework to devise a two-branch multimodal encoder structure that the image branch employs a visual encoder composed of ResNet and Transformer to extract the characteristic of building damage after disaster, and the text branch harnesses a BERT retriever for the text vectorization of posts as well as insurance policies and for the construction of a retrievable restoration index. To impose cross-modal semantic alignment, the model integrates a cross-modal interaction module to bridge the semantic representation between image and text via multi-head attention. Meanwhile, in the generation module, the introduced modal attention gating mechanism dynamically controls the role of visual evidence and text pri",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q010",
+      "query": "How can an agent reason across text images and tables over several retrieval steps?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4414352266",
+          "grade": 3,
+          "paper_title": "A Multimodal Retrieval-Augmented Generation System with ReAct Agent Logic for Multi-Hop Reasoning",
+          "evidence_excerpt": "The rapid advancement of generative artificial intelligence models significantly influences modern methods of information processing and user interactions with information systems. One of the promising areas in this domain is Retrieval-Augmented Generation (RAG), which combines generative models with information retrieval methods to enhance the accuracy and relevance of responses. However, most existing RAG systems primarily focus on textual data, which does not meet contemporary needs for multimodal information processing (text, images, tables). The research object of this work is a multimodal RAG system based on ReAct agent logic, capable of multi-hop reasoning. The main emphasis is placed on integrating textual, graphical, and tabular information to generate accurate, complete, and relevant responses. The system's implementation utilized the ChromaDB vector storage, the OpenAI embedding generation model (text-embedding-ada-002), and the GPT-4 language model. The purpose of the study",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W7140295500",
+          "grade": 1,
+          "paper_title": "Agentic Graph-RAG: A Multi-Agent Framework for Robust, Decomposed Multi-Hop Reasoning",
+          "evidence_excerpt": "Large Language Models (LLMs) excel at fluency but fail in complex, multi-hop reasoning, which requires synthesizing multiple, verifiable facts. Existing solutions are fragmented; standard Retrieval-Augmented Generation (RAG) is vulnerable to retrieval noise, and Multi-Agent Systems (MAS) suffer from error propagation due to ambiguous communication. This paper introduces Agentic Graph-RAG, a multi-agent framework where agents collaborate via a structured Common Factual Ground rather than direct dialogue. A Planner Agent decomposes the query, a Dual-Retrieval Module gathers hybrid evidence from Knowledge Graphs (KGs) and text, and a Synthesizer-Verifier Agent performs cross-modal consistency checks to generate verified, cited conclusions for each step. Empirical evaluation shows the framework establishes a new state-of-the-art. It achieves 75.8% accuracy on the long-tail PopQA dataset and 94.2% faithfulness in a manual evaluation. The framework provides a robust solution by transforming ",
+          "rationale": "The metadata provides partial background for the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0,
+          "paper_title": "A Rag GTPase dimer code defines the regulation of mTORC1 by amino acids",
+          "evidence_excerpt": "Amino acid availability controls mTORC1 activity via a heterodimeric Rag GTPase complex that functions as a scaffold at the lysosomal surface, bringing together mTORC1 with its activators and effectors. Mammalian cells express four Rag proteins (RagA-D) that form dimers composed of RagA/B bound to RagC/D. Traditionally, the Rag paralogue pairs (RagA/B and RagC/D) are referred to as functionally redundant, with the four dimer combinations used interchangeably in most studies. Here, by using genetically modified cell lines that express single Rag heterodimers, we uncover a Rag dimer code that determines how amino acids regulate mTORC1. First, RagC/D differentially define the substrate specificity downstream of mTORC1, with RagD promoting phosphorylation of its lysosomal substrates TFEB/TFE3, while both Rags are involved in the phosphorylation of non-lysosomal substrates such as S6K. Mechanistically, RagD recruits mTORC1 more potently to lysosomes through increased affinity to the anchori",
+          "rationale": "This paper concerns Rag GTPase biology rather than retrieval augmented generation.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q011",
+      "query": "How can entity recognition and knowledge graphs improve medical question answering?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412626772",
+          "grade": 3,
+          "paper_title": "A RAG-based approach for medical question answering using knowledge graphs and pretrained models",
+          "evidence_excerpt": "With the rapid development of artificial intelligence technologies, medical question-answering systems that integrate knowledge graphs and large models have shown great potential in the field of smart healthcare. This paper proposes a medical question-answering system based on a Knowledge Graph and Retrieval-Augmented Generation (RAG) framework. The system combines Named Entity Recognition (NER) and intent recognition techniques to perform reasoning using the knowledge graph to generate accurate medical answers. The system first preprocesses medical texts and applies rule-based classification to train the intent classification and NER models, which then extract relevant information from the knowledge graph to generate query statements. Based on the generated queries, the system combines the user's query with the knowledge graph retrieval results and uses a large model to generate the final answer. Experimental results show that the system can provide efficient and accurate answers for ",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4416034803",
+          "grade": 2,
+          "paper_title": "Agentic Medical Knowledge Graphs Enhance Medical Question Answering: Bridging the Gap Between LLMs and Evolving Medical Knowledge",
+          "evidence_excerpt": "Large language models (LLMs) have greatly advanced medical question answering (QA) by leveraging vast clinical data and medical literature.However, the rapid evolution of medical knowledge and the labor-intensive process of manually updating domain-specific resources can undermine the reliability of these systems.We address this challenge with Agentic Medical Graph-RAG (AMG-RAG), a comprehensive framework that automates the construction and continuous updating of Medical Knowledge Graphs (MKGs), integrates reasoning, and retrieves current external evidence from the MKGs for medical QA.Evaluations on the MEDQA and MEDM-CQA benchmarks demonstrate the effectiveness of AMG-RAG, achieving an F1 score of 74.1% on MEDQA and an accuracy of 66.34% on MEDMCQA-surpassing both comparable models and those 10 to 100 times larger.By dynamically linking new findings and complex medical concepts, AMG-RAG not only boosts accuracy but also enhances interpretability for medical queries, which has a critic",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q012",
+      "query": "How can collaborating retrieval agents support wildfire and natural hazard decisions?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415306940",
+          "grade": 3,
+          "paper_title": "A RAG-Based Multi-Agent LLM System for Natural Hazard Resilience and Adaptation",
+          "evidence_excerpt": "Large language models (LLMs) are a transformational capability at the frontier of artificial intelligence and machine learning that can support decision-makers in addressing pressing societal challenges such as extreme natural hazard events. As generalized models, LLMs often struggle to provide context-specific information, particularly in areas requiring specialized knowledge. In this work we propose a retrieval-augmented generation (RAG)-based multi-agent LLM system to support analysis and decision-making in the context of natural hazards and extreme weather events. As a proof of concept, we present WildfireGPT, a specialized system focused on wildfire hazards. The architecture employs a user-centered, multi-agent design to deliver tailored risk insights across diverse stakeholder groups. By integrating natural hazard and extreme weather projection data, observational datasets, and scientific literature through an RAG framework, the system ensures both the accuracy and contextual rel",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q013",
+      "query": "How can retrieval augmented generation support smart grid digital twins?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403749687",
+          "grade": 3,
+          "paper_title": "A Retrieval-Augmented Generation Approach for Data-Driven Energy Infrastructure Digital Twins",
+          "evidence_excerpt": "Digital-twin platforms are increasingly adopted in energy infrastructure management for smart grids. Novel opportunities arise from emerging artificial intelligence technologies to increase user trust by enhancing predictive and prescriptive analytics capabilities and by improving user interaction paradigms. This paper presents a novel data-driven and knowledge-based energy digital-twin framework and architecture. Data integration and mining based on machine learning are integrated into a knowledge graph annotating asset status data, prediction outcomes, and background domain knowledge in order to support a retrieval-augmented generation approach, which enhances a conversational virtual assistant based on a large language model to provide user decision support in asset management and maintenance. Components of the proposed architecture have been mapped to commercial-off-the-shelf tools to implement a prototype framework, exploited in a case study on the management of a section of the h",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q014",
+      "query": "How can self-correcting graph retrieval support clinical decisions about liver disease?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4417354602",
+          "grade": 3,
+          "paper_title": "A self-correcting Agentic Graph RAG for clinical decision support in hepatology",
+          "evidence_excerpt": "Introduction: Clinical decision-making in hepatology is currently challenged by the rapid expansion of medical knowledge and the limitations of Large Language Models (LLMs), specifically their unreliability and tendency to hallucinate. Furthermore, standard Retrieval-Augmented Generation (RAG) paradigms often fail to effectively leverage complex medical knowledge structures. Methods: To address these issues, we propose an Agentic Graph RAG framework built upon a clinically-verified hepatology knowledge graph. Our approach utilizes a state-driven agentic system employing a self-correcting \"retrieve-evaluate-refine\" loop. Within this workflow, agents dynamically generate, semantically validate, assess, and iteratively optimize graph search strategies to construct a comprehensive and accurate context, which is then used by an LLM to generate reliable responses. Results: The framework was evaluated on a custom dataset of clinical questions. It significantly outperformed baseline models (in",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q015",
+      "query": "What challenges arise when graph retrieval customizes language models for specialist domains?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406840433",
+          "grade": 3,
+          "paper_title": "A Survey of Graph Retrieval-Augmented Generation for Customized Large Language Models",
+          "evidence_excerpt": "Large language models (LLMs) have demonstrated remarkable capabilities in a wide range of tasks, yet their application to specialized domains remains challenging due to the need for deep expertise. Retrieval-Augmented generation (RAG) has emerged as a promising solution to customize LLMs for professional fields by seamlessly integrating external knowledge bases, enabling real-time access to domain-specific expertise during inference. Despite its potential, traditional RAG systems, based on flat text retrieval, face three critical challenges: (i) complex query understanding in professional contexts, (ii) difficulties in knowledge integration across distributed sources, and (iii) system efficiency bottlenecks at scale. This survey presents a systematic analysis of Graph-based Retrieval-Augmented Generation (GraphRAG), a new paradigm that revolutionizes domain-specific LLM applications. GraphRAG addresses traditional RAG limitations through three key innovations: (i) graph-structured know",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4406031095",
+          "grade": 2,
+          "paper_title": "Retrieval-Augmented Generation with Graphs (GraphRAG)",
+          "evidence_excerpt": "Retrieval-augmented generation (RAG) is a powerful technique that enhances downstream task execution by retrieving additional information, such as knowledge, skills, and tools from external sources. Graph, by its intrinsic \"nodes connected by edges\" nature, encodes massive heterogeneous and relational information, making it a golden resource for RAG in tremendous real-world applications. As a result, we have recently witnessed increasing attention on equipping RAG with Graph, i.e., GraphRAG. However, unlike conventional RAG, where the retriever, generator, and external data sources can be uniformly designed in the neural-embedding space, the uniqueness of graph-structured data, such as diverse-formatted and domain-specific relational knowledge, poses unique and significant challenges when designing GraphRAG for different domains. Given the broad applicability, the associated design challenges, and the recent surge in GraphRAG, a systematic and up-to-date survey of its key concepts and ",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q016",
+      "query": "What are the main approaches to multimodal retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415152171",
+          "grade": 3,
+          "paper_title": "A Survey of Multimodal Retrieval-Augmented Generation",
+          "evidence_excerpt": "Multimodal Retrieval-Augmented Generation (MRAG) enhances large language models (LLMs) by integrating multimodal data (text, images, videos) into retrieval and generation processes, overcoming the limitations of text-only Retrieval-Augmented Generation (RAG). While RAG improves response accuracy by incorporating external textual knowledge, MRAG extends this framework to include multimodal retrieval and generation, leveraging contextual information from diverse data types. This approach reduces hallucinations and enhances question-answering systems by grounding responses in factual, multimodal knowledge. Recent studies show MRAG outperforms traditional RAG, especially in scenarios requiring both visual and textual understanding. This survey reviews MRAG's essential components, datasets, evaluation methods, and limitations, providing insights into its construction and improvement. It also identifies challenges and future research directions, highlighting MRAG's potential to revolutionize",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4416291690",
+          "grade": 2,
+          "paper_title": "A Comprehensive Survey on Multimodal RAG: All Combinations of Modalities as Input and Output",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is an important way to mitigate hallucination in large language models (LLMs) by integrating relevant external knowledge. With the advance of multimodal LLMs, retrieval augmentation now extends not only textual tasks but also multimodal ones. In this paper, we conduct a comprehensive survey of the most recent work on multimodal RAG (MM-RAG) in the sense that it has a full coverage of almost all the combinations of modalities as input and output, whereas existing survey papers typically focus on one or two modalities. Based on different input-output modality combinations, we present a taxonomy of MM-RAG methods which gives us a much clearer picture of their key technical components. Facilitated by such a taxonomy, we identify four essential stages of the workflow of MM-RAG, summarize common approaches to each stage, and discuss optimization strategies for each modality. To provide a holistic understanding and practical guidance for building MM-RAG sy",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q017",
+      "query": "How can retrieval systems and agents personalize responses to user preferences?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415160040",
+          "grade": 3,
+          "paper_title": "A Survey of Personalization: From RAG to Agent",
+          "evidence_excerpt": "Personalization has become an essential capability in modern AI systems, enabling customized interactions that align with individual user preferences, contexts, and goals. Recent research has increasingly concentrated on Retrieval-Augmented Generation (RAG) frameworks and their evolution into more advanced agent-based architectures within personalized settings to enhance user satisfaction. Building on this foundation, this survey systematically examines personalization across the three core stages of RAG: pre-retrieval, retrieval, and generation. Beyond RAG, we further extend its capabilities into the realm of Personalized LLM-based Agents, which enhance traditional RAG systems with agentic functionalities, including user understanding, personalized planning and execution, and dynamic generation. For both personalization in RAG and agent-based personalization, we provide formal definitions, conduct a comprehensive review of recent literature, and summarize key datasets and evaluation m",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q018",
+      "query": "How do reasoning strategies interact with retrieving external knowledge?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7118277284",
+          "grade": 3,
+          "paper_title": "A Survey of RAG and Reasoning in Large Language Models",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is an important development in the world of large language models (LLMs). By combining the ability of LLMs to generate text with access to external knowledge sources, RAG systems can answer questions and solve problems that require more than just what the model \"remembers.\" As LLMs get better at reasoning, they allow RAG systems to handle more complicated tasks with higher accuracy and flexibility. In this survey, we carefully explain what we mean by \"reasoning\" in the context of RAG, and we provide a clear taxonomy that organizes different types of reasoning and retrieval strategies. We also show how reasoning and retrieval can work together to improve each other: better reasoning can guide more effective retrieval, and better retrieval can provide more relevant information for reasoning. Finally, we discuss new trends and promising directions for future research in this area. Overall, this work aims to give readers both a conceptual understanding ",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q019",
+      "query": "What types of hallucination occur in language models and how are they detected?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4404534210",
+          "grade": 3,
+          "paper_title": "A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions",
+          "evidence_excerpt": "The emergence of large language models (LLMs) has marked a significant breakthrough in natural language processing (NLP), fueling a paradigm shift in information acquisition. Nevertheless, LLMs are prone to hallucination, generating plausible yet nonfactual content. This phenomenon raises significant concerns over the reliability of LLMs in real-world information retrieval (IR) systems and has attracted intensive research to detect and mitigate such hallucinations. Given the open-ended general-purpose attributes inherent to LLMs, LLM hallucinations present distinct challenges that diverge from prior task-specific models. This divergence highlights the urgency for a nuanced understanding and comprehensive overview of recent advances in LLM hallucinations. In this survey, we begin with an innovative taxonomy of hallucination in the era of LLM and then delve into the factors contributing to hallucinations. Subsequently, we present a thorough overview of hallucination detection methods and",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4390602555",
+          "grade": 2,
+          "paper_title": "A Comprehensive Survey of Hallucination Mitigation Techniques in Large Language Models",
+          "evidence_excerpt": "As Large Language Models (LLMs) continue to advance in their ability to write human-like text, a key challenge remains around their tendency to hallucinate generating content that appears factual but is ungrounded. This issue of hallucination is arguably the biggest hindrance to safely deploying these powerful LLMs into real-world production systems that impact people's lives. The journey toward widespread adoption of LLMs in practical settings heavily relies on addressing and mitigating hallucinations. Unlike traditional AI systems focused on limited tasks, LLMs have been exposed to vast amounts of online text data during training. While this allows them to display impressive language fluency, it also means they are capable of extrapolating information from the biases in training data, misinterpreting ambiguous prompts, or modifying the information to align superficially with the input. This becomes hugely alarming when we rely on language generation capabilities for sensitive applica",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q020",
+      "query": "What security vulnerabilities and privacy risks affect large language models?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4392353733",
+          "grade": 3,
+          "paper_title": "A survey on large language model (LLM) security and privacy: The Good, The Bad, and The Ugly",
+          "evidence_excerpt": "Large Language Models (LLMs), such as ChatGPT and Bard, have revolutionized natural language understanding and generation. They possess deep language comprehension, human-like text generation capabilities, contextual awareness, and robust problem-solving skills, making them invaluable in various domains (e.g., search engines, customer support, translation). In the meantime, LLMs have also gained traction in the security community, revealing security vulnerabilities and showcasing their potential in security-related tasks. This paper explores the intersection of LLMs with security and privacy. Specifically, we investigate how LLMs positively impact security and privacy, potential risks and threats associated with their use, and inherent vulnerabilities within LLMs. Through a comprehensive literature review, the paper categorizes the papers into “The Good” (beneficial LLM applications), “The Bad” (offensive applications), and “The Ugly” (vulnerabilities of LLMs and their defenses). We ha",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q021",
+      "query": "What is the research landscape of generating source code from natural language?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7125135101",
+          "grade": 3,
+          "paper_title": "A Survey on Large Language Models for Code Generation",
+          "evidence_excerpt": "Large Language Models (LLMs) have garnered remarkable advancements across diverse code-related tasks, known as Code LLMs, particularly in code generation that generates source code with LLM from natural language descriptions. This burgeoning field has captured significant interest from both academic researchers and industry professionals due to its practical significance in software development, e.g., GitHub Copilot . Despite the active exploration of LLMs for a variety of code tasks, either from the perspective of Natural Language Processing (NLP) or Software Engineering (SE) or both, there is a noticeable absence of a comprehensive and up-to-date literature review dedicated to LLM for code generation. In this survey, we aim to bridge this gap by providing a systematic literature review that serves as a valuable reference for researchers investigating the cutting-edge progress in LLMs for code generation. We introduce a taxonomy to categorize and discuss the recent developments in LLM",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q022",
+      "query": "How do low rank adaptation methods make fine tuning more parameter efficient?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403753254",
+          "grade": 3,
+          "paper_title": "A survey on LoRA of large language models",
+          "evidence_excerpt": "Abstract Low-Rank Adaptation (LoRA), which updates the dense neural network layers with pluggable low-rank matrices, is one of the best performed parameter efficient fine-tuning paradigms. Furthermore, it has significant advantages in cross-task generalization and privacy-preserving. Hence, LoRA has gained much attention recently, and the number of related literature demonstrates exponential growth. It is necessary to conduct a comprehensive overview of the current progress on LoRA. This survey categorizes and reviews the progress from the perspectives of (1) downstream adaptation improving variants that improve LoRA’s performance on downstream tasks; (2) cross-task generalization methods that mix multiple LoRA plugins to achieve cross-task generalization; (3) efficiency-improving methods that boost the computation-efficiency of LoRA; (4) data privacy-preserving methods that use LoRA in federated learning; (5) application. Besides, this survey also discusses the future directions in th",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q023",
+      "query": "What are the applications and limitations of retrieval augmented generation in healthcare?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415233873",
+          "grade": 3,
+          "paper_title": "A survey on retrieval-augmentation generation (RAG) models for healthcare applications",
+          "evidence_excerpt": "Retrieval-augmented generation (RAG) models have become crucial in healthcare applications, significantly enhancing the relevance and reliability of AI-driven insights by combining the generative capabilities of large language models (LLMs) with retrieval-based methods. As healthcare data demand precision and accountability, RAG models address critical limitations of LLMs, such as the tendency to “hallucinate” or produce inaccurate information—by incorporating real-time retrieval from trusted medical knowledge bases and clinical literature. This dual process of retrieving and generating ensures that responses are both contextually accurate and aligned with the latest clinical evidence, making RAG models especially valuable for medical question answering, diagnostics, and treatment planning. This paper presents an in-depth exploration of RAG models and LLMs, specifically within healthcare contexts, to meet the unique demands of medical data processing and decision support. It reviews va",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4414128336",
+          "grade": 2,
+          "paper_title": "Retrieval-Augmented Generation (RAG) in Healthcare: A Comprehensive Review",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) enhances large language models (LLMs) by integrating external knowledge retrieval to improve factual consistency and reduce hallucinations. Despite growing interest, its use in healthcare remains fragmented. This paper presents a Systematic Literature Review (SLR) following PRISMA guidelines, synthesizing 30 peer-reviewed studies on RAG in clinical domains, focusing on three of its most prevalent and promising applications in diagnostic support, electronic health record (EHR) summarization, and medical question answering. We synthesize the existing architectural variants (naïve, advanced, and modular) and examine their deployment across these applications. Persistent challenges are identified, including retrieval noise (irrelevant or low-quality retrieved information), domain shift (performance degradation when models are applied to data distributions different from their training set), generation latency, and limited explainability. Evaluation stra",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q024",
+      "query": "What empirical evidence exists for RAG effectiveness and which evaluation practices are used?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7114889968",
+          "grade": 3,
+          "paper_title": "A Systematic Literature Review of Retrieval-Augmented Generation: Techniques, Metrics, and Challenges",
+          "evidence_excerpt": "Background: Retrieval-augmented generation (RAG) aims to reduce hallucinations and outdated knowledge by grounding LLM outputs in retrieved evidence, but empirical results are scattered across tasks, systems, and metrics, limiting cumulative insight. Objective: We aimed to synthesise empirical evidence on RAG effectiveness versus parametric-only baselines, map datasets/architectures/evaluation practices, and surface limitations and research gaps. Methods: This systematic review was conducted and reported in accordance with PRISMA 2020. We searched the ACM Digital Library, IEEE Xplore, Scopus, ScienceDirect, and DBLP; all sources were last searched on 13 May 2025. This included studies from January 2020–May 2025 that addressed RAG or similar retrieval-supported systems producing text output, met citation thresholds (≥15 for 2025; ≥30 for 2024 or earlier), and offered original contributions; excluded non-English items, irrelevant works, duplicates, and records without accessible full tex",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q025",
+      "query": "How can standard RAG self-reflective retrieval and agentic retrieval be compared fairly?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7131122974",
+          "grade": 3,
+          "paper_title": "A Unified Evaluation Framework for Grounded LLM Architectures: Comparative Analysis of RAG, Self-RAG, and Agentic RAG",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) grounds large language models with external knowledge, while two recent variants—Self-RAG (self-reflective retrieval refinement) and Agentic RAG (multi-step reasoning and tool orchestration)—aim to boost factuality, reasoning depth, and adaptability. We present a unified evaluation framework that, for the first time, compares these three paradigms under matched conditions: the same base model, the same hybrid retriever, and identical domain constraints. Our multi-task benchmark spans factual recall, multi-hop reasoning, and domain-specific Q&A in insurance, legal, and healthcare. We assess factual accuracy, retrieval precision/recall, hallucination rate, and end-to-end latency to expose reliability–cost trade-offs. Results show complementary strengths: Self-RAG consistently lowers hallucinations and boosts retrieval precision on knowledge-dense queries with modest latency overhead; Agentic RAG delivers the strongest multi-hop and tool-grounded reaso",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q026",
+      "query": "How do retrieval choices affect the execution time of an augmented generation pipeline?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4407197060",
+          "grade": 3,
+          "paper_title": "Accelerating Retrieval-Augmented Generation",
+          "evidence_excerpt": "An evolving solution to address hallucination and enhance accuracy in large language models (LLMs) is Retrieval-Augmented Generation (RAG), which involves augmenting LLMs with information retrieved from an external knowledge source, such as the web. This paper profiles several RAG execution pipelines and demystifies the complex interplay between their retrieval and generation phases. We demonstrate that while exact retrieval schemes are expensive, they can reduce inference time compared to approximate retrieval variants because an exact retrieval model can send a smaller but more accurate list of documents to the generative model while maintaining the same end-to-end accuracy. This observation motivates the acceleration of the exact nearest neighbor search for RAG.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q027",
+      "query": "Find the work introducing active retrieval during language generation.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4389519118",
+          "grade": 3,
+          "paper_title": "Active Retrieval Augmented Generation",
+          "evidence_excerpt": "Zhengbao Jiang, Frank Xu, Luyu Gao, Zhiqing Sun, Qian Liu, Jane Dwivedi-Yu, Yiming Yang, Jamie Callan, Graham Neubig. Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing. 2023.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4405030361",
+          "grade": 1,
+          "paper_title": "Auto-RAG: Autonomous Retrieval-Augmented Generation for Large Language Models",
+          "evidence_excerpt": "Iterative retrieval refers to the process in which the model continuously queries the retriever during generation to enhance the relevance of the retrieved knowledge, thereby improving the performance of Retrieval-Augmented Generation (RAG). Existing work typically employs few-shot prompting or manually constructed rules to implement iterative retrieval. This introduces additional inference overhead and overlooks the remarkable reasoning capabilities of Large Language Models (LLMs). In this paper, we introduce Auto-RAG, an autonomous iterative retrieval model centered on the LLM's powerful decision-making capabilities. Auto-RAG engages in multi-turn dialogues with the retriever, systematically planning retrievals and refining queries to acquire valuable knowledge. This process continues until sufficient external information is gathered, at which point the results are presented to the user. To this end, we develop a method for autonomously synthesizing reasoning-based decision-making in",
+          "rationale": "The metadata provides partial background for the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q028",
+      "query": "Find a method that adapts retrieval effort to the complexity of a question.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4401042753",
+          "grade": 3,
+          "paper_title": "Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity",
+          "evidence_excerpt": "Soyeong Jeong, Jinheon Baek, Sukmin Cho, Sung Ju Hwang, Jong Park. Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2024.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4389519118",
+          "grade": 1,
+          "paper_title": "Active Retrieval Augmented Generation",
+          "evidence_excerpt": "Zhengbao Jiang, Frank Xu, Luyu Gao, Zhiqing Sun, Qian Liu, Jane Dwivedi-Yu, Yiming Yang, Jamie Callan, Graham Neubig. Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing. 2023.",
+          "rationale": "The metadata provides partial background for the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q029",
+      "query": "How can multiple agents use a shared factual representation for verifiable multi-hop reasoning?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7140295500",
+          "grade": 3,
+          "paper_title": "Agentic Graph-RAG: A Multi-Agent Framework for Robust, Decomposed Multi-Hop Reasoning",
+          "evidence_excerpt": "Large Language Models (LLMs) excel at fluency but fail in complex, multi-hop reasoning, which requires synthesizing multiple, verifiable facts. Existing solutions are fragmented; standard Retrieval-Augmented Generation (RAG) is vulnerable to retrieval noise, and Multi-Agent Systems (MAS) suffer from error propagation due to ambiguous communication. This paper introduces Agentic Graph-RAG, a multi-agent framework where agents collaborate via a structured Common Factual Ground rather than direct dialogue. A Planner Agent decomposes the query, a Dual-Retrieval Module gathers hybrid evidence from Knowledge Graphs (KGs) and text, and a Synthesizer-Verifier Agent performs cross-modal consistency checks to generate verified, cited conclusions for each step. Empirical evaluation shows the framework establishes a new state-of-the-art. It achieves 75.8% accuracy on the long-tail PopQA dataset and 94.2% faithfulness in a manual evaluation. The framework provides a robust solution by transforming ",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q030",
+      "query": "How can vector and graph retrieval agents generate software test plans and test cases?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7125983183",
+          "grade": 3,
+          "paper_title": "Agentic RAG for Software Testing with Hybrid Vector-Graph and Multi-Agent Orchestration",
+          "evidence_excerpt": "We present an approach to automating software testing using Agentic Retrieval-Augmented Generation (RAG) systems for creating Quality Engineering (QE) artifacts. This approach combines autonomous AI agents with hybrid vector-graph knowledge systems to automate the generation of test plans and test cases. The scope of this paper is limited to the test cases and plan generation. Our approach addresses traditional software test case authoring limitations by leveraging LLMs such as Gemini and Mistral, multi-agent orchestration, and enhanced contextualization. The system achieves remarkable accuracy improvements from 65% to 94.8% while ensuring comprehensive document traceability throughout the quality engineering lifecycle. Experimental validation of enterprise Corporate Systems Engineering and SAP migration projects demonstrates an 85% reduction in testing timeline, an 85% improvement in test suite efficiency, and projected 35% cost savings, resulting in a 6-month acceleration of go-live.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q031",
+      "query": "How can domain experts actively participate in the retrieval process of agentic systems?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4410887384",
+          "grade": 3,
+          "paper_title": "Agentic RAG with Human-in-the-Retrieval",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) has emerged as a promising solution to address key challenges faced by GenAI, such as hallucination, outdated or non-removable parametric knowledge, and non-traceable reasoning processes. Existing RAG frameworks introduce dynamism into RAG process through adaptive, recursive and interactive usage of retriever and generator. More recently, agentic RAG adds another layer of intelligence to RAG by leveraging GenAI agents to further enhance dynamism by autonomously planning the retrieval process as a complex orchestration workflow with various external tools. However, current RAG architectures often overlook the significant role that domain experts can play in the retrieval process, alongside passive knowledge bases. This paper introduces a new paradigm for agentic RAG systems, capable of integrating external passive knowledge bases as well as active domain experts. This integration further enhances the versatility and factual accuracy of RAG systems. T",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q032",
+      "query": "What architectures and workflows are used in agentic retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406542750",
+          "grade": 3,
+          "paper_title": "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG",
+          "evidence_excerpt": "Large Language Models (LLMs) have advanced artificial intelligence by enabling human-like text generation and natural language understanding. However, their reliance on static training data limits their ability to respond to dynamic, real-time queries, resulting in outdated or inaccurate outputs. Retrieval-Augmented Generation (RAG) has emerged as a solution, enhancing LLMs by integrating real-time data retrieval to provide contextually relevant and up-to-date responses. Despite its promise, traditional RAG systems are constrained by static workflows and lack the adaptability required for multi-step reasoning and complex task management. Agentic Retrieval-Augmented Generation (Agentic RAG) transcends these limitations by embedding autonomous AI agents into the RAG pipeline. These agents leverage agentic design patterns reflection, planning, tool use, and multi-agent collaboration to dynamically manage retrieval strategies, iteratively refine contextual understanding, and adapt workflow",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4408581964",
+          "grade": 2,
+          "paper_title": "Agentic Retrieval-Augmented Generation: Advancing AI-Driven Information Retrieval and Processing",
+          "evidence_excerpt": "This paper explores the emerging field of Agentic Retrieval-Augmented Generation (Agentic RAG), an advanced approach to AI-driven information retrieval and processing. Building upon traditional Retrieval-Augmented Generation, Agentic RAG incorporates goal reasoning and self-direction, enabling AI systems to make informed decisions based on user context and intent. The study examines the fundamental components of Agentic RAG, including its multi-agent hierarchical architecture, key features, and enhancements over conventional systems. Applications across various domains, such as healthcare, financial services, businesses, and education, are discussed. The paper also addresses challenges in implementation, including mitigating AI hallucinations, ethical considerations, and computational scalability. Performance evaluation methods and metrics for Agentic RAG systems are outlined, along with case studies demonstrating their effectiveness. Finally, the paper explores future directions for r",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q033",
+      "query": "How can curated medical resources ground language model treatment recommendations?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4391221150",
+          "grade": 3,
+          "paper_title": "Almanac — Retrieval-Augmented Language Models for Clinical Medicine",
+          "evidence_excerpt": "BACKGROUND: Large language models (LLMs) have recently shown impressive zero-shot capabilities, whereby they can use auxiliary data, without the availability of task-specific training examples, to complete a variety of natural language tasks, such as summarization, dialogue generation, and question answering. However, despite many promising applications of LLMs in clinical medicine, adoption of these models has been limited by their tendency to generate incorrect and sometimes even harmful statements. METHODS: We tasked a panel of eight board-certified clinicians and two health care practitioners with evaluating Almanac, an LLM framework augmented with retrieval capabilities from curated medical resources for medical guideline and treatment recommendations. The panel compared responses from Almanac and standard LLMs (ChatGPT-4, Bing, and Bard) versus a novel data set of 314 clinical questions spanning nine medical specialties. RESULTS: Almanac showed a significant improvement in perfor",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q034",
+      "query": "How can graph retrieval help interpret interconnected information security compliance standards?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7154936562",
+          "grade": 3,
+          "paper_title": "An Empirical Study of Knowledge Graph-Enhanced RAG for Information Security Compliance",
+          "evidence_excerpt": "Information security compliance has become critical for organizations worldwide, with the ISO/IEC 27000 family serving as the most widely adopted framework for establishing information security management systems. Despite their global acceptance, these standards present significant interpretation challenges due to their formal language, abstract structure, and extensive cross-referencing across 97 documents. Traditional retrieval-augmented generation (RAG) systems, which rely on independent text chunking and dense vector retrieval, prove inadequate for such highly interconnected regulatory materials, often fragmenting contextual relationships and reducing accuracy. This study introduces a privacy-preserving RAG framework that integrates LightRAG, a knowledge graph-based retrieval system, with locally hosted open-source language models. Unlike chunk-based RAG systems that treat document segments independently, the system in this study constructs a semantic knowledge graph that explicitl",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q035",
+      "query": "How can legal retrieval account for the hierarchy and changing versions of laws?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416988511",
+          "grade": 3,
+          "paper_title": "An Ontology-Driven Graph RAG for Legal Norms: A Hierarchical, Temporal, and Deterministic Approach",
+          "evidence_excerpt": "Standard Retrieval-Augmented Generation (RAG) systems fail in the legal domain, as they are blind to the hierarchical, diachronic, and causal structure of law, leading to anachronistic and unreliable answers. This paper introduces the Structure-Aware Temporal Graph RAG (SAT-Graph RAG), an ontology-driven framework designed to overcome these limitations by explicitly modeling the formal structure and diachronic nature of legal norms. We ground our knowledge graph in a formal, LRMoo-inspired model that distinguishes abstract legal Works from their versioned Expressions. To validate this architecture, we present a qualitative, trace-based evaluation demonstrating how an agentic framework can leverage our model’s deterministic primitives to resolve complex temporal and provenance queries that are intractable for standard RAG. The result is a practical and auditable framework for building trustworthy and explainable legal AI systems.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q036",
+      "query": "How can retrieval help extract malnutrition information from electronic health records?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4399660853",
+          "grade": 3,
+          "paper_title": "Applying generative AI with retrieval augmented generation to summarize and extract key clinical information from electronic health records",
+          "evidence_excerpt": "BACKGROUND: Malnutrition is a prevalent issue in aged care facilities (RACFs), leading to adverse health outcomes. The ability to efficiently extract key clinical information from a large volume of data in electronic health records (EHR) can improve understanding about the extent of the problem and developing effective interventions. This research aimed to test the efficacy of zero-shot prompt engineering applied to generative artificial intelligence (AI) models on their own and in combination with retrieval augmented generation (RAG), for the automating tasks of summarizing both structured and unstructured data in EHR and extracting important malnutrition information. METHODOLOGY: We utilized Llama 2 13B model with zero-shot prompting. The dataset comprises unstructured and structured EHRs related to malnutrition management in 40 Australian RACFs. We employed zero-shot learning to the model alone first, then combined it with RAG to accomplish two tasks: generate structured summaries a",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q037",
+      "query": "Find an automated framework for assessing retrieval augmented generation systems.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4401042808",
+          "grade": 3,
+          "paper_title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems",
+          "evidence_excerpt": "Jon Saad-Falcon, Omar Khattab, Christopher Potts, Matei Zaharia. Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2024.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4411630045",
+          "grade": 2,
+          "paper_title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation",
+          "evidence_excerpt": "Shahul Es, Jithin James, Luis Espinosa Anke, Steven Schockaert. Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations. 2024.",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q038",
+      "query": "How can a model resolve conflicts between its internal knowledge and imperfect retrieved evidence?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412889733",
+          "grade": 3,
+          "paper_title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models",
+          "evidence_excerpt": "Retrieval-augmented generation (RAG), while effective in integrating external knowledge to enhance large language models (LLMs), can be undermined by imperfect retrieval, which may introduce irrelevant, misleading, or even malicious information.Despite its importance, previous studies have rarely explored the behavior of RAG with errors from imperfect retrieval, and how potential conflicts arise between the LLMs' internal knowledge and external sources.We show that imperfect retrieval augmentation might be inevitable and quite harmful, through controlled analysis under realistic conditions.Knowledge conflicts between LLM-internal and external knowledge from retrieval is a bottleneck to overcome in the post-retrieval stage of RAG.To render LLMs resilient to imperfect retrieval, we propose ASTUTE RAG, a novel RAG approach that adaptively elicits essential information from LLMs' internal knowledge, iteratively consolidates internal and external knowledge with source-awareness, and finaliz",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q039",
+      "query": "Can retrieval augmented language models learn knowledge intensive tasks from very few examples?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4301243929",
+          "grade": 3,
+          "paper_title": "Atlas: Few-shot Learning with Retrieval Augmented Language Models",
+          "evidence_excerpt": "Large language models have shown impressive few-shot results on a wide range of tasks. However, when knowledge is key for such results, as is the case for tasks such as question answering and fact checking, massive parameter counts to store knowledge seem to be needed. Retrieval augmented models are known to excel at knowledge intensive tasks without the need for as many parameters, but it is unclear whether they work in few-shot settings. In this work we present Atlas, a carefully designed and pre-trained retrieval augmented language model able to learn knowledge intensive tasks with very few training examples. We perform evaluations on a wide range of tasks, including MMLU, KILT and NaturalQuestions, and study the impact of the content of the document index, showing that it can easily be updated. Notably, Atlas reaches over 42% accuracy on Natural Questions using only 64 examples, outperforming a 540B parameters model by 3% despite having 50x fewer parameters.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q040",
+      "query": "How can a language model autonomously plan and refine iterative retrieval queries?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4405030361",
+          "grade": 3,
+          "paper_title": "Auto-RAG: Autonomous Retrieval-Augmented Generation for Large Language Models",
+          "evidence_excerpt": "Iterative retrieval refers to the process in which the model continuously queries the retriever during generation to enhance the relevance of the retrieved knowledge, thereby improving the performance of Retrieval-Augmented Generation (RAG). Existing work typically employs few-shot prompting or manually constructed rules to implement iterative retrieval. This introduces additional inference overhead and overlooks the remarkable reasoning capabilities of Large Language Models (LLMs). In this paper, we introduce Auto-RAG, an autonomous iterative retrieval model centered on the LLM's powerful decision-making capabilities. Auto-RAG engages in multi-turn dialogues with the retriever, systematically planning retrievals and refining queries to acquire valuable knowledge. This process continues until sufficient external information is gathered, at which point the results are presented to the user. To this end, we develop a method for autonomously synthesizing reasoning-based decision-making in",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q041",
+      "query": "How can retrieval augmented generation automate systematic literature review workflows?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403248625",
+          "grade": 3,
+          "paper_title": "Automating Systematic Literature Reviews with Retrieval-Augmented Generation: A Comprehensive Overview",
+          "evidence_excerpt": "This study examines Retrieval-Augmented Generation (RAG) in large language models (LLMs) and their significant application for undertaking systematic literature reviews (SLRs). RAG-based LLMs can potentially automate tasks like data extraction, summarization, and trend identification. However, while LLMs are exceptionally proficient in generating human-like text and interpreting complex linguistic nuances, their dependence on static, pre-trained knowledge can result in inaccuracies and hallucinations. RAG mitigates these limitations by integrating LLMs’ generative capabilities with the precision of real-time information retrieval. We review in detail the three key processes of the RAG framework—retrieval, augmentation, and generation. We then discuss applications of RAG-based LLMs to SLR automation and highlight future research topics, including integration of domain-specific LLMs, multimodal data processing and generation, and utilization of multiple retrieval sources. We propose a fr",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4410251088",
+          "grade": 2,
+          "paper_title": "Streamlining systematic reviews with large language models using prompt engineering and retrieval augmented generation",
+          "evidence_excerpt": "BACKGROUND: Systematic reviews (SRs) are essential to formulate evidence-based guidelines but require time-consuming and costly literature screening. Large Language Models (LLMs) can be a powerful tool to expedite SRs. METHODS: We conducted a comparative study to evaluate the performance of a commercial tool, Rayyan, and an in-house LLM-based system in automating the screening of a completed SR on Vitamin D and falls. The SR retrieved 14,439 articles, and Rayyan was trained with 2,000 manually screened articles to categorize the rest as most likely to exclude/include, likely to exclude/include and undecided. We analyzed Rayyan's title/abstract screening performance using different inclusion thresholds. For the LLM, we used prompt engineering for title/abstract screening and Retrieval-Augmented Generation (RAG) for full-text screening. We evaluated performance using article exclusion rate (AER), false negative rate (FNR), specificity, positive predictive value (PPV), and negative predic",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q042",
+      "query": "How can retrieval benchmarks test noise robustness and conflicting evidence across different language models?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4393147129",
+          "grade": 3,
+          "paper_title": "Benchmarking Large Language Models in Retrieval-Augmented Generation",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is a promising approach for mitigating the hallucination of large language models (LLMs). However, existing research lacks rigorous evaluation of the impact of retrieval-augmented generation on different large language models, which make it challenging to identify the potential bottlenecks in the capabilities of RAG for different LLMs. In this paper, we systematically investigate the impact of Retrieval-Augmented Generation on large language models. We analyze the performance of different large language models in 4 fundamental abilities required for RAG, including noise robustness, negative rejection, information integration, and counterfactual robustness. To this end, we establish Retrieval-Augmented Generation Benchmark (RGB), a new corpus for RAG evaluation in both English and Chinese. RGB divides the instances within the benchmark into 4 separate testbeds based on the aforementioned fundamental abilities required to resolve the case. Then we eva",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q043",
+      "query": "Which benchmark evaluates retrieval augmented generation for medical question answering?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4402670290",
+          "grade": 3,
+          "paper_title": "Benchmarking Retrieval-Augmented Generation for Medicine",
+          "evidence_excerpt": "While large language models (LLMs) have achieved state-of-the-art performance on a wide range of medical question answering (QA) tasks, they still face challenges with hallucinations and outdated knowledge.Retrievalaugmented generation (RAG) is a promising solution and has been widely adopted.However, a RAG system can involve multiple flexible components, and there is a lack of best practices regarding the optimal RAG setting for various medical purposes.To systematically evaluate such systems, we propose the Medical Information Retrieval-Augmented Generation Evaluation (MIRAGE), a first-of-its-kind benchmark including 7,663 questions from five medical QA datasets.Using MIRAGE, we conducted large-scale experiments with over 1.8 trillion prompt tokens on 41 combinations of different corpora, retrievers, and backbone LLMs through the MEDRAG toolkit introduced in this work.Overall, MEDRAG improves the accuracy of six different LLMs by up to 18% over chain-of-thought prompting, elevating t",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q044",
+      "query": "Which software library standardizes reproducible experiments across RAG pipeline components?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4404781523",
+          "grade": 3,
+          "paper_title": "BERGEN: A Benchmarking Library for Retrieval-Augmented Generation",
+          "evidence_excerpt": "Retrieval-Augmented Generation allows to enhance Large Language Models with external knowledge.In response to the recent popularity of generative LLMs, many RAG approaches have been proposed, which involve an intricate number of different configurations such as evaluation datasets, collections, metrics, retrievers, and LLMs.Inconsistent benchmarking poses a major challenge in comparing approaches and understanding the impact of each component in the pipeline.In this work, we study best practices that lay the groundwork for a systematic evaluation of RAG and present BERGEN, an end-to-end library for reproducible research standardizing RAG experiments.In an extensive study focusing on QA, we benchmark different state-of-the-art retrievers, rerankers, and LLMs.Additionally, we analyze existing RAG metrics and datasets.Our open-source library BERGEN is available under https://github.com/naver/bergen.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4393147129",
+          "grade": 1,
+          "paper_title": "Benchmarking Large Language Models in Retrieval-Augmented Generation",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is a promising approach for mitigating the hallucination of large language models (LLMs). However, existing research lacks rigorous evaluation of the impact of retrieval-augmented generation on different large language models, which make it challenging to identify the potential bottlenecks in the capabilities of RAG for different LLMs. In this paper, we systematically investigate the impact of Retrieval-Augmented Generation on large language models. We analyze the performance of different large language models in 4 fundamental abilities required for RAG, including noise robustness, negative rejection, information integration, and counterfactual robustness. To this end, we establish Retrieval-Augmented Generation Benchmark (RGB), a new corpus for RAG evaluation in both English and Chinese. RGB divides the instances within the benchmark into 4 separate testbeds based on the aforementioned fundamental abilities required to resolve the case. Then we eva",
+          "rationale": "The metadata provides partial background for the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q045",
+      "query": "How can dense semantic search and sparse retrieval be combined for better document retrieval?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403420914",
+          "grade": 3,
+          "paper_title": "Blended RAG: Improving RAG (Retriever-Augmented Generation) Accuracy with Semantic Search and Hybrid Query-Based Retrievers",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is a prevalent approach to infuse a private knowledge base of documents with Large Language Models (LLM) to build Generative Q&A (Question-Answering) systems. However, RAG accuracy becomes increasingly challenging as the corpus of documents scales up, with Retrievers playing an outsized role in the overall RAG accuracy by extracting the most relevant document from the corpus to provide context to the LLM. In this paper, we propose the ‘Blended RAG’ method of leveraging semantic search techniques, such as Dense Vector indexes and Sparse Encoder indexes, blended with hybrid query strategies. Our study achieves better retrieval results and sets new benchmarks for IR (Information Retrieval) datasets like NQ and TREC-COVID datasets. We further extend such a ‘Blended Retriever’ to the RAG system to demonstrate far superior results on Generative Q&A datasets like SQUAD, even surpassing fine-tuning performance.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4391631359",
+          "grade": 1,
+          "paper_title": "Rag-Fusion: A New Take on Retrieval Augmented Generation",
+          "evidence_excerpt": "Infineon has identified a need for engineers, account managers, and customers to rapidly obtain product information. This problem is traditionally addressed with retrieval-augmented generation (RAG) chatbots, but in this study, I evaluated the use of the newly popularized RAG-Fusion method. RAG-Fusion combines RAG and reciprocal rank fusion (RRF) by generating multiple queries, reranking them with reciprocal scores and fusing the documents and scores. Through manually evaluating answers on accuracy, relevance, and comprehensiveness, I found that RAG-Fusion was able to provide accurate and comprehensive answers due to the generated queries contextualizing the original query from various perspectives. However, some answers strayed off topic when the generated queries' relevance to the original query is insufficient. This research marks significant progress in artificial intelligence (AI) and natural language processing (NLP) applications and demonstrates transformations in a global and m",
+          "rationale": "The metadata provides partial background for the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q046",
+      "query": "How can a code structure aware retriever support a coding assistant?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4402817791",
+          "grade": 3,
+          "paper_title": "Building a Coding Assistant via the Retrieval-Augmented Language Model",
+          "evidence_excerpt": "Pretrained language models have shown strong effectiveness in code-related tasks, such as code retrieval, code generation, code summarization, and code completion tasks. In this article, we propose COde assistaNt viA retrieval-augmeNted language model (CONAN), which aims to build a code assistant by mimicking the knowledge-seeking behaviors of humans during coding. Specifically, it consists of a code structure-aware retriever (CONAN-R) and a dual-view code representation-based retrieval-augmented generation model (CONAN-G). CONAN-R pretrains CodeT5 using Code-Documentation Alignment and Masked Entity Prediction tasks to make language models code structure-aware and learn effective representations for code snippets and documentation. Then CONAN-G designs a dual-view code representation mechanism for implementing a retrieval-augmented code generation model. CONAN-G regards the code documentation descriptions as prompts, which help language models better understand the code semantics. Our",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q047",
+      "query": "Can retrieval augmented generation have provable bounds on generation risk?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4391591446",
+          "grade": 3,
+          "paper_title": "C-RAG: Certified Generation Risks for Retrieval-Augmented Language Models",
+          "evidence_excerpt": "Despite the impressive capabilities of large language models (LLMs) across diverse applications, they still suffer from trustworthiness issues, such as hallucinations and misalignments. Retrieval-augmented language models (RAG) have been proposed to enhance the credibility of generations by grounding external knowledge, but the theoretical understandings of their generation risks remains unexplored. In this paper, we answer: 1) whether RAG can indeed lead to low generation risks, 2) how to provide provable guarantees on the generation risks of RAG and vanilla LLMs, and 3) what sufficient conditions enable RAG models to reduce generation risks. We propose C-RAG, the first framework to certify generation risks for RAG models. Specifically, we provide conformal risk analysis for RAG models and certify an upper confidence bound of generation risks, which we refer to as conformal generation risk. We also provide theoretical guarantees on conformal generation risks for general bounded risk f",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q048",
+      "query": "How can previously retrieved text chunks reuse key value caches across different prompts?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4411403197",
+          "grade": 3,
+          "paper_title": "Cache-Craft: Managing Chunk-Caches for Efficient Retrieval-Augmented Generation",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is often used with Large Language Models (LLMs) to infuse domain knowledge or user-specific information. In RAG, given a user query, a retriever extracts chunks of relevant text from a knowledge base. These chunks are sent to an LLM as part of the input prompt. Typically, any given chunk is repeatedly retrieved across user questions. However, currently, for every question, attention layers in LLMs fully compute the Keys and Values (KVs) repeatedly for the input chunks, as state-of-the-art methods cannot reuse KV-caches when chunks appear at arbitrary locations or with arbitrary contexts. Naive reuse leads to output quality degradation. This leads to potentially redundant computations on expensive GPUs and increases latency. In this work, we propose Cache-Craft , a system for managing and reusing precomputed KVs corresponding to the text chunks (which we call chunk-caches ) in RAG-based systems. We present how to identify chunk-caches that are reusab",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4408848702",
+          "grade": 2,
+          "paper_title": "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion",
+          "evidence_excerpt": "Large language models (LLMs) often incorporate multiple text chunks in their inputs to provide the necessary contexts. To speed up the prefill of the long LLM inputs, one can pre-compute the KV cache of a text and re-use the KV cache when the context is reused as the prefix of another LLM input. However, the reused text chunks are not always the input prefix, which makes precomputed KV caches not directly usable since they ignore the text's cross-attention with the preceding texts. Thus, the benefits of reusing KV caches remain largely unrealized.",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q049",
+      "query": "How can cached text chunks be fused when they are not at the start of a prompt?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4408848702",
+          "grade": 3,
+          "paper_title": "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion",
+          "evidence_excerpt": "Large language models (LLMs) often incorporate multiple text chunks in their inputs to provide the necessary contexts. To speed up the prefill of the long LLM inputs, one can pre-compute the KV cache of a text and re-use the KV cache when the context is reused as the prefix of another LLM input. However, the reused text chunks are not always the input prefix, which makes precomputed KV caches not directly usable since they ignore the text's cross-attention with the preceding texts. Thus, the benefits of reusing KV caches remain largely unrealized.",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        },
+        {
+          "paper_id": "https://openalex.org/W4411403197",
+          "grade": 2,
+          "paper_title": "Cache-Craft: Managing Chunk-Caches for Efficient Retrieval-Augmented Generation",
+          "evidence_excerpt": "Retrieval-Augmented Generation (RAG) is often used with Large Language Models (LLMs) to infuse domain knowledge or user-specific information. In RAG, given a user query, a retriever extracts chunks of relevant text from a knowledge base. These chunks are sent to an LLM as part of the input prompt. Typically, any given chunk is repeatedly retrieved across user questions. However, currently, for every question, attention layers in LLMs fully compute the Keys and Values (KVs) repeatedly for the input chunks, as state-of-the-art methods cannot reuse KV-caches when chunks appear at arbitrary locations or with arbitrary contexts. Naive reuse leads to output quality degradation. This leads to potentially redundant computations on expensive GPUs and increases latency. In this work, we propose Cache-Craft , a system for managing and reusing precomputed KVs corresponding to the text chunks (which we call chunk-caches ) in RAG-based systems. We present how to identify chunk-caches that are reusab",
+          "rationale": "The metadata addresses a closely related part of the information need.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    },
+    {
+      "query_id": "Q050",
+      "query": "How can causal relationships preserve context during retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412887679",
+          "grade": 3,
+          "paper_title": "CausalRAG: Integrating Causal Graphs into Retrieval-Augmented Generation",
+          "evidence_excerpt": "Large language models (LLMs) have revolutionized natural language processing (NLP), particularly through Retrieval-Augmented Generation (RAG), which enhances LLM capabilities by integrating external knowledge.However, traditional RAG systems face critical limitations, including disrupted contextual integrity due to text chunking, and over-reliance on semantic similarity for retrieval.To address these issues, we propose CausalRAG, a novel framework that incorporates causal graphs into the retrieval process.By constructing and tracing causal relationships, CausalRAG preserves contextual continuity and improves retrieval precision, leading to more accurate and interpretable responses.We evaluate CausalRAG against regular RAG and graph-based RAG approaches, demonstrating its superiority across several metrics.Our findings suggest that grounding retrieval in causal reasoning provides a promising approach to knowledge-intensive tasks 1 .",
+          "rationale": "The title and available metadata directly address the requested topic.",
+          "assessor": "assistant",
+          "independent_review": "pending"
+        }
+      ]
+    }
+  ]
+}
