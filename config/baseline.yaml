@@ -1,0 +1,31 @@
+seed: 42
+source: data/source/baseline_metadata.parquet
+source_kind: recovered_clean_metadata
+output_root: data/runs
+embedding:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  batch_size: 32
+  device: cpu
+  local_files_only: true
+  normalize: true
+graph:
+  threshold: 0.65
+  resolution: 1.0
+  max_papers: 2000
+topics:
+  count: 10
+  min_df: 3
+  max_df: 0.85
+  max_iter: 500
+  labels:
+    1: Core RAG & Retrieval
+    2: Computational Linguistics
+    3: Surveys & Research Directions
+    4: Agentic RAG & Multi-Agent Systems
+    5: Multimodal RAG
+    6: NLP / Computational Linguistics
+    7: Medical & Clinical LLMs
+    8: Graph RAG & Knowledge Graphs
+    9: LLM Training & Fine-Tuning
+    10: Question Answering & Retrieval

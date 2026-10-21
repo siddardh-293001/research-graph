@@ -1,0 +1,10 @@
+bm25:
+  k1: 1.5
+  b: 0.75
+rrf_k: 60
+candidate_depth: 100
+max_query_chars: 2000
+max_results: 1000
+benchmark: data/benchmark/queries.json
+bootstrap_samples: 2000
+seed: 42

@@ -1,0 +1,30 @@
+seed: 42
+output_root: data/research
+max_papers: 5000
+graph:
+  k_values: [10, 15, 20]
+  variants: [union, mutual]
+  resolutions: [0.1, 0.2, 0.4, 0.7, 1.0, 1.5, 2.0]
+  seeds: [42, 43, 44]
+  primary_k: 15
+  primary_variant: union
+  leiden_iterations: 4
+  min_similarity: 0.0
+  distance_floor: 0.000001
+  neighbor_batch_size: 128
+  exact_betweenness_max_papers: 2000
+  betweenness_samples: 256
+topics:
+  counts: [8, 10, 12]
+  primary_count: 10
+  seeds: [42, 43, 44]
+  sample_fraction: 0.8
+  top_terms: 10
+  min_df: 3
+  max_df: 0.85
+  max_iter: 1000
+statistics:
+  permutations: 199
+  bootstrap_samples: 300
+  confidence: 0.95
+  min_normalization_cohort: 5

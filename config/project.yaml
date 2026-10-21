@@ -1,0 +1,10 @@
+seed: 42
+tier: baseline
+target_papers: 767
+embedding_model: all-MiniLM-L6-v2
+paths:
+  corpus: data/processed/embedded_papers.parquet
+  embeddings: data/processed/paper_embeddings.npy
+  embedding_ids: data/processed/embedded_paper_ids_safe.npy
+  analysis: data/processed/research_analysis_dataset.parquet
+  audit: data/reports/baseline_audit.json

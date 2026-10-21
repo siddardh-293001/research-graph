@@ -1,0 +1,43 @@
+seed: 42
+target_papers: 20000
+max_papers: 25000
+seed_metadata: data/source/baseline_metadata.parquet
+output_root: data/tier_s_runs
+source:
+  search: '"retrieval augmented generation" OR "large language model" OR "dense retrieval"'
+  filter: 'from_publication_date:2020-01-01,to_publication_date:2026-10-22,has_abstract:true,is_retracted:false'
+  sort: cited_by_count:desc
+  per_page: 100
+  raw_limit: 30000
+  max_requests: 400
+  max_estimated_cost_usd: 0.40
+  estimated_request_cost_usd: 0.001
+  min_interval_seconds: 0.2
+  max_retries: 4
+  timeout_seconds: 45
+  min_abstract_words: 30
+embedding:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  batch_size: 32
+  device: cpu
+  local_files_only: true
+  normalize: true
+  cache: data/embedding_cache
+ann:
+  m: 32
+  ef_construction: 200
+  ef_search: 128
+  evaluation_ef_values: [32, 64, 128]
+  recall_target: 0.95
+  evaluation_queries: 200
+  graph_k: 15
+topics:
+  count: 10
+  fit_sample: 5000
+  min_df: 3
+  max_df: 0.85
+  max_iter: 1000
+leiden:
+  resolution: 1.0
+  iterations: 4
