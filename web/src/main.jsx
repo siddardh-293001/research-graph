@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
+import PaperInsights from './PaperInsights.jsx';
 
 const EXAMPLES = ['Graph retrieval for multi-hop reasoning', 'Clinical question answering with language models', 'Evaluating hallucinations in retrieval augmented generation'];
 async function api(path, options) {
@@ -29,23 +30,25 @@ function Neighbors({ paper, onSelect }) {
   if (!data) return <p role="status">Loading semantic neighbors…</p>;
   const count = data.nodes.length-1;
   const point = i => ({x: 210+Math.cos(i/Math.max(count,1)*Math.PI*2)*145, y: 180+Math.sin(i/Math.max(count,1)*Math.PI*2)*130});
-  return <section className="neighbors"><h3>Nearby research</h3><p>Connections reflect abstract similarity.</p>
+  return <section className="neighbors"><h3>Nearby research</h3><p>Related by title and abstract similarity. Shared terms explain overlap; similarity is not evidence of a citation.</p>
     <svg viewBox="0 0 420 360" role="img" aria-label="Semantic neighborhood of selected paper">
       {data.edges.map((edge,i) => <line key={edge.target} x1="210" y1="180" x2={point(i).x} y2={point(i).y}/>)}
       <circle cx="210" cy="180" r="13" className="center"/><text x="210" y="208" textAnchor="middle">Selected paper</text>
       {data.nodes.slice(1).map((n,i) => <g key={n.paper_id}><circle cx={point(i).x} cy={point(i).y} r="8"><title>{n.title}</title></circle><text x={point(i).x} y={point(i).y-15} textAnchor="middle">{i+1}</text></g>)}
     </svg>
-    <ol>{data.nodes.slice(1).map(n => <li key={n.paper_id}><button onClick={() => onSelect(n.paper_id)}>{n.title}</button></li>)}</ol>
+    <ol>{data.nodes.slice(1).map(n => <li key={n.paper_id}><button onClick={() => onSelect(n.paper_id)}>{n.title}</button><small>{Math.round((data.edges.find(e=>e.target===n.paper_id)?.weight||0)*100)}% cosine similarity · {n.citation_count?.toLocaleString()} citations</small><p className="connection-reason">Shared terms: {n.shared_terms?.join(', ')||'No distinctive lexical overlap'}. {n.same_community?'Same semantic community.':'Connects different semantic communities.'} {n.citation_direction==='cites'?'This paper references it.':n.citation_direction==='cited_by'?'It cites this paper.':n.citation_direction==='both'?'Mutual citation links.':''}</p></li>)}</ol>
     {!count && <p>No semantic neighbors are available.</p>}
   </section>;
 }
 function App() {
   const [status, setStatus] = useState(null), [query, setQuery] = useState(''), [mode, setMode] = useState('hybrid');
   const [yearMin, setYearMin] = useState(''), [yearMax, setYearMax] = useState(''), [topic, setTopic] = useState('');
+  const [researchTopic,setResearchTopic]=useState(''), [topicSearch,setTopicSearch]=useState(''), [feed,setFeed]=useState(null);
+  useEffect(()=>{const c=new AbortController();api('/api/feed?limit=6',{signal:c.signal}).then(setFeed).catch(()=>{});return ()=>c.abort();},[]);
   const [result, setResult] = useState(null), [busy, setBusy] = useState(false), [error, setError] = useState(''), [paper, setPaper] = useState(null), [detailError, setDetailError] = useState('');
   const searchController = useRef(null), detailController = useRef(null), detailRef = useRef(null);
   useEffect(() => {api('/api/status').then(setStatus).catch(e => setError(e.message)); return () => {searchController.current?.abort(); detailController.current?.abort();};}, []);
-  async function search(text = query) {
+  async function search(text = query, theme = researchTopic) {
     if (!text.trim()) return;
     if (yearMin && yearMax && Number(yearMin)>Number(yearMax)) {setError('Choose an earliest year no later than the latest year.');return;}
     searchController.current?.abort(); const controller = new AbortController(); searchController.current = controller;
@@ -53,7 +56,7 @@ function App() {
     setQuery(text); setBusy(true); setError(''); setResult(null); setPaper(null);
     try {
       const data = await api('/api/search', {method:'POST', headers:{'Content-Type':'application/json'}, signal:controller.signal,
-        body:JSON.stringify({query:text, mode, top_k:20, year_min:yearMin?Number(yearMin):null, year_max:yearMax?Number(yearMax):null, topic_ids:topic?[Number(topic)]:null})});
+        body:JSON.stringify({query:text, mode, top_k:20, year_min:yearMin?Number(yearMin):null, year_max:yearMax?Number(yearMax):null, topic_ids:topic?[Number(topic)]:null,research_topic:theme||null})});
       setResult(data);
     } catch(e) {if (e.name!=='AbortError') setError(e.message);} finally {if (!controller.signal.aborted) setBusy(false);}
   }
@@ -62,7 +65,7 @@ function App() {
     try {const data=await api('/api/paper?paper_id='+encodeURIComponent(id), {signal:controller.signal}); if (controller.signal.aborted) return; setPaper(data); requestAnimationFrame(() => detailRef.current?.focus());}
     catch(e) {if(e.name!=='AbortError') setDetailError(e.message);}
   }
-  function clear() {searchController.current?.abort(); detailController.current?.abort(); setBusy(false);setQuery('');setResult(null);setPaper(null);setError('');setDetailError('');setYearMin('');setYearMax('');setTopic('');}
+  function clear() {searchController.current?.abort(); detailController.current?.abort(); setBusy(false);setQuery('');setResult(null);setPaper(null);setError('');setDetailError('');setYearMin('');setYearMax('');setTopic('');setResearchTopic('');setTopicSearch('');}
   return <><header><a href="/" className="brand"><span className="brand-mark">◈</span> ResearchGraph</a><nav><a href="#about">About the corpus</a><a href="/api/docs">API</a></nav></header>
     <main><section className="intro"><p className="eyebrow">A CONNECTED VIEW OF AI RESEARCH</p><h1>Follow an idea.<br/><span>Find its connections.</span></h1><p className="lead">Explore papers through language, research topics, and the work around them.</p>
     <div className="corpus-line"><span className="dot"/>{status?`${status.papers.toLocaleString()} papers · frozen OpenAlex snapshot`:'Connecting to the research atlas…'}</div></section>
@@ -72,15 +75,17 @@ function App() {
         <label>Earliest year<input type="number" min="1900" max="2100" placeholder="Any" value={yearMin} onChange={e => setYearMin(e.target.value)}/></label>
         <label>Latest year<input type="number" min="1900" max="2100" placeholder="Any" value={yearMax} onChange={e => setYearMax(e.target.value)}/></label>
         <label className="topic-filter">Research topic<select value={topic} onChange={e => setTopic(e.target.value)}><option value="">All topics</option>{status?.topics.map(t=><option key={t.topic_id} value={t.topic_id}>{t.name}</option>)}</select></label><button type="button" className="clear" onClick={clear}>Clear</button></div>
-    </form><div className="examples"><span>Try an idea</span>{EXAMPLES.map(q=><button key={q} disabled={busy} onClick={()=>search(q)}>{q} ↗</button>)}</div></section>
+    <div className="expanded-topics"><label>Find a research theme<input value={topicSearch} onChange={e=>setTopicSearch(e.target.value)} placeholder="Try computer vision, robotics, software…"/></label><label>Explore research themes<select aria-label="Explore research themes" value={researchTopic} onChange={e=>setResearchTopic(e.target.value)}><option value="">All research themes</option>{status?.research_topics?.filter(t=>!topicSearch||t.name.toLowerCase().includes(topicSearch.toLowerCase())||t.topic_key===researchTopic).map(t=><option key={t.topic_key} value={t.topic_key}>{t.name} ({t.papers.toLocaleString()})</option>)}</select></label></div><p className="evidence-note">{status?.research_topics?.length||0} source research themes, alongside 10 learned clusters. Filters combine; clear them to broaden your search.</p></form><div className="examples"><span>Try an idea</span>{EXAMPLES.map(q=><button key={q} disabled={busy} onClick={()=>search(q)}>{q} ↗</button>)}</div></section>
     {error&&<p role="alert" className="error">{error}</p>}{detailError&&<p role="alert" className="error">{detailError}</p>}
     {busy&&<p role="status" className="search-state">Searching the atlas…</p>}
     {result&&<section className="results" aria-label="Search results"><div className="results-heading"><h2>{result.count?'Papers to explore':'No papers found'}</h2><span>{result.count} results · {result.mode}</span></div>
       {!result.count&&<p>Try a broader query or clear the year and topic filters.</p>}
       <div className="results-layout"><div>{result.results.map((r,i)=><article className="paper-card" key={r.paper_id}><div className="paper-meta"><span>{String(i+1).padStart(2,'0')}</span><span>{r.year}</span><span>{r.citation_count.toLocaleString()} citations</span></div>
         <h3><button onClick={()=>select(r.paper_id)}>{r.title}</button></h3><p>{r.matching_sentence||r.abstract.slice(0,300)}</p><div className="paper-footer"><span className="tag">{r.topic_name}</span><button onClick={()=>select(r.paper_id)}>Paper & connections ↗</button></div>
-      </article>)}</div>{paper&&<aside className="detail" ref={detailRef} tabIndex="-1" aria-label="Paper details"><button className="close" aria-label="Close paper details" onClick={()=>{detailController.current?.abort();setPaper(null);}}>×</button><p className="eyebrow">PAPER & CONNECTIONS</p><h2>{paper.title}</h2><p>{paper.year} · {paper.citation_count.toLocaleString()} citations</p><p>{paper.abstract}</p>{safeDoi(paper.doi)&&<a href={safeDoi(paper.doi)} target="_blank" rel="noopener noreferrer">Read at DOI ↗</a>}<Neighbors paper={paper} onSelect={select}/></aside>}</div>
+      </article>)}</div>{paper&&<aside className="detail" ref={detailRef} tabIndex="-1" aria-label="Paper details"><button className="close" aria-label="Close paper details" onClick={()=>{detailController.current?.abort();setPaper(null);}}>×</button><p className="eyebrow">PAPER & CONNECTIONS</p><h2>{paper.title}</h2><p>{paper.year} · {paper.citation_count.toLocaleString()} citations</p><PaperInsights paper={paper} onSelect={select}/>{safeDoi(paper.doi)&&<a href={safeDoi(paper.doi)} target="_blank" rel="noopener noreferrer">Read at DOI ↗</a>}<Neighbors paper={paper} onSelect={select}/></aside>}</div>
     </section>}
+    {status?.research_topics&&<section className="topic-explorer" aria-label="Explore AI and computer science"><div className="results-heading"><h2>Explore AI & computer science</h2><span>Connected research themes</span></div><div className="feed-grid">{[['T11714','Multimodal learning'],['T10260','Software engineering'],['T10286','Information retrieval'],['T11689','Adversarial robustness'],['T10653','Robot learning'],['T11273','Graph neural networks'],['T12026','Explainable AI'],['T10734','Cybersecurity'],['T10101','Cloud computing']].map(([key,label])=>{const t=status.research_topics.find(t=>t.topic_key===key);return t?<button key={key} onClick={()=>{setTopic('');setYearMin('');setYearMax('');setResearchTopic(key);setQuery(label);setResult(null);setPaper(null);document.getElementById('query')?.focus();}}><small>{t.papers.toLocaleString()} papers in this snapshot</small><span>{label}</span></button>:null;})}</div><p className="evidence-note">Choose a theme, then Find papers. Source topics are multi-label; counts can overlap. Broader AI/CS collection is the next Section 7 milestone.</p></section>}
+    {feed&&<section className="recent-feed" aria-label="Latest publications"><div className="results-heading"><h2>Latest in this atlas</h2><span>Snapshot feed</span></div><p className="evidence-note">Recently published papers in the current release. Live ingestion is not enabled; coverage through {new Date(feed.as_of).toLocaleDateString()}.</p><div className="feed-grid">{feed.papers.map(p=><button key={p.paper_id} onClick={()=>search(p.title)}><small>{p.publication_date} · {p.citation_count.toLocaleString()} citations</small><span>{p.title}</span></button>)}</div></section>}
     <section id="about" className="about"><div><p className="eyebrow">ABOUT THIS ATLAS</p><h2>Explore connections.<br/>Keep the context.</h2></div><div><p>This is a selective snapshot of literature on language models, retrieval, and related research, published between 2020 and 2026. The graph connects papers by title and abstract similarity; it does not represent a causal relationship.</p><p>Topic names are generated from leading words. Citation counts reflect this snapshot. Search evaluation uses provisional, incomplete relevance judgments awaiting independent review.</p>{status&&<p className="snapshot">Corpus built {new Date(status.source_finished_at).toLocaleDateString()} · Snapshot {status.run_id}</p>}</div></section>
     </main><footer><span>ResearchGraph · A research project</span><a href="/api/status">Corpus status ↗</a></footer></>;
 }
