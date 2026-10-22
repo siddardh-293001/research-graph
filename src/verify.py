@@ -79,7 +79,7 @@ def verify():
     output = ROOT/'data/verification'/(
         datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8])
     output.mkdir(parents=True)
-    report = {'scope': 'Implemented sections 1 through 6; local checks plus any recorded public deployment', 'status': 'running', 'checks': {},
+    report = {'scope': 'Implemented sections 1 through 6 and Section 7A; local checks plus recorded public deployment', 'status': 'running', 'checks': {},
         'limitations': ['Independent benchmark relevance review is pending.',
             'Cached Tier S provenance is verified; no fresh API recollection, full Tier S re-embedding, deployment or future section validation.',
             'Notebook cells are syntax-checked; historical notebook experiments are not re-executed.',
@@ -93,7 +93,7 @@ def verify():
                     ROOT/'web/package.json',ROOT/'web/package-lock.json',ROOT/'web/playwright.config.js',
                     ROOT/'web/vite.config.js',ROOT/'web/index.html',ROOT/'Start ResearchGraph.command',ROOT/'Dockerfile',ROOT/'.dockerignore',
                     ROOT/'render.yaml',ROOT/'infra/render/main.tf',ROOT/'infra/render/.terraform.lock.hcl',
-                    ROOT/'.github/workflows/public-demo.yml', ROOT/'infra/render/render.schema.json',
+                    ROOT/'.github/workflows/public-demo.yml', ROOT/'.github/workflows/recent-candidates.yml', ROOT/'infra/render/render.schema.json',
                     *(ROOT/'deploy/release-parts').glob('*')]
     config_before = {str(p.relative_to(ROOT)): sha256(p) for p in config_paths}
 
@@ -178,6 +178,8 @@ def verify():
         release=ROOT/'build/release'
         if not (release/'release.json').exists():raise ValueError('Prepare the public release with scripts/prepare_release.py first')
         release_hash=sha256(release/'release.json')
+        command('section7_insights_incremental',['scripts/check_section7.py','--release',str(release),'--output',str(output/'section7.json')],timeout=600)
+        report['section7']=json.loads((output/'section7.json').read_text())
         command('deployment_config',['scripts/check_infra.py',str(output/'infrastructure.json')])
         report['infrastructure']=json.loads((output/'infrastructure.json').read_text())
         command('public_frontend_build',['run','build'],executable='npm',cwd=ROOT/'web')

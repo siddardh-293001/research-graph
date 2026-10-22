@@ -34,6 +34,7 @@ class SearchRequest(BaseModel):
     year_min: int | None = Field(default=None, ge=1900, le=2100)
     year_max: int | None = Field(default=None, ge=1900, le=2100)
     topic_ids: list[int] | None = Field(default=None, max_length=20)
+    research_topic: str | None = Field(default=None, pattern=r'^T[0-9]{1,12}$')
 
     @model_validator(mode='after')
     def valid_filters(self):
@@ -100,7 +101,13 @@ def create_app(engine_factory=None, web_root=None, requests_per_minute=120):
     @app.get('/api/status')
     def status():
         manifest = app.state.engine.manifest
-        return {key: manifest[key] for key in ['run_id','papers','source_finished_at','topics','year_min','year_max','limitations']}
+        result={key: manifest[key] for key in ['run_id','papers','source_finished_at','topics','year_min','year_max','limitations']}
+        result.update(research_topics=manifest.get('research_topics',[]),feed=manifest.get('feed',{}),release_schema=manifest.get('schema_version',1))
+        return result
+
+    @app.get('/api/feed')
+    def feed(limit: int = Query(default=12,ge=1,le=30)):
+        return app.state.engine.feed(limit)
 
     @app.post('/api/search')
     async def search(payload: SearchRequest):
