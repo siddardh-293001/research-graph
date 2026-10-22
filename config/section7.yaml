@@ -1,0 +1,31 @@
+phase: 7A
+scope: AI and computer science
+target_tier_m_papers: 200000
+published_papers: 20000
+paid_spend_allowed_usd: 0
+live_collection_enabled: false
+anonymous_candidate_collection_enabled: true
+scheduled_collection_enabled: true
+schedule_utc: "03:20 daily"
+max_source_rows_per_run: 500
+promotion: manual_after_full_verification
+candidate_fields:
+  - natural language processing
+  - information retrieval
+  - computer vision
+  - robotics
+  - software engineering
+  - cybersecurity
+  - distributed computing
+  - graph learning
+  - explainable AI
+  - reinforcement learning
+incremental:
+  neighbors: 5
+  block_size: 128
+  drift_js_warning: 0.1
+  evaluation_sample: 1200
+  initial_fraction: 0.8
+limits:
+  public_memory_mib: 512
+  reason: Keep current free serving release until Tier M resource and relevance gates pass.
