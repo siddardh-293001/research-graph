@@ -49,6 +49,7 @@ function App() {
     if (!text.trim()) return;
     if (yearMin && yearMax && Number(yearMin)>Number(yearMax)) {setError('Choose an earliest year no later than the latest year.');return;}
     searchController.current?.abort(); const controller = new AbortController(); searchController.current = controller;
+    detailController.current?.abort(); setDetailError('');
     setQuery(text); setBusy(true); setError(''); setResult(null); setPaper(null);
     try {
       const data = await api('/api/search', {method:'POST', headers:{'Content-Type':'application/json'}, signal:controller.signal,
@@ -58,7 +59,7 @@ function App() {
   }
   async function select(id) {
     detailController.current?.abort(); const controller = new AbortController(); detailController.current=controller; setDetailError('');
-    try {const data=await api('/api/paper?paper_id='+encodeURIComponent(id), {signal:controller.signal}); setPaper(data); requestAnimationFrame(() => detailRef.current?.focus());}
+    try {const data=await api('/api/paper?paper_id='+encodeURIComponent(id), {signal:controller.signal}); if (controller.signal.aborted) return; setPaper(data); requestAnimationFrame(() => detailRef.current?.focus());}
     catch(e) {if(e.name!=='AbortError') setDetailError(e.message);}
   }
   function clear() {searchController.current?.abort(); detailController.current?.abort(); setBusy(false);setQuery('');setResult(null);setPaper(null);setError('');setDetailError('');setYearMin('');setYearMax('');setTopic('');}
@@ -78,7 +79,7 @@ function App() {
       {!result.count&&<p>Try a broader query or clear the year and topic filters.</p>}
       <div className="results-layout"><div>{result.results.map((r,i)=><article className="paper-card" key={r.paper_id}><div className="paper-meta"><span>{String(i+1).padStart(2,'0')}</span><span>{r.year}</span><span>{r.citation_count.toLocaleString()} citations</span></div>
         <h3><button onClick={()=>select(r.paper_id)}>{r.title}</button></h3><p>{r.matching_sentence||r.abstract.slice(0,300)}</p><div className="paper-footer"><span className="tag">{r.topic_name}</span><button onClick={()=>select(r.paper_id)}>Paper & connections ↗</button></div>
-      </article>)}</div>{paper&&<aside className="detail" ref={detailRef} tabIndex="-1" aria-label="Paper details"><button className="close" aria-label="Close paper details" onClick={()=>setPaper(null)}>×</button><p className="eyebrow">PAPER & CONNECTIONS</p><h2>{paper.title}</h2><p>{paper.year} · {paper.citation_count.toLocaleString()} citations</p><p>{paper.abstract}</p>{safeDoi(paper.doi)&&<a href={safeDoi(paper.doi)} target="_blank" rel="noopener noreferrer">Read at DOI ↗</a>}<Neighbors paper={paper} onSelect={select}/></aside>}</div>
+      </article>)}</div>{paper&&<aside className="detail" ref={detailRef} tabIndex="-1" aria-label="Paper details"><button className="close" aria-label="Close paper details" onClick={()=>{detailController.current?.abort();setPaper(null);}}>×</button><p className="eyebrow">PAPER & CONNECTIONS</p><h2>{paper.title}</h2><p>{paper.year} · {paper.citation_count.toLocaleString()} citations</p><p>{paper.abstract}</p>{safeDoi(paper.doi)&&<a href={safeDoi(paper.doi)} target="_blank" rel="noopener noreferrer">Read at DOI ↗</a>}<Neighbors paper={paper} onSelect={select}/></aside>}</div>
     </section>}
     <section id="about" className="about"><div><p className="eyebrow">ABOUT THIS ATLAS</p><h2>Explore connections.<br/>Keep the context.</h2></div><div><p>This is a selective snapshot of literature on language models, retrieval, and related research, published between 2020 and 2026. The graph connects papers by title and abstract similarity; it does not represent a causal relationship.</p><p>Topic names are generated from leading words. Citation counts reflect this snapshot. Search evaluation uses provisional, incomplete relevance judgments awaiting independent review.</p>{status&&<p className="snapshot">Corpus built {new Date(status.source_finished_at).toLocaleDateString()} · Snapshot {status.run_id}</p>}</div></section>
     </main><footer><span>ResearchGraph · A research project</span><a href="/api/status">Corpus status ↗</a></footer></>;
