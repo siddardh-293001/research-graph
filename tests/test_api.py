@@ -17,6 +17,9 @@ class Engine:
     def paper(self, paper_id):
         return {'paper_id': paper_id} if paper_id == 'https://openalex.org/W1' else None
 
+    def feed(self, limit):
+        return {'mode':'snapshot','live_updates':False,'papers':[]}
+
     def neighborhood(self, paper_id, limit):
         return {'nodes': [], 'edges': []} if paper_id == 'https://openalex.org/W1' else None
 
@@ -66,6 +69,13 @@ class PublicAPITests(unittest.TestCase):
             self.assertEqual(self.client.get('/api/paper',params={'paper_id':paper_id}).status_code,404)
         self.assertEqual(self.client.get('/api/graph',params={'paper_id':'https://openalex.org/W1','limit':31}).status_code,422)
         self.assertEqual(self.client.get('/api/graph',params={'paper_id':'missing'}).status_code,404)
+
+    def test_extended_topics_and_feed_contract(self):
+        r=self.client.post('/api/search',json={'query':'software','research_topic':'T10260'})
+        self.assertEqual(r.status_code,200);self.assertEqual(self.engine.last_search['research_topic'],'T10260')
+        self.assertEqual(self.client.post('/api/search',json={'query':'x','research_topic':"' OR 1=1"}).status_code,422)
+        self.assertFalse(self.client.get('/api/feed').json()['live_updates'])
+        self.assertEqual(self.client.get('/api/feed?limit=31').status_code,422)
 
     def test_demo_limit_keeps_health_available(self):
         with TestClient(create_app(lambda: Engine(), self.temp.name, requests_per_minute=1)) as client:
