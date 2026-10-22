@@ -83,3 +83,27 @@ test('mobile and accessible validation: no overflow, topic filter, request error
   await page.getByRole('button',{name:'Find papers ↗'}).click();
   await expect(page.locator('article').first()).toBeVisible();
 });
+
+
+test('paper insights explain summaries, citation directions, themes and snapshot freshness',async ({page})=>{
+  await page.goto('/');
+  await page.getByRole('button',{name:'Graph retrieval for multi-hop reasoning ↗',exact:true}).click();
+  await page.locator('article h3 button').first().click();
+  const detail=page.getByRole('complementary',{name:'Paper details'});
+  await expect(detail.getByRole('heading',{name:'At a glance',exact:true})).toBeVisible();
+  await expect(detail.getByText('Times cited · OpenAlex',{exact:true})).toBeVisible();
+  await expect(detail.locator('.summary-points li').first()).toBeVisible();
+  await expect(detail.getByRole('heading',{name:'How this paper connects',exact:true})).toBeVisible();
+  await expect(detail.locator('.neighbors .connection-reason').first()).toContainText('Shared terms:');
+  await expect(page.getByRole('region',{name:'Latest publications'})).toContainText('Live ingestion is not enabled');
+  await page.getByRole('button',{name:'Close paper details'}).click();
+  await page.getByLabel('Find a research theme',{exact:true}).fill('Software Engineering Research');
+  await page.getByRole('combobox',{name:'Explore research themes',exact:true}).selectOption('T10260');
+  const response=page.waitForResponse(r=>r.url().endsWith('/api/search')&&r.status()===200);
+  await page.getByRole('button',{name:'Find papers ↗'}).click();
+  const data=await (await response).json();
+  expect(data.count).toBeGreaterThan(0);
+  await page.locator('article h3 button').first().click();
+  await expect(detail.locator('.theme-chips')).toContainText('Software Engineering Research');
+  await page.screenshot({path:'test-results/section7-paper-insights.png',fullPage:true});
+});
