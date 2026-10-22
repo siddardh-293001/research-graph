@@ -100,3 +100,19 @@ Sources: [Render free limits](https://render.com/docs/free),
 [official Terraform provider](https://github.com/render-oss/terraform-provider-render),
 [ONNX Runtime inference](https://onnxruntime.ai/docs/api/python/api_summary.html),
 [FastAPI lifespan](https://fastapi.tiangolo.com/advanced/events/).
+
+## Debug verification — 22 October 2026
+
+The blank page was opened through a file URL while the API server was stopped.
+Use `Start ResearchGraph.command` or `.venv/bin/python scripts/serve.py`, then
+visit http://127.0.0.1:8000. The launcher builds the UI before starting the API.
+The HTML now displays startup instructions if React cannot load. A stale paper
+detail request is cancelled when a new search starts or the detail panel closes.
+
+Full verification passed all 21 checks, 75 unit/integration tests and four
+Chromium scenarios, including the new startup and delayed-detail regressions.
+Evidence: [portable verification summary](verification/section6-local.json).
+Local peak serving RSS was 355.98 MiB; this is not hosted-container evidence.
+The complete serving bundle downloaded from GitHub restored successfully with
+all archive and artifact checksums validated. Public deployment remains a
+separate completion gate.
