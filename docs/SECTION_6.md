@@ -77,7 +77,7 @@ The 50-query local serving comparison found identical BM25 rankings, dense
 top-20 mean overlap 1.0, and no mean nDCG@10 or Recall@20 difference in any mode.
 The minimum cosine between the ONNX and original query vectors was
 0.9999998808. Filtered rankings matched the full engine. The isolated process
-peaked around 315–320 MiB while testing long queries, filtered dense retrieval
+peaked at 355.98 MiB in the latest full verification while testing long queries, filtered dense retrieval
 and a full cache on macOS. This is not a Linux-container memory measurement.
 Real local HTTP tests passed with three concurrent clients; their repeated-query
 latencies include cache hits and are not an uncached workload benchmark.
@@ -114,5 +114,25 @@ Chromium scenarios, including the new startup and delayed-detail regressions.
 Evidence: [portable verification summary](verification/section6-local.json).
 Local peak serving RSS was 355.98 MiB; this is not hosted-container evidence.
 The complete serving bundle downloaded from GitHub restored successfully with
-all archive and artifact checksums validated. Public deployment remains a
-separate completion gate.
+all archive and artifact checksums validated.
+
+## Live deployment — 22 October 2026
+
+[Open ResearchGraph](https://researchgraph-sdu4.onrender.com). Render reports
+commit `b699f58518127ebc20221e9c9e3433d08fc51d59` live on one free instance.
+The deployed runtime files match the locally verified sources; later commits
+add documentation and CI workflows. Public API and desktop/mobile browser tests
+passed. GitHub offline tests and the container/browser job under a 512 MiB
+limit passed at `ba1c97405f716dbfeb7e78c57cbcec716eb6af7c`.
+
+Provider metrics sampled approximately 240.21 MiB against a 512 MiB limit, with
+a reported CPU limit of 0.15. Initial application loading took 4.012 seconds
+from the startup log; this excludes image build and provider idle wake-up. Six
+uncached hybrid queries returned ten results each in 141–541 ms client elapsed
+time. These are small observations, not a sustained-load guarantee.
+
+[Hosted evidence](verification/section6-hosted.json) records the release hash,
+commit, HTTP checks, resource samples and limitations. Default TCP readiness is
+active; the port opens after corpus/model loading, and `/readyz` passed external
+HTTP checks. Idle wake-up latency and the optional GitHub manual-deploy secrets
+remain unverified/unconfigured. No paid service was created.
