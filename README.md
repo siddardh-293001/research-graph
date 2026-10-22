@@ -155,6 +155,8 @@ passed. See [Section 5 methods, commands and limitations](docs/SECTION_5.md).
 
 ## Section 6: public app and free hosting
 
+**Live app: https://researchgraph-sdu4.onrender.com** (free Render instance).
+
 For the prepared local project, double-click **Start ResearchGraph.command**, or
 run `.venv/bin/python scripts/serve.py` from the project folder. Keep its terminal
 open and visit **http://127.0.0.1:8000**. Opening `web/index.html` directly does
