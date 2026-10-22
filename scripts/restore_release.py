@@ -28,10 +28,10 @@ def restore(parts,output):
         joined.seek(0)
         with tarfile.open(fileobj=joined,mode='r:gz') as archive:
             members=archive.getmembers()
-            if len(members)>30 or sum(m.size for m in members)>200*1024*1024:raise ValueError('Archive exceeds the bounded release size')
+            if len(members)>30 or sum(m.size for m in members)>256*1024*1024:raise ValueError('Archive exceeds the bounded release size')
             names=set()
             for member in members:
-                if not member.isfile() or member.name!=Path(member.name).name or member.name in names or member.size>64*1024*1024:
+                if not member.isfile() or member.name!=Path(member.name).name or member.name in names or member.size>128*1024*1024:
                     raise ValueError('Unsafe archive member')
                 names.add(member.name)
                 with archive.extractfile(member) as source, (output/member.name).open('wb') as target:shutil.copyfileobj(source,target)
