@@ -1,0 +1,156 @@
+{
+  "scope": "Implemented sections 1 through 5",
+  "status": "passed",
+  "limitations": [
+    "Independent benchmark relevance review is pending.",
+    "Cached Tier S provenance is verified; no fresh API recollection, full Tier S re-embedding, deployment or future section validation.",
+    "Notebook cells are syntax-checked; historical notebook experiments are not re-executed."
+  ],
+  "tier_s_checks": {
+    "passed": true,
+    "papers": 20000,
+    "raw_records": 30000,
+    "artifact_count": 22,
+    "cold_embedding_sample_min_cosine": 1.0,
+    "cold_embedding_sample_count": 8,
+    "index_reconstruction_identical": true,
+    "filtered_dense_matches_exact": true,
+    "ann_recall": {
+      "document_probes": [
+        {
+          "ef_search": 128,
+          "queries": 200,
+          "recall_at_10": 1.0,
+          "tie_aware_recall_at_10": 1.0,
+          "index_search_p50_ms": 0.20541599951684475,
+          "index_search_p95_ms": 0.335249613272026
+        }
+      ],
+      "benchmark_queries": [
+        {
+          "ef_search": 128,
+          "queries": 50,
+          "recall_at_10": 0.996,
+          "tie_aware_recall_at_10": 0.996,
+          "index_search_p50_ms": 0.20816651522181928,
+          "index_search_p95_ms": 0.30598285666201264
+        }
+      ]
+    },
+    "ann_minus_exact_mean": {
+      "dense_ndcg_at_10_ann_minus_exact": 0.0,
+      "dense_recall_at_20_ann_minus_exact": 0.0,
+      "hybrid_ndcg_at_10_ann_minus_exact": 0.0,
+      "hybrid_recall_at_20_ann_minus_exact": 0.0
+    },
+    "scope": "Complete artifact and raw-page checksums, identity checks, deterministic index rebuild, 200 document probes and 50 benchmark vectors. No source recollection or full re-embedding."
+  },
+  "tier_s_retrieval_results": {
+    "bm25": {
+      "ndcg_at_10": {
+        "mean": 0.7082536444085076,
+        "ci95": [
+          0.6039719492201036,
+          0.8086290109893818
+        ]
+      },
+      "reciprocal_rank": {
+        "mean": 0.7010813559127176,
+        "ci95": [
+          0.5934301615085112,
+          0.8085579365079365
+        ]
+      },
+      "recall_at_20": {
+        "mean": 0.84,
+        "ci95": [
+          0.75975,
+          0.92
+        ]
+      },
+      "judged_fraction_at_10": 0.096,
+      "latency_ms": {
+        "p50": 7.0090205408632755,
+        "p95": 8.30478300631512,
+        "observations": 50
+      }
+    },
+    "dense": {
+      "ndcg_at_10": {
+        "mean": 0.617858264754445,
+        "ci95": [
+          0.5163295858542073,
+          0.7118702005854454
+        ]
+      },
+      "reciprocal_rank": {
+        "mean": 0.5801302489780751,
+        "ci95": [
+          0.46655814752879965,
+          0.6849107096406011
+        ]
+      },
+      "recall_at_20": {
+        "mean": 0.84,
+        "ci95": [
+          0.75,
+          0.93
+        ]
+      },
+      "judged_fraction_at_10": 0.09799999999999999,
+      "latency_ms": {
+        "p50": 11.285645508905873,
+        "p95": 16.35663283523171,
+        "observations": 50
+      }
+    },
+    "hybrid": {
+      "ndcg_at_10": {
+        "mean": 0.7722414384489812,
+        "ci95": [
+          0.6792224634949553,
+          0.8552744277197611
+        ]
+      },
+      "reciprocal_rank": {
+        "mean": 0.7566336172787785,
+        "ci95": [
+          0.6537464681375973,
+          0.849635048643113
+        ]
+      },
+      "recall_at_20": {
+        "mean": 0.86,
+        "ci95": [
+          0.77,
+          0.94
+        ]
+      },
+      "judged_fraction_at_10": 0.106,
+      "latency_ms": {
+        "p50": 11.84481248492375,
+        "p95": 13.295247536734678,
+        "observations": 50
+      }
+    }
+  },
+  "checks": {
+    "dependencies": true,
+    "tests": true,
+    "python_and_notebook_syntax": true,
+    "legacy_corpus_audit": true,
+    "baseline_rebuild": true,
+    "baseline_reproduction_and_artifact_integrity": true,
+    "retrieval_evaluation": true,
+    "research_methods": true,
+    "research_artifact_integrity": true,
+    "dashboard_interactions": true,
+    "http_serving": true,
+    "tier_s_integrity_ann": true,
+    "tier_s_retrieval_evaluation": true,
+    "tier_s_dashboard_interactions": true,
+    "tier_s_http_serving": true,
+    "legacy_artifacts_preserved": true,
+    "verification_inputs_unchanged": true
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "scope": "Implemented sections 1 through 6; local checks plus any recorded public deployment",
+  "status": "passed",
+  "finished_at": "2026-10-22T13:32:48.254383+00:00",
+  "limitations": [
+    "Independent benchmark relevance review is pending.",
+    "Cached Tier S provenance is verified; no fresh API recollection, full Tier S re-embedding, deployment or future section validation.",
+    "Notebook cells are syntax-checked; historical notebook experiments are not re-executed.",
+    "Local serving memory is measured on the host OS; Linux container and hosted resource limits need separate evidence.",
+    "No verified public deployment is recorded; a passing local check does not complete Section 6."
+  ],
+  "code_sha256": {
+    "app.py": "22721dccf5d3d789a92cf137cf127059ac847f92a08ca45e82465b06d43c8ea2",
+    "src/audit.py": "0955e072f4c25e663465336d6dced14b50e9a036dc2b6ce75fa73e3190b88f87",
+    "src/tier_s_check.py": "8294694406820088ce4fbc36193888e906754f3e5d07f26b95809658566dfa94",
+    "src/research.py": "2b8c68c4be2cdcfeba4c19607fceef6dc0f0c0a7c2477e1589d2e3341f6ef702",
+    "src/research_graph.py": "1bc9df8e9203ae43552f24a215dcc4837ee4d0c848092717d54882afecce4850",
+    "src/evaluation.py": "68db62ae3c53b48b00f384573ba722a31993bb303c57626e0049f33315e63f80",
+    "src/__init__.py": "004cc19e823adc12e52898d864d530ebdba9e3e02a73e1a883d5b8de5d16f72e",
+    "src/tier_s.py": "3981d14eb8180d5ee769b3dcc96bb39be9ec4e48c9c1f81cfc124c12875462ea",
+    "src/dashboard_check.py": "b66f10820b5da2da7a64d7086c4601a18088f6daa786cec6f7fedc65887bee63",
+    "src/api.py": "7062054bdbe038bfe577666c229aa28e421d3349982e3e6e2584123c360a5ca9",
+    "src/research_topics.py": "f694e75a6aafcdaefc2bd7153fd534af323d1ec9e2926dabeede019a051546e1",
+    "src/preprocessing.py": "a250b6fe161f847715336016b40fea939edc047e2b18eb1fb6f12568977229e1",
+    "src/pipeline.py": "52b8e58e172cc93c91f03397c74a44cd6160c4a0824bde03a834d1c92cd3403f",
+    "src/baseline_methods.py": "22a76e388860f8d17566b1b781c73e7ef08b17a56909348e2ed5624aee501030",
+    "src/search.py": "11e2515be7800faa8abcf0f214b69f509588d0584560d2260188887d876f379e",
+    "src/ann.py": "9e4c97ac7d69aa79a120f388e96bd702eb3e4272bb866eab00075d40397d7432",
+    "src/artifacts.py": "8e503fc54dc3f95ca573760a7774d3a90dcd5bc1bdb46b9252f29f6f381c2a5c",
+    "src/verify.py": "74a63d95cc0ad7437d72939ac57e84e5e0fcf86bc06b451afd0ef794e1fc430d",
+    "src/public_engine.py": "384eb46d8edfa1c2ba5c014d11bada589970b952ab82a5225593af3a4cea3162",
+    "src/corpus.py": "2880b899de15f465b52a31f9cf4412bbc3a106a6624e26ced13710242ba204de",
+    "src/research_statistics.py": "5baeab637d5cc2173b7d32bb7cc2d710dfbdf5583369c75aec5709829700397e",
+    "src/ingestion/openalex.py": "0f9701f436512e99cd5565fceee49456d7a6b790374b933bd6669ae2e5904b05",
+    "src/ingestion/snapshot.py": "f5d91216ab61434e07580c8e639f0a864ca2492031181d3dec61f21f37106c05",
+    "src/ingestion/test_openalex.py": "da6be1256667870c0def613412e342e45eb69c7739eb2786478f27047c2ed181",
+    "tests/test_release.py": "e9c095a7809585a5acf582b814a4307245fd228ddc4916f109be369cb635c529",
+    "tests/test_search.py": "b5a9cad2e4d2f62f864d9290593c78547d0a107d2975e86526d192946996be9d",
+    "tests/test_artifacts.py": "27a362c96e7ab2ebf75c7599a743400309872847ad340e9d79058ae16ccfb1c5",
+    "tests/test_research.py": "ffeb5533c1175b97121f9441548ee000dcb6edee4ea744f80cdf03a7e3189c28",
+    "tests/test_evaluation.py": "08dac52d7f7a0265e5d90c02cd26d3a9af0b3aa48fea738fb73746c455a71d0b",
+    "tests/test_ingestion.py": "ea05a7a82eb74197e8e301c1397c9e90c91146c941a975a1ccebe77838297dbe",
+    "tests/test_foundation.py": "0d8ae419a79157c337b390df7c8ebeecc6c97b58d29decd2d67bb7400bf5cabb",
+    "tests/test_api.py": "5e021da1ee23fc4754ac485ffe3debb7a8744856e809d91a3d8f238b491ec899",
+    "tests/test_pipeline.py": "3f2b7531719bd21d385f4a1cbb64fe9c40f673945b5badbe6a8beb7661f5ed74",
+    "tests/test_tier_s.py": "693a509385c03661fcbe7e60a67a2d21fe6584765c18688f07f78d7175db6180",
+    "scripts/fetch_model.py": "6b4d3e05d81435e9d625575880b8d6735daf195756b7ce548f6f4213c80cd35f",
+    "scripts/pack_release.py": "13259358fbfe8f93511fab6738ed37de84d659c3a7b0a526aba686788652a61e",
+    "scripts/deploy_render.py": "4dc8f45d942eb98c17b71057c7d2c34c205f4ab9edeed58eafe2c4637b6066ee",
+    "scripts/serve.py": "ccfc326aa136bcc18d950b5026580b6f9d1e9d1b9069b136f4822383f0c6726f",
+    "scripts/check_public.py": "028d356323650915f1e38555d6ad42e67d0ea8d19e811d2793039a2c7471bbba",
+    "scripts/prepare_release.py": "1a4fa7e1047936ed6c084592fb69deb7d3b9863315200f40f089cba414e1c8b3",
+    "scripts/stage_deploy.py": "a4deb7b611ec30ca6f42fedbd7a907496ae27591cf237d147aa727cacad02e2f",
+    "scripts/check_infra.py": "e1419ed4f998f8c21f91804bdf3e6d81b9187e3a23101e2185158832d821eb90",
+    "scripts/restore_release.py": "0d3bfa48879e48565499adcbd7a08d81adbb66cd6896649be0dc67fc0fe75f8b",
+    "web/src/main.jsx": "e3cb6f06b8b9e87c941519cd29553d918f60c612972b26a1278023c9d8359abc",
+    "web/src/style.css": "3915f8a6ae34e759b1c1cc87c23729d4a761b5a1060ddd7d492fb5f3659e0a61",
+    "web/tests/public.spec.js": "3633629f846bf9c1cdf4339d190f2a7efe86eddc09a7144d9d2f6d7d208b9b70"
+  },
+  "config_sha256": {
+    "requirements.txt": "f58412f1a5cdaa797034a5dbf0af4675b03b1ddff9b32ac4fe6045b30b9fb719",
+    "requirements-serving.txt": "389ab9a38224f247c542c1220dc58330d49b9709344a6fffdedf41acbfa50bd2",
+    "config/project.yaml": "3b3656b34704460c080a5bb764e24628e05c65243dde042b327b6760af6d0391",
+    "config/search.yaml": "ffbe83c53ae6398d003e1c794863d1343f5967d7d4f3b8acb38fb3cd8855f25f",
+    "config/tier_s.yaml": "e990c3ff7bf4e2228bd80bca8f922312cb7c5819a81ea6e4c0d1617069372652",
+    "config/research.yaml": "f1779dff1fe44b78f80682d912bfd43d13647c238465678df67d3b4c612f7150",
+    "config/baseline.yaml": "b8ac931714e1c8b351d60c80e4e76700e888af06b9188206915d99a3526bd425",
+    "web/package.json": "ac93b1eff9d4d5ab4aec06ad261a62b6295f8840044996a621d51b71afb1b677",
+    "web/package-lock.json": "8d4c46790246f69218c2915cece576198568ea20cf2f7e768bb3a4fb98dabeed",
+    "web/playwright.config.js": "a5dfa89fd36c4e5083ce872f70ab064c261d9ac8acb03ab35c69ae6880fe3412",
+    "web/vite.config.js": "de596c7dbae4341ac9e617bebfa6dcc83b6d98df847c90f15ea03b768ff047b3",
+    "web/index.html": "47d6f20f9bbfc7cc906139b58665587323d9728b5b3214f860cc0d5fdc3fe220",
+    "Start ResearchGraph.command": "b8d33678e2635da859f314491af7cb0f470b777a73a89c6923be20923f63bee0",
+    "Dockerfile": "61cd4b0db52290d9186df8d084f2268130493337f6d8410b8219fcd6fbbd42eb",
+    ".dockerignore": "dc47149234d8cbcbd13440e22e9792cebc0712074ae660d0071f2168c597164a",
+    "render.yaml": "3a4490392653afaa9c81bc1cfc135987161cb7b404f6d9adb266ab88f4ae3f06",
+    "infra/render/main.tf": "be24c62257eb2c14948d1d524a706e6fa89a6faec7b9b5bdd36beff9e516e225",
+    "infra/render/.terraform.lock.hcl": "c024c13fdcedc11d114a0ea9a17669d0094bc3fed20d2e1b492dcff56254aa82",
+    ".github/workflows/public-demo.yml": "25d52e2c4e456627d3e8a0393bfc10d65e6b52e6d2db67f012a255aab77273ba",
+    "infra/render/render.schema.json": "8a3fb8da6b4f55fe686fbefa790e011d3dd7895f013f355953c572a21ab6494a",
+    "deploy/release-parts/release-002.part": "d5cf04761d5a3360472023a0e46789e09ab70a9e049d0cd93669b1b836e30dad",
+    "deploy/release-parts/release-003.part": "a6d5035447faa9f7d1989897672a10f442c290a111c9a7d09956c2c58d5e06f8",
+    "deploy/release-parts/manifest.json": "448fd8b8b154ed90aade4fcdc5b51d78509081a29e1a2a0dc0a73974c122aae7",
+    "deploy/release-parts/release-000.part": "ec34f49800b445a19940dc035406f5f0cba4a0334d46f59098138b3ca5128c14",
+    "deploy/release-parts/release-001.part": "e89cd2e49b0227296e28107d2f9496f39f97c127810f105a54edf6a649b56f1c"
+  },
+  "public_release_sha256": "27ed352b3f5da29219575feb7665eb57e0cf644d9c5cb8729d08aeff88835641",
+  "public_app": {
+    "passed": true,
+    "queries": 50,
+    "bm25_rankings_identical": true,
+    "onnx_query_min_cosine": 0.9999998807907104,
+    "dense_top20_mean_overlap": 1.0,
+    "mean_metric_difference": {
+      "bm25": {
+        "ndcg_at_10": 0.0,
+        "recall_at_20": 0.0
+      },
+      "dense": {
+        "ndcg_at_10": 0.0,
+        "recall_at_20": 0.0
+      },
+      "hybrid": {
+        "ndcg_at_10": 0.0,
+        "recall_at_20": 0.0
+      }
+    },
+    "filtered_rankings_match": true,
+    "publication_parts_round_trip": true,
+    "serving_memory": {
+      "passed": true,
+      "peak_rss_mib": 355.984375,
+      "gate_mib": 460,
+      "platform": "darwin",
+      "scope": "Separate serving process: long queries, filtered exact search and full 64-entry result cache. Host OS, not a Linux container memory limit."
+    },
+    "http": {
+      "passed": true,
+      "url": "http://127.0.0.1:60249",
+      "papers": 20000,
+      "run_id": "20261021T222745Z-c7ae235e",
+      "http_requests": 9,
+      "concurrency": 3,
+      "warm_p50_ms": 4.568499978631735,
+      "warm_p95_ms": 9.470916411373763,
+      "scope": "Repeated warm three-query workload, including cache hits; not an uncached load benchmark."
+    }
+  },
+  "infrastructure": {
+    "passed": true,
+    "blueprint_schema_valid": true,
+    "terraform_valid": true,
+    "plan": "free",
+    "instances": 1,
+    "hosted_database": false,
+    "cloud_mutations": false,
+    "container_runtime_available": false
+  },
+  "checks": {
+    "dependencies": {
+      "passed": true,
+      "seconds": 0.4432857920182869
+    },
+    "tests": {
+      "passed": true,
+      "seconds": 5.084604708012193
+    },
+    "python_and_notebook_syntax": {
+      "passed": true
+    },
+    "legacy_corpus_audit": {
+      "passed": true,
+      "seconds": 0.5771690410329029
+    },
+    "baseline_rebuild": {
+      "passed": true,
+      "seconds": 30.306422666995786
+    },
+    "baseline_reproduction_and_artifact_integrity": {
+      "passed": true
+    },
+    "retrieval_evaluation": {
+      "passed": true,
+      "seconds": 9.487724625039846
+    },
+    "research_methods": {
+      "passed": true,
+      "seconds": 38.06820616702316
+    },
+    "research_artifact_integrity": {
+      "passed": true
+    },
+    "dashboard_interactions": {
+      "passed": true,
+      "seconds": 9.505241959006526
+    },
+    "http_serving": {
+      "passed": true
+    },
+    "tier_s_integrity_ann": {
+      "passed": true,
+      "seconds": 19.368329416960478
+    },
+    "tier_s_retrieval_evaluation": {
+      "passed": true,
+      "seconds": 14.461555665999185
+    },
+    "tier_s_dashboard_interactions": {
+      "passed": true,
+      "seconds": 14.675212499976624
+    },
+    "tier_s_http_serving": {
+      "passed": true
+    },
+    "deployment_config": {
+      "passed": true,
+      "seconds": 0.9926898750127293
+    },
+    "public_frontend_build": {
+      "passed": true,
+      "seconds": 1.1650771249551326
+    },
+    "public_serving_parity_memory_http": {
+      "passed": true,
+      "seconds": 11.090826166968327
+    },
+    "public_browser_interactions": {
+      "passed": true,
+      "seconds": 5.5673960000276566
+    },
+    "legacy_artifacts_preserved": {
+      "passed": true
+    },
+    "verification_inputs_unchanged": {
+      "passed": true
+    }
+  },
+  "tests": 75,
+  "browser_scenarios": 4
+}
