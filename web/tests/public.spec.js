@@ -1,4 +1,34 @@
 import { test, expect } from '@playwright/test';
+import { fileURLToPath } from 'node:url';
+
+test('opening the source HTML directly gives startup instructions', async ({page}) => {
+  await page.goto('file://' + fileURLToPath(new URL('../index.html', import.meta.url)));
+  await expect(page.getByRole('heading', {name:'ResearchGraph',exact:true})).toBeVisible();
+  await expect(page.getByText('Start ResearchGraph.command', {exact:true})).toBeVisible();
+  await expect(page.getByRole('link', {name:'open ResearchGraph on the local server'})).toHaveAttribute('href','http://127.0.0.1:8000');
+});
+
+test('a delayed paper request cannot reopen details after a new search', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button',{name:'Graph retrieval for multi-hop reasoning ↗',exact:true}).click();
+  await expect(page.locator('article')).toHaveCount(20);
+  let release;
+  const gate = new Promise(resolve => {release=resolve;});
+  await page.route('**/api/paper?*',async route => {
+    const response = await route.fetch();
+    await gate;
+    await route.fulfill({response}).catch(()=>{});
+  });
+  const pending = page.waitForRequest('**/api/paper?*');
+  await page.locator('article h3 button').first().click();
+  await pending;
+  const finished = page.waitForEvent('requestfailed', {predicate:request=>request.url().includes('/api/paper?')});
+  await page.getByRole('button',{name:'Find papers ↗'}).click();
+  await finished;
+  release();
+  await expect(page.locator('article')).toHaveCount(20);
+  await expect(page.getByRole('complementary',{name:'Paper details'})).toHaveCount(0);
+});
 
 test('real corpus: examples, all rankings, paper details, graph, filters and clear', async ({page}) => {
   const errors=[];
