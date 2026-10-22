@@ -91,7 +91,7 @@ def verify():
     code_before = {str(p.relative_to(ROOT)): sha256(p) for p in code_paths}
     config_paths = [ROOT/'requirements.txt', ROOT/'requirements-serving.txt', *(ROOT/'config').glob('*.yaml'),
                     ROOT/'web/package.json',ROOT/'web/package-lock.json',ROOT/'web/playwright.config.js',
-                    ROOT/'web/vite.config.js',ROOT/'web/index.html',ROOT/'Dockerfile',ROOT/'.dockerignore',
+                    ROOT/'web/vite.config.js',ROOT/'web/index.html',ROOT/'Start ResearchGraph.command',ROOT/'Dockerfile',ROOT/'.dockerignore',
                     ROOT/'render.yaml',ROOT/'infra/render/main.tf',ROOT/'infra/render/.terraform.lock.hcl',
                     ROOT/'.github/workflows/public-demo.yml', ROOT/'infra/render/render.schema.json',
                     *(ROOT/'deploy/release-parts').glob('*')]
