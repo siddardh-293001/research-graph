@@ -1,0 +1,201 @@
+{
+  "verified_live": true,
+  "verified_at": "2026-10-22T13:40:00Z",
+  "url": "https://researchgraph-sdu4.onrender.com",
+  "service_id": "srv-dbd12a3rjlhs73f0048g",
+  "deploy_id": "dep-dbd12b3rjlhs73f006a0",
+  "commit": "b699f58518127ebc20221e9c9e3433d08fc51d59",
+  "release_sha256": "27ed352b3f5da29219575feb7665eb57e0cf644d9c5cb8729d08aeff88835641",
+  "release_integrity_basis": "Deployed commit matches tested runtime inputs; Docker restore and model fetch verify release/artifact hashes; public API returns expected 20,000-paper run.",
+  "plan": "free",
+  "instances": 1,
+  "workspace_id": "tea-dbb5bjnavr4c73fvbs30",
+  "user_confirmed_no_payment_method": true,
+  "public_http": {
+    "passed": true,
+    "url": "https://researchgraph-sdu4.onrender.com",
+    "papers": 20000,
+    "run_id": "20261021T222745Z-c7ae235e",
+    "http_requests": 9,
+    "concurrency": 3,
+    "warm_p50_ms": 107.30983299436048,
+    "warm_p95_ms": 223.05387480882928,
+    "scope": "Repeated warm three-query workload, including cache hits; not an uncached load benchmark."
+  },
+  "browser_checks": {
+    "passed": true,
+    "hosted_scenarios": 3,
+    "local_file_fallback_scenarios": 1
+  },
+  "metrics": {
+    "resourceId": "srv-dbd12a3rjlhs73f0048g",
+    "timeRange": {
+      "start": "2026-10-22T13:37:00Z"
+    },
+    "metrics": [
+      {
+        "type": "memory_usage",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-fqzkm"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-22T13:37:00Z",
+                "value": 2564096
+              },
+              {
+                "timestamp": "2026-10-22T13:38:00Z",
+                "value": 251834370
+              },
+              {
+                "timestamp": "2026-10-22T13:39:00Z",
+                "value": 251879420
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "memory_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-fqzkm"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-22T13:38:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-22T13:39:00Z",
+                "value": 536870900
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cpu_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-fqzkm"
+              }
+            ],
+            "unit": "cpu",
+            "values": [
+              {
+                "timestamp": "2026-10-22T13:38:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-22T13:39:00Z",
+                "value": 0.15
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "warm_uncached": {
+    "scope": "Six sequential hybrid queries on warm hosted service; client timing includes network/TLS. Not a load or idle-wake benchmark.",
+    "results": [
+      {
+        "query": "contrastive embeddings for document retrieval",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 540.86,
+        "server_search_ms": 120.578
+      },
+      {
+        "query": "medical language models diagnostic accuracy",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 203.06,
+        "server_search_ms": 94.949
+      },
+      {
+        "query": "citation networks and scientific communities",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 253.12,
+        "server_search_ms": 44.159
+      },
+      {
+        "query": "vision language learning image understanding",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 140.86,
+        "server_search_ms": 38.388
+      },
+      {
+        "query": "instruction tuning datasets evaluation",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 187.15,
+        "server_search_ms": 53.698
+      },
+      {
+        "query": "retrieval augmentation factuality assessment",
+        "cached": false,
+        "count": 10,
+        "elapsed_ms": 205.17,
+        "server_search_ms": 24.662
+      }
+    ]
+  },
+  "application_startup_seconds": 4.012,
+  "ci": {
+    "commit": "ba1c97405f716dbfeb7e78c57cbcec716eb6af7c",
+    "offline_tests": "passed",
+    "container_512MiB_and_browser": "passed",
+    "runs": [
+      39788351302,
+      39788351126
+    ]
+  },
+  "limitations": [
+    "Idle-to-wake latency has not been measured; free instances may take time to wake.",
+    "Metrics are sampled observations, not a sustained-load peak.",
+    "Render uses default TCP readiness; the API port binds after corpus/model startup. HTTP readiness was verified externally.",
+    "Manual GitHub deployment credentials are not configured; initial deployment used the authorized Render connector."
+  ]
+}
