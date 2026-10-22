@@ -1,0 +1,65 @@
+name: Public demo container
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-serving.txt httpx
+      - run: python -m unittest discover -s tests -p test_api.py -v
+      - run: docker build -t researchgraph:ci .
+      - name: Verify under free-plan memory ceiling
+        run: |
+          docker run -d --name researchgraph-ci --memory=512m -p 8000:8000 researchgraph:ci
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:8000/readyz; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:8000/readyz
+          for mode in bm25 dense hybrid; do
+            curl --fail -H 'Content-Type: application/json' -d "{\"query\":\"graph retrieval for multi hop reasoning\",\"mode\":\"$mode\"}" http://127.0.0.1:8000/api/search > "/tmp/$mode.json"
+            python -c "import json; d=json.load(open('/tmp/$mode.json')); assert d['count']>0"
+          done
+          docker stats --no-stream researchgraph-ci
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser checks against container
+        run: |
+          cd web
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - name: Publish verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-evidence
+          path: web/test-results
+      - name: Container logs
+        if: always()
+        run: docker logs researchgraph-ci
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    environment: free-demo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deploy exact verified commit and verify live service
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
+        run: python scripts/deploy_render.py
