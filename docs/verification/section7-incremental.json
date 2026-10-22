@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "paper_insights_checked": 20,
+  "source_topics": 1919,
+  "citation_edges": 136471,
+  "summary": "extractive abstract only; no full-text synthesis",
+  "incremental": {
+    "scope": "Historical 1,200-paper sample sorted by publication date; 960 initial plus 240 replayed. Not a live ingest or 200k run.",
+    "metadata_replay_idempotent": true,
+    "assignment_method": "positive-cosine weighted 5-neighbor vote over frozen Leiden labels",
+    "assignment_seconds": 0.015382082958240062,
+    "incremental_vs_full_ami": 0.6539404374399719,
+    "new_paper_ami": 0.6273921230163946,
+    "distribution_js_bits": 0.030159584248399502,
+    "drift_warning": false,
+    "unassigned": 0,
+    "median_nearest_cosine": 0.6578069925308228,
+    "evaluation_seconds": 0.9985640000086278
+  },
+  "tier_m": {
+    "built": false,
+    "target_papers": 200000,
+    "vector_and_index_linear_bytes": 668784340,
+    "scope": "Linear disk-size projection for the current representations, not a measured RAM requirement; model, metadata and postings add overhead."
+  },
+  "live_collection_enabled": false,
+  "paid_spend_usd": 0,
+  "limitations": [
+    "Recent-publication polling does not detect every historical correction or retraction.",
+    "Paid updated-date filters and paid compute are not enabled.",
+    "Incremental assignments are provisional and need full rebuild/relevance gates before promotion.",
+    "200k collection, embedding, ANN and hosted performance remain future gates."
+  ]
+}

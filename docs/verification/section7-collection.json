@@ -1,0 +1,32 @@
+{
+  "scope": "Anonymous recent-publication poll of Computer Science field 17; staged candidates only",
+  "started_at": "2026-10-22T18:39:57.025930+00:00",
+  "finished_at": "2026-10-22T18:39:59.494395+00:00",
+  "since": "2026-10-08",
+  "requests": 1,
+  "papers": 100,
+  "matching_source_count": 87930,
+  "truncated": true,
+  "authenticated": false,
+  "paid_spend_usd": 0,
+  "publication": "Not published: embeddings, assignments, drift and relevance gates still required",
+  "ledger": {
+    "batch_id": "770c02689496d9600c05e4883b3b9422b6b4610b050942e127a2fea87b120edc",
+    "observed_at": "2026-10-22T18:39:57.025930+00:00",
+    "replayed": false,
+    "added": 100,
+    "updated": 0,
+    "unchanged": 0,
+    "stale": 0,
+    "retracted": 0,
+    "total_staged": 100,
+    "pending_rebuild": 100,
+    "publication": "staged only; build, integrity and relevance gates required before promotion"
+  },
+  "candidate_sha256": "0cbbe6e00852f4bc0def051095c79643503abee5ea7a02bb5a23ad6aa2323d81",
+  "limitations": [
+    "Overlapping 14-day window; may miss late-indexed and older corrected/retracted work.",
+    "Maximum 500 source rows; dense publication periods are truncated.",
+    "No automatic promotion to the public snapshot."
+  ]
+}
