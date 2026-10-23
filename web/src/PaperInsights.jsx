@@ -6,7 +6,7 @@ export default function PaperInsights({paper,onSelect}) {
   return <div className="paper-insights">
     <p className="paper-authors">{paper.authors?.slice(0,6).join(' · ') || 'Authors unavailable'}{paper.authors?.length>6?` · +${paper.authors.length-6} more`:''}</p>
     <div className="impact-grid" aria-label="Citation context">
-      <div><strong>{context.global_count.toLocaleString()}</strong><span>Times cited · OpenAlex</span></div>
+      <div><strong>{context.global_count==null?'Unavailable':context.global_count.toLocaleString()}</strong><span>Times cited · {context.source||'OpenAlex'}</span></div>
       <div><strong>{context.within_corpus_citing.toLocaleString()}</strong><span>Citing papers in this atlas</span></div>
       <div><strong>{context.recorded_references.toLocaleString()}</strong><span>Recorded references</span></div>
     </div>
