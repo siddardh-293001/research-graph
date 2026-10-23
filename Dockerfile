@@ -14,7 +14,7 @@ WORKDIR /app
 RUN useradd --create-home --uid 1000 app
 COPY requirements-serving.txt ./
 RUN pip install --no-cache-dir -r requirements-serving.txt
-COPY --chown=app:app src/__init__.py src/api.py src/public_engine.py src/paper_insights.py ./src/
+COPY --chown=app:app src/__init__.py src/api.py src/public_engine.py src/paper_insights.py src/exploration.py ./src/
 COPY --chown=app:app deploy/release-parts ./deploy/release-parts
 COPY scripts/fetch_model.py scripts/restore_release.py scripts/remote_release.py scripts/start_public.py ./scripts/
 RUN python scripts/restore_release.py && python scripts/fetch_model.py && rm -rf ./deploy/release-parts
