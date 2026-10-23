@@ -145,6 +145,29 @@ def create_app(engine_factory=None, web_root=None, requests_per_minute=120):
             raise HTTPException(404, 'Paper not found')
         return result
 
+    @app.get('/api/browse')
+    def browse(query: str = Query(default='',max_length=300), field: Literal['title','abstract','author','doi']='title', sort: Literal['newest','citations','title']='newest', page: int=Query(default=1,ge=1,le=1250), year_min: int|None=None, year_max: int|None=None):
+        from src.exploration import browse
+        return browse(app.state.engine,query,field,sort,page,year_min,year_max)
+
+    @app.get('/api/evidence')
+    def evidence(paper_id: str=Query(min_length=1,max_length=200),question: str=Query(default='',max_length=500)):
+        from src.exploration import evidence
+        result=evidence(app.state.engine,paper_id,question)
+        if result is None:raise HTTPException(404,'Paper not found')
+        return result
+
+    @app.get('/api/source-metadata')
+    def source_metadata(paper_id: str=Query(min_length=1,max_length=200)):
+        from src.exploration import source_metadata
+        try:return source_metadata(paper_id)
+        except Exception:raise HTTPException(503,'Source metadata is unavailable; retry later.') from None
+
+    @app.get('/api/trends')
+    def trends():
+        from src.exploration import trends
+        return trends(app.state.engine)
+
     @app.get('/', include_in_schema=False)
     def home():
         if not (web_root/'index.html').exists():
