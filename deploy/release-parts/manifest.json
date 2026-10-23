@@ -1,27 +1,32 @@
 {
   "schema_version": 1,
-  "release_sha256": "27ed352b3f5da29219575feb7665eb57e0cf644d9c5cb8729d08aeff88835641",
-  "archive_sha256": "413d2c3a983cc5903904e0b6d968239486474517c5bf23a77c7160e8870975ad",
+  "release_sha256": "31e5535e8518f04146072e5482dc668fcccee683fc2da068ff4df588311bae69",
+  "archive_sha256": "5504b60d0afa85729779a215123c8e72138f13e9fb49b84722c5be2a057a1c93",
   "parts": [
     {
       "file": "release-000.part",
       "bytes": 20971520,
-      "sha256": "ec34f49800b445a19940dc035406f5f0cba4a0334d46f59098138b3ca5128c14"
+      "sha256": "11900a4e4e38a5325ea05666d2f5d2d8e0950273a3f5f692f013dde28ab3a689"
     },
     {
       "file": "release-001.part",
       "bytes": 20971520,
-      "sha256": "e89cd2e49b0227296e28107d2f9496f39f97c127810f105a54edf6a649b56f1c"
+      "sha256": "48a5000465b741224e5d8a132ea4c9b3bc268da6268dc027a5c5d49cd94380d1"
     },
     {
       "file": "release-002.part",
       "bytes": 20971520,
-      "sha256": "d5cf04761d5a3360472023a0e46789e09ab70a9e049d0cd93669b1b836e30dad"
+      "sha256": "8b6f4e681d67f2cdc23c05a5cb983f4f8d8c3b01281ab1c21d473c5935131da6"
     },
     {
       "file": "release-003.part",
-      "bytes": 17162345,
-      "sha256": "a6d5035447faa9f7d1989897672a10f442c290a111c9a7d09956c2c58d5e06f8"
+      "bytes": 20971520,
+      "sha256": "62d56af775bf7428b0166156b054332af53378d96401e9dfafd4c8803838c16d"
+    },
+    {
+      "file": "release-004.part",
+      "bytes": 7269982,
+      "sha256": "8beaf412e4d63d1de308f5f0b6dca8f55f54b77dd0736375252683703606e6a4"
     }
   ]
 }
