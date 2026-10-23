@@ -21,3 +21,6 @@
 !deploy/release-parts/*
 
 !src/paper_insights.py
+
+!scripts/remote_release.py
+!scripts/start_public.py
