@@ -96,7 +96,7 @@ test('paper insights explain summaries, citation directions, themes and snapshot
   await expect(detail.locator('.summary-points li').first()).toBeVisible();
   await expect(detail.getByRole('heading',{name:'How this paper connects',exact:true})).toBeVisible();
   await expect(detail.locator('.neighbors .connection-reason').first()).toContainText('Shared terms:');
-  await expect(page.getByRole('region',{name:'Latest publications'})).toContainText(/Live ingestion is not enabled|verified scheduled updates/);
+  await expect(page.getByRole('region',{name:'Latest publications'})).toHaveCount(0);
   await page.getByRole('button',{name:'Close paper details'}).click();
   await page.getByLabel('Find a research theme',{exact:true}).fill('Software Engineering Research');
   await page.getByRole('combobox',{name:'Explore research themes',exact:true}).selectOption('T10260');
@@ -107,4 +107,22 @@ test('paper insights explain summaries, citation directions, themes and snapshot
   await page.locator('article h3 button').first().click();
   await expect(detail.locator('.theme-chips')).toContainText('Software Engineering Research');
   await page.screenshot({path:'test-results/section7-paper-insights.png',fullPage:true});
+});
+
+test('paper routes hide home content and support reload and back', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button',{name:'Graph retrieval for multi-hop reasoning ↗',exact:true}).click();
+  await expect(page.locator('article')).toHaveCount(20);
+  await expect(page.getByRole('region',{name:'Latest publications'})).toHaveCount(0);
+  await expect(page.locator('.intro')).toHaveCount(0);
+  await page.locator('article h3 button').first().click();
+  await expect(page).toHaveURL(/#paper=/);
+  await expect(page.getByRole('complementary',{name:'Paper details'})).toBeVisible();
+  await expect(page.getByRole('region',{name:'Search results'})).toHaveCount(0);
+  await page.goBack();
+  await expect(page.locator('article')).toHaveCount(20);
+  await page.goForward();
+  await page.reload();
+  await expect(page.getByRole('complementary',{name:'Paper details'})).toBeVisible();
+  await expect(page.getByRole('region',{name:'Latest publications'})).toHaveCount(0);
 });
