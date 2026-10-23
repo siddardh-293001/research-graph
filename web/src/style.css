@@ -76,3 +76,5 @@ button{color:inherit}.paper-footer button,.citation-links button,.neighbors butt
 .impact-grid>div{background:var(--rg-elevated);color:var(--rg-text);border:1px solid var(--rg-border);border-radius:12px;}
 .impact-grid strong{color:var(--rg-text);}
 .impact-grid span,.detail .evidence-note{color:var(--rg-text-muted);}
+
+.library label{display:block;margin:12px 0}.library textarea{display:block;width:100%;background:var(--rg-surface);color:var(--rg-text);border:1px solid var(--rg-border);padding:12px}.library table{width:100%;text-align:left}blockquote{border-left:3px solid var(--rg-lilac);padding-left:16px}cite{display:block;font-size:12px}
