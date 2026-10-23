@@ -1,0 +1,626 @@
+{
+  "version": "0.1-provisional",
+  "status": "assistant_authored_metadata_seed_benchmark",
+  "source_corpus_sha256": "a8ece2677f7a0e64f39fc4389affc23e6c2d1bee5c81f5a158cd28e75f42d5c8",
+  "scope": "Known-paper and topic discovery seed set with incomplete relevance judgments. Not independently reviewed. No ranking output was used to generate labels.",
+  "grade_scale": {
+    "0": "not relevant",
+    "1": "partial background",
+    "2": "relevant",
+    "3": "directly relevant"
+  },
+  "queries": [
+    {
+      "query_id": "Q001",
+      "query": "Which methods reduce fabricated facts in language model outputs?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4390602555",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4404534210",
+          "grade": 2
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q002",
+      "query": "How has retrieval augmented generation evolved and what are its open research directions?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403578737",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q003",
+      "query": "How can retrieval and generation combine different input and output modalities?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416291690",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4415152171",
+          "grade": 2
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q004",
+      "query": "How can a dataset discovery tool explain its recommendations using a knowledge graph?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416196623",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q005",
+      "query": "How can graph retrieval connect information spread across multiple research documents?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4411447250",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q006",
+      "query": "How can external evidence help detect fabricated news stories?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406458547",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q007",
+      "query": "How can medical assistants on wearable devices reduce retrieval memory and energy costs?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7124177984",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q008",
+      "query": "How can multiple language model agents check software requirements against regulations?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7116688751",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q009",
+      "query": "How can images and insurance policies support post-disaster housing damage assessment?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7117367262",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q010",
+      "query": "How can an agent reason across text images and tables over several retrieval steps?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4414352266",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W7140295500",
+          "grade": 1
+        },
+        {
+          "paper_id": "https://openalex.org/W4295428427",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "query_id": "Q011",
+      "query": "How can entity recognition and knowledge graphs improve medical question answering?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412626772",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4416034803",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q012",
+      "query": "How can collaborating retrieval agents support wildfire and natural hazard decisions?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415306940",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q013",
+      "query": "How can retrieval augmented generation support smart grid digital twins?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403749687",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q014",
+      "query": "How can self-correcting graph retrieval support clinical decisions about liver disease?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4417354602",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q015",
+      "query": "What challenges arise when graph retrieval customizes language models for specialist domains?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406840433",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4406031095",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q016",
+      "query": "What are the main approaches to multimodal retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415152171",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4416291690",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q017",
+      "query": "How can retrieval systems and agents personalize responses to user preferences?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415160040",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q018",
+      "query": "How do reasoning strategies interact with retrieving external knowledge?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7118277284",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q019",
+      "query": "What types of hallucination occur in language models and how are they detected?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4404534210",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4390602555",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q020",
+      "query": "What security vulnerabilities and privacy risks affect large language models?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4392353733",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q021",
+      "query": "What is the research landscape of generating source code from natural language?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7125135101",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q022",
+      "query": "How do low rank adaptation methods make fine tuning more parameter efficient?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403753254",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q023",
+      "query": "What are the applications and limitations of retrieval augmented generation in healthcare?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4415233873",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4414128336",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q024",
+      "query": "What empirical evidence exists for RAG effectiveness and which evaluation practices are used?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7114889968",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q025",
+      "query": "How can standard RAG self-reflective retrieval and agentic retrieval be compared fairly?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7131122974",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q026",
+      "query": "How do retrieval choices affect the execution time of an augmented generation pipeline?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4407197060",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q027",
+      "query": "Find the work introducing active retrieval during language generation.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4389519118",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4405030361",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "query_id": "Q028",
+      "query": "Find a method that adapts retrieval effort to the complexity of a question.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4401042753",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4389519118",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "query_id": "Q029",
+      "query": "How can multiple agents use a shared factual representation for verifiable multi-hop reasoning?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7140295500",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q030",
+      "query": "How can vector and graph retrieval agents generate software test plans and test cases?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7125983183",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q031",
+      "query": "How can domain experts actively participate in the retrieval process of agentic systems?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4410887384",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q032",
+      "query": "What architectures and workflows are used in agentic retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4406542750",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4408581964",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q033",
+      "query": "How can curated medical resources ground language model treatment recommendations?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4391221150",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q034",
+      "query": "How can graph retrieval help interpret interconnected information security compliance standards?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W7154936562",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q035",
+      "query": "How can legal retrieval account for the hierarchy and changing versions of laws?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4416988511",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q036",
+      "query": "How can retrieval help extract malnutrition information from electronic health records?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4399660853",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q037",
+      "query": "Find an automated framework for assessing retrieval augmented generation systems.",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4401042808",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4411630045",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q038",
+      "query": "How can a model resolve conflicts between its internal knowledge and imperfect retrieved evidence?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412889733",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q039",
+      "query": "Can retrieval augmented language models learn knowledge intensive tasks from very few examples?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4301243929",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q040",
+      "query": "How can a language model autonomously plan and refine iterative retrieval queries?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4405030361",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q041",
+      "query": "How can retrieval augmented generation automate systematic literature review workflows?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403248625",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4410251088",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q042",
+      "query": "How can retrieval benchmarks test noise robustness and conflicting evidence across different language models?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4393147129",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q043",
+      "query": "Which benchmark evaluates retrieval augmented generation for medical question answering?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4402670290",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q044",
+      "query": "Which software library standardizes reproducible experiments across RAG pipeline components?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4404781523",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4393147129",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "query_id": "Q045",
+      "query": "How can dense semantic search and sparse retrieval be combined for better document retrieval?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4403420914",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4391631359",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "query_id": "Q046",
+      "query": "How can a code structure aware retriever support a coding assistant?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4402817791",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q047",
+      "query": "Can retrieval augmented generation have provable bounds on generation risk?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4391591446",
+          "grade": 3
+        }
+      ]
+    },
+    {
+      "query_id": "Q048",
+      "query": "How can previously retrieved text chunks reuse key value caches across different prompts?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4411403197",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4408848702",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q049",
+      "query": "How can cached text chunks be fused when they are not at the start of a prompt?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4408848702",
+          "grade": 3
+        },
+        {
+          "paper_id": "https://openalex.org/W4411403197",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "Q050",
+      "query": "How can causal relationships preserve context during retrieval augmented generation?",
+      "judgments": [
+        {
+          "paper_id": "https://openalex.org/W4412887679",
+          "grade": 3
+        }
+      ]
+    }
+  ],
+  "identity_mapping": {
+    "mapped_judgments": 0,
+    "original_sha256": "61fc013773e2fc781af29a69a307975cce485ffd4e7e282f8decf4a438c47e71"
+  }
+}
