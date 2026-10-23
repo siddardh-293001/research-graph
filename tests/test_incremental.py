@@ -58,3 +58,17 @@ class FreeCollectionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(RuntimeError):collect(Path(temp)/'batch',session=Session())
             with self.assertRaises(ValueError):collect(Path(temp)/'other',pages=6)
+
+
+class DriftPromotionTests(unittest.TestCase):
+    def test_batch_novelty_is_warning_but_large_cumulative_shift_blocks(self):
+        from src.incremental import update_drift
+        base=[0]*10000;added=[1]*100
+        result=update_drift(base,added,base+added)
+        self.assertTrue(result['batch_warning'])
+        self.assertLess(result['corpus_js_bits'],.1)
+        with self.assertRaises(ValueError):update_drift(base,[1]*10000,base+[1]*10000)
+
+    def test_corpus_reference_does_not_reset_each_batch(self):
+        from src.incremental import update_drift
+        with self.assertRaises(ValueError):update_drift([1]*100,[1],[1]*101,{'0':10000})
