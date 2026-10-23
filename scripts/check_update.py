@@ -13,6 +13,15 @@ from src.evaluation import retrieval_metrics
 
 
 def check(source,candidate):
+    # Match the serving container's bounded native thread pools. Surface child
+    # diagnostics so CI distinguishes a capacity rejection from a runtime error.
+    environment={**os.environ,'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','TOKENIZERS_PARALLELISM':'false'}
+    result=subprocess.run([sys.executable,str(ROOT/'scripts/check_public.py'),'--release',str(candidate),'--memory-only'],capture_output=True,text=True,env=environment)
+    if result.returncode:
+        raise ValueError('Serving memory check failed:\n'+result.stdout+result.stderr)
+    memory=json.loads(result.stdout.strip().splitlines()[-1])
+    # Run before loading two evaluation engines: Linux child ru_maxrss can
+    # retain the parent pre-exec high-water mark and falsely reject serving.
     previous=PublicEngine(source);current=PublicEngine(candidate)
     if current.manifest.get('parent_release_sha256')!=previous.release_sha256:raise ValueError('Update parent hash mismatch')
     if not 1<=len(current.ids)<=25000:raise ValueError('Capacity gate failed')
@@ -45,13 +54,6 @@ def check(source,candidate):
     for i in selected:
         vector=np.asarray(current.vectors[i]);scores=current.vectors@vector;exact=set(np.lexsort((current.ids,-scores))[:10]);_,rows=current.index.search(vector[None,:],10);recalls.append(len(exact&set(rows[0]))/10)
     if np.mean(recalls)<.95:raise ValueError('ANN recall below 0.95')
-    # Match the serving container's bounded native thread pools. Surface child
-    # diagnostics so CI distinguishes a capacity rejection from a runtime error.
-    environment={**os.environ,'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','TOKENIZERS_PARALLELISM':'false'}
-    result=subprocess.run([sys.executable,str(ROOT/'scripts/check_public.py'),'--release',str(candidate),'--memory-only'],capture_output=True,text=True,env=environment)
-    if result.returncode:
-        raise ValueError('Serving memory check failed:\n'+result.stdout+result.stderr)
-    memory=json.loads(result.stdout.strip().splitlines()[-1])
     return {'passed':True,'parent_release_sha256':previous.release_sha256,'release_sha256':current.release_sha256,'papers':len(current.ids),'queries':len(benchmark),'mean_metric_differences':metrics,'cumulative_metric_differences':cumulative,'ann_recall_at_10':float(np.mean(recalls)),'serving_memory':memory,'limitations':['Incomplete provisional relevance labels; publication-date polling misses historical corrections.','New community/topic assignments are provisional frozen-label neighbor votes.']}
 
 if __name__=='__main__':
