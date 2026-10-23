@@ -176,7 +176,7 @@ class PublicEngine:
                     'within_corpus_references':db.execute('SELECT count(*) FROM citations WHERE source=?',(paper_id,)).fetchone()[0],
                     'recorded_references':result['reference_count'],
                     'as_of':result.get('observed_at') or self.manifest['source_finished_at'],
-                    'scope':'OpenAlex citations at snapshot time. Corpus links are a subset; counts are not a measure of research quality.'}
+                    'scope':'Source-reported citations at the recorded observation time. Corpus links are a subset; counts are not a measure of research quality.'}
                 result['connections']={}
                 for kind,join,where in [('cites','c.target=p.paper_id','c.source'),('cited_by','c.source=p.paper_id','c.target')]:
                     result['connections'][kind]=[dict(r) for r in db.execute(f'SELECT p.paper_id,p.title,p.year,p.citation_count,p.topic_name FROM citations c JOIN papers p ON {join} WHERE {where}=? ORDER BY p.citation_count DESC,p.paper_id LIMIT 12',(paper_id,))]
