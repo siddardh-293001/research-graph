@@ -1,14 +1,18 @@
-phase: 7A
+phase: 7B
 scope: AI and computer science
 target_tier_m_papers: 200000
 published_papers: 20000
 paid_spend_allowed_usd: 0
 live_collection_enabled: false
 anonymous_candidate_collection_enabled: true
+sources: [openalex, arxiv, crossref]
+max_served_papers_until_tier_m_gate: 25000
+host_release_refresh_seconds: 300
 scheduled_collection_enabled: true
-schedule_utc: "03:20 daily"
+schedule_utc: "23 minutes past every sixth hour"
 max_source_rows_per_run: 500
-promotion: manual_after_full_verification
+promotion: verified_release_then_host_refresh
+automatic_promotion_activation: ENABLE_AUTO_PROMOTION_repository_variable
 candidate_fields:
   - natural language processing
   - information retrieval
