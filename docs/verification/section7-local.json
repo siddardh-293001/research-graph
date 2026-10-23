@@ -1,6 +1,13 @@
 {
   "status": "passed",
-  "finished_at": "2026-10-22T18:41:58.036806+00:00",
+  "finished_at": "2026-10-23T07:41:23.494596+00:00",
+  "limitations": [
+    "Independent benchmark relevance review is pending.",
+    "Cached Tier S provenance is verified; no fresh API recollection, full Tier S re-embedding, deployment or future section validation.",
+    "Notebook cells are syntax-checked; historical notebook experiments are not re-executed.",
+    "Local serving memory is measured on the host OS; Linux container and hosted resource limits need separate evidence.",
+    "Saved public deployment does not match this release or is not verified live."
+  ],
   "code_sha256": {
     "app.py": "22721dccf5d3d789a92cf137cf127059ac847f92a08ca45e82465b06d43c8ea2",
     "src/audit.py": "0955e072f4c25e663465336d6dced14b50e9a036dc2b6ce75fa73e3190b88f87",
@@ -12,7 +19,7 @@
     "src/__init__.py": "004cc19e823adc12e52898d864d530ebdba9e3e02a73e1a883d5b8de5d16f72e",
     "src/tier_s.py": "3981d14eb8180d5ee769b3dcc96bb39be9ec4e48c9c1f81cfc124c12875462ea",
     "src/dashboard_check.py": "b66f10820b5da2da7a64d7086c4601a18088f6daa786cec6f7fedc65887bee63",
-    "src/api.py": "bef68fc3659f586ddcb96dbc72b9c18483f466e97fcab58de6d8030dbac30113",
+    "src/api.py": "5208bd3bc17f2ffaa12d9065378b9033eec5fb0edc0f83f31cd2b408cb368c3f",
     "src/research_topics.py": "f694e75a6aafcdaefc2bd7153fd534af323d1ec9e2926dabeede019a051546e1",
     "src/preprocessing.py": "a250b6fe161f847715336016b40fea939edc047e2b18eb1fb6f12568977229e1",
     "src/pipeline.py": "52b8e58e172cc93c91f03397c74a44cd6160c4a0824bde03a834d1c92cd3403f",
@@ -20,8 +27,8 @@
     "src/search.py": "11e2515be7800faa8abcf0f214b69f509588d0584560d2260188887d876f379e",
     "src/ann.py": "9e4c97ac7d69aa79a120f388e96bd702eb3e4272bb866eab00075d40397d7432",
     "src/artifacts.py": "8e503fc54dc3f95ca573760a7774d3a90dcd5bc1bdb46b9252f29f6f381c2a5c",
-    "src/verify.py": "b124b3e157cb46022f61c8c70f67bf7f2d64dcd5e9db766ed18c7ec1b6bbe08a",
-    "src/public_engine.py": "16d14a4dd23850a8fc2a29ef1c63cbdd3a436a4771e7b6f72aeedba2e437ce31",
+    "src/verify.py": "981ebff55169448e04b45609895eb372dc53a32cb1793b857c48a9beef5de7ab",
+    "src/public_engine.py": "1119c21aed89c0cee74e563b4b7bf752acb4a8c83aa609389b2902622a1e2966",
     "src/corpus.py": "2880b899de15f465b52a31f9cf4412bbc3a106a6624e26ced13710242ba204de",
     "src/research_statistics.py": "5baeab637d5cc2173b7d32bb7cc2d710dfbdf5583369c75aec5709829700397e",
     "src/incremental.py": "5453ff80d16b98b9ca90daf80961b0b00e7387d4b6132017b9a7ddee5aada971",
@@ -30,6 +37,7 @@
     "src/ingestion/test_openalex.py": "da6be1256667870c0def613412e342e45eb69c7739eb2786478f27047c2ed181",
     "tests/test_release.py": "e9c095a7809585a5acf582b814a4307245fd228ddc4916f109be369cb635c529",
     "tests/test_search.py": "b5a9cad2e4d2f62f864d9290593c78547d0a107d2975e86526d192946996be9d",
+    "tests/test_updates.py": "647a65c3e1bbec7ec7028774f5225165cb30e6fd9a5e10881b4bb0696cf03fae",
     "tests/test_artifacts.py": "27a362c96e7ab2ebf75c7599a743400309872847ad340e9d79058ae16ccfb1c5",
     "tests/test_research.py": "ffeb5533c1175b97121f9441548ee000dcb6edee4ea744f80cdf03a7e3189c28",
     "tests/test_evaluation.py": "08dac52d7f7a0265e5d90c02cd26d3a9af0b3aa48fea738fb73746c455a71d0b",
@@ -39,9 +47,13 @@
     "tests/test_api.py": "c80b29464ca90bf41e927ee65dacdaa2632fa8faaa3185d6664d71b467640c33",
     "tests/test_pipeline.py": "3f2b7531719bd21d385f4a1cbb64fe9c40f673945b5badbe6a8beb7661f5ed74",
     "tests/test_tier_s.py": "693a509385c03661fcbe7e60a67a2d21fe6584765c18688f07f78d7175db6180",
+    "scripts/remote_release.py": "23571c2dde4b9564c62263934aa032eeb36a42f74ea8553ff1c79b9bc94e3475",
+    "scripts/check_update_pipeline.py": "d67a754422feb18d82bc9659aa60f07cbcf9a7b3c7be7daf0ede47cecfe3d25e",
+    "scripts/update_release.py": "ab00d71697480b858507f2e845a8a6dc612202f65a79d4e2e8af7c9579f822c4",
     "scripts/fetch_model.py": "6b4d3e05d81435e9d625575880b8d6735daf195756b7ce548f6f4213c80cd35f",
     "scripts/pack_release.py": "13259358fbfe8f93511fab6738ed37de84d659c3a7b0a526aba686788652a61e",
-    "scripts/deploy_render.py": "4dc8f45d942eb98c17b71057c7d2c34c205f4ab9edeed58eafe2c4637b6066ee",
+    "scripts/deploy_render.py": "b2c6c09c7a9cdbdc3d096a3a41a5f46fce248417a53304bcbb2e5c46ae9d18c4",
+    "scripts/check_update.py": "42cc9fe77bd45510e63e6130598bc9e4872f899bfd0cc7d984ef1da4f213d4cd",
     "scripts/serve.py": "ccfc326aa136bcc18d950b5026580b6f9d1e9d1b9069b136f4822383f0c6726f",
     "scripts/check_public.py": "028d356323650915f1e38555d6ad42e67d0ea8d19e811d2793039a2c7471bbba",
     "scripts/enrich_release.py": "92078a3fc84a67519bf457fd6aaebceea1b30d10cedfe84256176e947d9c6c09",
@@ -49,12 +61,15 @@
     "scripts/prepare_release.py": "1a4fa7e1047936ed6c084592fb69deb7d3b9863315200f40f089cba414e1c8b3",
     "scripts/check_section7.py": "590890b8c1cab64f47aee4461580a0d21d98848d1426c4da2c58123cfb32fc41",
     "scripts/stage_deploy.py": "a4deb7b611ec30ca6f42fedbd7a907496ae27591cf237d147aa727cacad02e2f",
+    "scripts/promote_release.py": "40866b5cdf18dc55273e7bd190141effa24d3239d905f80619f9ede9b51fd09c",
+    "scripts/collect_sources.py": "4f98d64fbac6f028c91702642c84e474ca6972fd182c7309d095fb906961f289",
     "scripts/check_infra.py": "e1419ed4f998f8c21f91804bdf3e6d81b9187e3a23101e2185158832d821eb90",
     "scripts/restore_release.py": "8d704497ceb228247c46ddbc846719ce12a06d6ab2004fc6f012fe7afadad00b",
-    "web/src/main.jsx": "a44bdb4f83a9624b1ddb5d3c944ff54dede84557ed3b448c1d1e61b7510f022d",
+    "scripts/start_public.py": "bfa9f44e7081434fe531ab33f9a37b7a409920b35ba3dc983ec8912c84d507ab",
+    "web/src/main.jsx": "62899044de858e7414f9cc449de4348cbc7773df302673853545621960eeb8dd",
     "web/src/style.css": "99d74dbd77e646c5082a8559bd1bd7f80b3331e79b6728dc4b96437af7c9e72e",
-    "web/src/PaperInsights.jsx": "af8020bd36d0dc94ec0343c8c289f29698ecff78179e708c184a447f4916a941",
-    "web/tests/public.spec.js": "ed8e88ae3d4209bad859b904699914352e579f9e753697b9e6da17b36ceac886"
+    "web/src/PaperInsights.jsx": "c107ca3c63a5de753759ed49955eb80854da061a76e45612bcd46db47f68e236",
+    "web/tests/public.spec.js": "17d37781c92178b4080197a0f9bfd98a447a5bfe676588ded5e30fa0a5de8ddf"
   },
   "config_sha256": {
     "requirements.txt": "f58412f1a5cdaa797034a5dbf0af4675b03b1ddff9b32ac4fe6045b30b9fb719",
@@ -64,20 +79,22 @@
     "config/tier_s.yaml": "e990c3ff7bf4e2228bd80bca8f922312cb7c5819a81ea6e4c0d1617069372652",
     "config/research.yaml": "f1779dff1fe44b78f80682d912bfd43d13647c238465678df67d3b4c612f7150",
     "config/baseline.yaml": "b8ac931714e1c8b351d60c80e4e76700e888af06b9188206915d99a3526bd425",
-    "config/section7.yaml": "3608efca0a0a60c87505ae6234150d42c7a01dcb650231178060c7a622b70569",
+    "config/section7.yaml": "528d3f7149087bafdeb0390ff1a90ac8df73cd669e0fd7b3ab65527910686d91",
     "web/package.json": "ac93b1eff9d4d5ab4aec06ad261a62b6295f8840044996a621d51b71afb1b677",
     "web/package-lock.json": "8d4c46790246f69218c2915cece576198568ea20cf2f7e768bb3a4fb98dabeed",
     "web/playwright.config.js": "a5dfa89fd36c4e5083ce872f70ab064c261d9ac8acb03ab35c69ae6880fe3412",
     "web/vite.config.js": "de596c7dbae4341ac9e617bebfa6dcc83b6d98df847c90f15ea03b768ff047b3",
     "web/index.html": "47d6f20f9bbfc7cc906139b58665587323d9728b5b3214f860cc0d5fdc3fe220",
     "Start ResearchGraph.command": "b8d33678e2635da859f314491af7cb0f470b777a73a89c6923be20923f63bee0",
-    "Dockerfile": "c78ae57dd6b967b3438cc1b22260a0bc505894108fec4a14fb2412611f7c5359",
-    ".dockerignore": "7f65388b037b50a34019dc5dafaa35627c809e322febec86c349df459bd8f763",
+    "Dockerfile": "e089d0f046bb07e2fa97c8dff7359cf0a18862c7236e973b28659d3e1899fa7a",
+    ".dockerignore": "5a1b7d4cdd707058df2290dc4535dd79129814f36e915882f2f5816b7876d450",
     "render.yaml": "3a4490392653afaa9c81bc1cfc135987161cb7b404f6d9adb266ab88f4ae3f06",
     "infra/render/main.tf": "be24c62257eb2c14948d1d524a706e6fa89a6faec7b9b5bdd36beff9e516e225",
     "infra/render/.terraform.lock.hcl": "c024c13fdcedc11d114a0ea9a17669d0094bc3fed20d2e1b492dcff56254aa82",
-    ".github/workflows/public-demo.yml": "25d52e2c4e456627d3e8a0393bfc10d65e6b52e6d2db67f012a255aab77273ba",
-    ".github/workflows/recent-candidates.yml": "9ebc0d1e0343c6ce0ee8e643b364fdd91605f8338ec03b60253cdffc5edfc12a",
+    ".github/workflows/scheduled-atlas.yml": "85822b13a9e395f36194eb8d0b54c489f45876715d503b7b33a7590c01d2a94a",
+    "data/benchmark/effective.json": "d6112c86153c7fe59cf62b9c6755cb31e2ff003ef31aa2795355958cfd81596e",
+    ".github/workflows/public-demo.yml": "9f44afd5e029e0ede675f1c9b86cc94a9c818d19295f84710d7937a36e3b653a",
+    ".github/workflows/recent-candidates.yml": "ee218c1ccbdfb5928f5cfc273df10f0c1f50e7142fd73e126db8d1b7277727c3",
     "infra/render/render.schema.json": "8a3fb8da6b4f55fe686fbefa790e011d3dd7895f013f355953c572a21ab6494a",
     "deploy/release-parts/release-002.part": "8b6f4e681d67f2cdc23c05a5cb983f4f8d8c3b01281ab1c21d473c5935131da6",
     "deploy/release-parts/release-003.part": "62d56af775bf7428b0166156b054332af53378d96401e9dfafd4c8803838c16d",
@@ -96,14 +113,14 @@
       "scope": "Historical 1,200-paper sample sorted by publication date; 960 initial plus 240 replayed. Not a live ingest or 200k run.",
       "metadata_replay_idempotent": true,
       "assignment_method": "positive-cosine weighted 5-neighbor vote over frozen Leiden labels",
-      "assignment_seconds": 0.010459124983754009,
+      "assignment_seconds": 0.010637625004164875,
       "incremental_vs_full_ami": 0.6539404374399719,
       "new_paper_ami": 0.6273921230163946,
       "distribution_js_bits": 0.030159584248399502,
       "drift_warning": false,
       "unassigned": 0,
       "median_nearest_cosine": 0.6578069925308228,
-      "evaluation_seconds": 0.7456990000209771
+      "evaluation_seconds": 0.8909557500155643
     },
     "tier_m": {
       "built": false,
@@ -119,6 +136,20 @@
       "Incremental assignments are provisional and need full rebuild/relevance gates before promotion.",
       "200k collection, embedding, ANN and hosted performance remain future gates."
     ]
+  },
+  "update_lifecycle": {
+    "passed": true,
+    "synthetic_fixture_only": true,
+    "checks": [
+      "addition",
+      "directed citation evidence",
+      "grounded summary",
+      "idempotent replay",
+      "citation correction",
+      "retraction removes index and links",
+      "arxiv canonical versions and unknown citation counts"
+    ],
+    "active_release_unchanged": true
   },
   "public_app": {
     "passed": true,
@@ -144,30 +175,23 @@
     "publication_parts_round_trip": true,
     "serving_memory": {
       "passed": true,
-      "peak_rss_mib": 346.78125,
+      "peak_rss_mib": 356.484375,
       "gate_mib": 460,
       "platform": "darwin",
       "scope": "Separate serving process: long queries, filtered exact search and full 64-entry result cache. Host OS, not a Linux container memory limit."
     },
     "http": {
       "passed": true,
-      "url": "http://127.0.0.1:61593",
+      "url": "http://127.0.0.1:50898",
       "papers": 20000,
       "run_id": "20261021T222745Z-c7ae235e",
       "http_requests": 9,
       "concurrency": 3,
-      "warm_p50_ms": 2.5625830166973174,
-      "warm_p95_ms": 10.667783219832927,
+      "warm_p50_ms": 5.149750038981438,
+      "warm_p95_ms": 10.511533624958245,
       "scope": "Repeated warm three-query workload, including cache hits; not an uncached load benchmark."
     }
   },
-  "limitations": [
-    "Independent benchmark relevance review is pending.",
-    "Cached Tier S provenance is verified; no fresh API recollection, full Tier S re-embedding, deployment or future section validation.",
-    "Notebook cells are syntax-checked; historical notebook experiments are not re-executed.",
-    "Local serving memory is measured on the host OS; Linux container and hosted resource limits need separate evidence.",
-    "Saved public deployment does not match this release or is not verified live."
-  ],
   "checks": {
     "dependencies": true,
     "tests": true,
@@ -185,11 +209,13 @@
     "tier_s_dashboard_interactions": true,
     "tier_s_http_serving": true,
     "section7_insights_incremental": true,
+    "scheduled_update_lifecycle": true,
     "deployment_config": true,
     "public_frontend_build": true,
     "public_serving_parity_memory_http": true,
     "public_browser_interactions": true,
     "legacy_artifacts_preserved": true,
     "verification_inputs_unchanged": true
-  }
+  },
+  "tests": 88
 }

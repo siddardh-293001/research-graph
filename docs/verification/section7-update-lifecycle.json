@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "synthetic_fixture_only": true,
+  "checks": [
+    "addition",
+    "directed citation evidence",
+    "grounded summary",
+    "idempotent replay",
+    "citation correction",
+    "retraction removes index and links",
+    "arxiv canonical versions and unknown citation counts"
+  ],
+  "active_release_unchanged": true
+}

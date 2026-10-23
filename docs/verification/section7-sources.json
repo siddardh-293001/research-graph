@@ -1,0 +1,55 @@
+{
+  "sources": {
+    "openalex": {
+      "scope": "Anonymous recent-publication poll of Computer Science field 17; staged candidates only",
+      "started_at": "2026-10-23T00:22:54.419335+00:00",
+      "finished_at": "2026-10-23T00:22:58.332065+00:00",
+      "since": "2026-10-09",
+      "requests": 1,
+      "papers": 100,
+      "matching_source_count": 84116,
+      "truncated": true,
+      "authenticated": false,
+      "paid_spend_usd": 0,
+      "publication": "Not published: embeddings, assignments, drift and relevance gates still required",
+      "ledger": {
+        "batch_id": "9c3030e8fa9a6559c1b78820b07a13fb39965bdd2e9fbcc60b8ba1f12eee5968",
+        "observed_at": "2026-10-23T00:22:54.419335+00:00",
+        "replayed": false,
+        "added": 100,
+        "updated": 0,
+        "unchanged": 0,
+        "stale": 0,
+        "retracted": 0,
+        "total_staged": 100,
+        "pending_rebuild": 100,
+        "publication": "staged only; build, integrity and relevance gates required before promotion"
+      },
+      "candidate_sha256": "d0968cc64363f5fd157c1d966922a8c29d0fa7849cbfa599d5dc949dc352ac9d",
+      "limitations": [
+        "Overlapping 14-day window; may miss late-indexed and older corrected/retracted work.",
+        "Maximum 500 source rows; dense publication periods are truncated.",
+        "No automatic promotion to the public snapshot."
+      ]
+    },
+    "arxiv": {
+      "requests": 1,
+      "papers": 100,
+      "truncated": true
+    },
+    "crossref": {
+      "requests": 1,
+      "papers": 36,
+      "scope": "Deposited abstracts only; citation counts are Crossref counts, not OpenAlex counts."
+    }
+  },
+  "papers": 236,
+  "paid_spend_usd": 0,
+  "authenticated": false,
+  "observed_at": "2026-10-23T00:22:54.419184+00:00",
+  "limitations": [
+    "Bounded recent windows, not complete historical/retraction synchronization.",
+    "arXiv does not supply citation counts; Crossref/OpenAlex counts are different measures.",
+    "An unavailable source aborts promotion; the previous release remains served."
+  ]
+}
