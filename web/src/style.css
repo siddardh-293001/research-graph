@@ -71,3 +71,8 @@ button{color:inherit}.paper-footer button,.citation-links button,.neighbors butt
 .tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.tools button,nav button{background:var(--rg-surface);border:1px solid var(--rg-border);padding:9px;border-radius:7px}.library{padding:24px;background:var(--rg-surface);margin:24px 0}.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.compare-grid>div{min-width:0;overflow-wrap:anywhere}.match-reason{border-left:3px solid var(--rg-moss);padding-left:12px}
 @media(min-width:1000px){.search-view{display:grid;grid-template-columns:300px 1fr;gap:30px}.search-view .search-panel{align-self:start;position:sticky;top:16px}.search-view .query-row,.search-view .filters{flex-direction:column;align-items:stretch}.search-view .expanded-topics{display:block}.search-view .primary{padding:14px}.search-view .filters input{width:100%}.search-view .library{grid-column:1/-1}}
 @media(max-width:600px){.compare-grid{grid-template-columns:1fr}}
+
+/* Citation cards must use paired theme foregrounds and surfaces. */
+.impact-grid>div{background:var(--rg-elevated);color:var(--rg-text);border:1px solid var(--rg-border);border-radius:12px;}
+.impact-grid strong{color:var(--rg-text);}
+.impact-grid span,.detail .evidence-note{color:var(--rg-text-muted);}
