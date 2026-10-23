@@ -47,8 +47,12 @@ def update(source, candidates, output, max_papers=25000):
         previous=by_id.get(pid);old=insights.get(pid)
         if previous and row.get('source') in {'crossref','arxiv'} and not pid.startswith('https://arxiv.org/abs/'):
             counts['supplemental_only']+=1;continue
-        if old and timestamp(row.get('updated_date'))<=timestamp(old.get('source_updated_at')):
+        if old and timestamp(row.get('updated_date'))<timestamp(old.get('source_updated_at')):
             counts['stale_or_replayed']+=1;continue
+        if old and timestamp(row.get('updated_date'))==timestamp(old.get('source_updated_at')) and not row.get('is_retracted'):
+            if row.get('title')!=previous['title'] or row.get('abstract')!=previous['abstract'] or row.get('year')!=previous['year']:raise ValueError('Conflicting content at identical source timestamp')
+            if row.get('citation_count',0)==previous['citation_count']:
+                counts['stale_or_replayed']+=1;continue
         if row.get('is_retracted'):
             if previous:removed.add(pid);counts['removed_retracted']+=1
             continue
