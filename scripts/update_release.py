@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import faiss
 import numpy as np
 from src.corpus import canonical_doi, canonical_arxiv
-from src.incremental import timestamp, distribution_drift
+from src.incremental import timestamp, update_drift
 from src.paper_insights import summarize
 from src.public_engine import PublicEngine, digest
 
@@ -82,8 +82,7 @@ def update(source, candidates, output, max_papers=25000):
     if not changed and not removed:return {'changed':False,'counts':dict(counts)}
     ids=list(by_id)
     if len(ids)>max_papers:raise ValueError('Free-serving capacity gate: evaluate Tier M before expanding beyond 25,000')
-    drift=distribution_drift([p['community'] for p in papers],assigned) if assigned else 0.
-    if len(assigned)>=50 and drift>.1:raise ValueError('Community drift exceeds automatic promotion threshold')
+    drift=update_drift([p['community'] for p in papers],assigned,[p['community'] for p in by_id.values()],engine.manifest.get('community_drift_reference'))
     shutil.copytree(source,output)
     try:
         values=np.asarray([vectors[pid] for pid in ids],dtype=np.float32);index=faiss.IndexHNSWFlat(values.shape[1],32,faiss.METRIC_INNER_PRODUCT);index.hnsw.efConstruction=200;index.hnsw.efSearch=128;index.add(values)
@@ -122,7 +121,18 @@ def update(source, candidates, output, max_papers=25000):
         manifest=dict(engine.manifest);now=datetime.now(timezone.utc).isoformat();parent=digest(source/'release.json')
         manifest.update(schema_version=3,papers=len(ids),run_id='update-'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'),updated_at=now,parent_release_sha256=parent,year_min=min(by_id[p]['year'] for p in ids),year_max=max(by_id[p]['year'] for p in ids),research_topics=[{'topic_key':k,'name':names[k],'papers':v} for k,v in sorted(topic_counts.items(),key=lambda kv:(-kv[1],names[kv[0]]))],feed={'mode':'scheduled','live_updates':True,'updated_at':now,'description':'Verified scheduled release; source indexing delays apply.'})
         manifest['topics']=[{'topic_id':int(k),'name':next(p['topic_name'] for p in by_id.values() if p['topic_id']==k),'papers':v} for k,v in sorted(Counter(p['topic_id'] for p in by_id.values()).items())]
-        manifest['update_report']={'counts':dict(counts),'distribution_js_bits':drift,'assignment':'Frozen community and topic assignment by 5-neighbor vote; graph rebuilt using HNSW top-15 directed neighbors.','source_freshness':'Only observed records refreshed; original snapshot citation counts retain their original date.'}
+        manifest['community_drift_reference']=drift['reference_counts']
+        if 'relevance_reference' not in manifest:
+            from src.evaluation import retrieval_metrics
+            benchmark=json.loads((ROOT/'data/benchmark/effective.json').read_text())['queries'];baseline={}
+            for mode in ['bm25','dense','hybrid']:
+                measurements=[]
+                for q in benchmark:
+                    ranking,_=engine.search(q['query'],mode,20)
+                    measurements.append(retrieval_metrics([p['paper_id'] for p in ranking],{j['paper_id']:j['grade'] for j in q['judgments']}))
+                baseline[mode]={k:float(np.mean([r[k] for r in measurements])) for k in ['ndcg_at_10','recall_at_20']}
+            manifest['relevance_reference']=baseline
+        manifest['update_report']={'counts':dict(counts),'drift':drift,'assignment':'Frozen community and topic assignment by 5-neighbor vote; graph rebuilt using HNSW top-15 directed neighbors.','source_freshness':'Only observed records refreshed; original snapshot citation counts retain their original date.'}
         manifest['artifacts']={p.name:digest(p) for p in output.iterdir() if p.is_file() and p.name!='release.json'};(output/'release.json').write_text(json.dumps(manifest,indent=2)+'\n')
         return {'changed':True,'papers':len(ids),'release_sha256':digest(output/'release.json'),'counts':dict(counts),'drift':drift}
     except BaseException:
