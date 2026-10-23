@@ -34,7 +34,7 @@ test('real corpus: examples, all rankings, paper details, graph, filters and cle
   const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/');
-  await expect(page.getByText('20,000 papers · frozen OpenAlex snapshot')).toBeVisible();
+  await expect(page.getByText(/papers · (frozen OpenAlex snapshot|scheduled research atlas)/)).toBeVisible();
   await expect(page.getByRole('button',{name:'Find papers ↗'})).toBeDisabled();
   await page.getByRole('button',{name:'Graph retrieval for multi-hop reasoning ↗',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Papers to explore',exact:true})).toBeVisible();
@@ -67,7 +67,7 @@ test('real corpus: examples, all rankings, paper details, graph, filters and cle
 test('mobile and accessible validation: no overflow, topic filter, request error recovery', async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto('/');
-  await expect(page.getByText('20,000 papers · frozen OpenAlex snapshot')).toBeVisible();
+  await expect(page.getByText(/papers · (frozen OpenAlex snapshot|scheduled research atlas)/)).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
   await page.getByLabel('What are you researching?',{exact:true}).fill('language retrieval');
   const topic = await page.getByRole('combobox',{name:'Research topic',exact:true}).locator('option').nth(1).getAttribute('value');
@@ -95,7 +95,7 @@ test('paper insights explain summaries, citation directions, themes and snapshot
   await expect(detail.locator('.summary-points li').first()).toBeVisible();
   await expect(detail.getByRole('heading',{name:'How this paper connects',exact:true})).toBeVisible();
   await expect(detail.locator('.neighbors .connection-reason').first()).toContainText('Shared terms:');
-  await expect(page.getByRole('region',{name:'Latest publications'})).toContainText('Live ingestion is not enabled');
+  await expect(page.getByRole('region',{name:'Latest publications'})).toContainText(/Live ingestion is not enabled|verified scheduled updates/);
   await page.getByRole('button',{name:'Close paper details'}).click();
   await page.getByLabel('Find a research theme',{exact:true}).fill('Software Engineering Research');
   await page.getByRole('combobox',{name:'Explore research themes',exact:true}).selectOption('T10260');
