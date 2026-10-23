@@ -92,3 +92,13 @@ def distribution_drift(before,after):
     def kl(x):
         valid=x>0;return float(np.sum(x[valid]*np.log2(x[valid]/m[valid])))
     return (kl(p)+kl(q))/2
+
+
+def update_drift(base_labels, added_labels, final_labels, reference_counts=None):
+    """Batch novelty is diagnostic; cumulative corpus shift is a promotion gate."""
+    counts=reference_counts or dict(Counter(int(x) for x in base_labels))
+    reference=[int(label) for label,count in counts.items() for _ in range(int(count))]
+    batch=distribution_drift(base_labels,added_labels) if len(added_labels) else 0.
+    global_drift=distribution_drift(reference,final_labels)
+    if global_drift>.1:raise ValueError('Cumulative corpus drift exceeds 0.1 bits; review required')
+    return {'batch_js_bits':batch,'batch_warning':len(added_labels)>=50 and batch>.1,'corpus_js_bits':global_drift,'reference_counts':counts}
