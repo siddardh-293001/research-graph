@@ -28,6 +28,7 @@ incremental:
   neighbors: 5
   block_size: 128
   drift_js_warning: 0.1
+  cumulative_corpus_drift_js_gate: 0.1
   evaluation_sample: 1200
   initial_fraction: 0.8
 limits:
