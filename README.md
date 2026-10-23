@@ -195,3 +195,19 @@ the browser once with `cd web && npx playwright install chromium`. Terraform and
 its initialized provider are required for infrastructure validation; the official
 Render schema is saved under `infra/render`.
 Subsequent sections will extend and run self-verification before completion.
+
+## Section 7: verified scheduled updates
+
+See [Section 7](docs/SECTION_7.md). The pipeline collects free OpenAlex, arXiv
+and Crossref candidates, builds immutable updates, checks retrieval, ANN recall,
+memory and browser behavior, then publishes versioned releases when promotion
+is enabled. The host supervisor refreshes verified releases without storing a
+Render API key. The 200k tier remains a separate capacity and quality gate.
+
+Local candidate commands:
+```sh
+python scripts/collect_sources.py --output build/new-candidates
+python scripts/update_release.py --source build/release --candidates build/new-candidates/candidates.json --output build/new-release
+python scripts/check_update.py --source build/release --candidate build/new-release --output build/new-release-check.json
+```
+These commands create a candidate; they do not publish it.
