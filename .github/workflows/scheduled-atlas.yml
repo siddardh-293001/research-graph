@@ -1,0 +1,92 @@
+name: Verified free atlas updates
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: atlas-production-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      RESEARCHGRAPH_REMOTE_RELEASE: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-serving.txt requests pandas pyarrow scikit-learn scipy networkx python-louvain igraph leidenalg pyyaml
+      - name: Restore bundled seed and current production release
+        run: |
+          python scripts/restore_release.py --output build/bundled
+          RESEARCHGRAPH_RELEASE=build/bundled python scripts/fetch_model.py
+          python scripts/remote_release.py --parts build/current-parts --output build/current --model build/bundled/model.onnx
+          if [ -f build/current/release.json ]; then
+            echo 'ATLAS_SOURCE=build/current' >> "$GITHUB_ENV"
+          else
+            echo 'ATLAS_SOURCE=build/bundled' >> "$GITHUB_ENV"
+          fi
+      - name: Collect free source updates
+        run: python scripts/collect_sources.py --output build/candidates
+      - name: Build immutable candidate
+        id: build
+        run: |
+          python scripts/update_release.py --source "$ATLAS_SOURCE" --candidates build/candidates/candidates.json --output build/candidate
+          if [ -f build/candidate/release.json ]; then echo 'changed=true' >> "$GITHUB_OUTPUT"; fi
+      - name: Verify relevance, integrity, ANN recall and memory
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          python scripts/check_update.py --source "$ATLAS_SOURCE" --candidate build/candidate --output build/update-verification.json
+          python scripts/pack_release.py --source build/candidate --output build/candidate-parts
+          rsync -a --delete build/candidate-parts/ deploy/release-parts/
+      - name: Build and test Linux candidate under free memory limit
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          docker build -t researchgraph:candidate .
+          docker run -d --name atlas-candidate --memory=512m -e RESEARCHGRAPH_REMOTE_RELEASE=0 -p 8000:8000 researchgraph:candidate
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:8000/readyz; then break; fi
+            sleep 2
+          done
+          python - <<'PY'
+          import hashlib,json,urllib.request
+          expected=hashlib.sha256(open('build/candidate/release.json','rb').read()).hexdigest()
+          with urllib.request.urlopen('http://127.0.0.1:8000/readyz') as r: actual=json.load(r)
+          assert actual['release_sha256']==expected
+          PY
+      - uses: actions/setup-node@v4
+        if: steps.build.outputs.changed == 'true'
+        with:
+          node-version: '22'
+      - name: Browser verification of candidate
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          cd web
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - name: Promote verified release and deploy, with rollback
+        if: steps.build.outputs.changed == 'true' && vars.ENABLE_AUTO_PROMOTION == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/promote_release.py --parts build/candidate-parts --report build/update-verification.json
+      - name: Report activation state
+        if: vars.ENABLE_AUTO_PROMOTION != 'true'
+        run: echo 'Candidate collection and verification only. Set ENABLE_AUTO_PROMOTION=true after the initial workflow and hosted release supervisor pass.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-update-evidence
+          path: |
+            build/candidates/report.json
+            build/update-verification.json
+            web/test-results
+          retention-days: 3
+      - name: Container logs
+        if: always()
+        run: docker logs atlas-candidate || true

@@ -19,7 +19,7 @@ jobs:
       - run: docker build -t researchgraph:ci .
       - name: Verify under free-plan memory ceiling
         run: |
-          docker run -d --name researchgraph-ci --memory=512m -p 8000:8000 researchgraph:ci
+          docker run -d -e RESEARCHGRAPH_REMOTE_RELEASE=0 --name researchgraph-ci --memory=512m -p 8000:8000 researchgraph:ci
           for attempt in $(seq 1 90); do
             if curl --fail --silent http://127.0.0.1:8000/readyz; then break; fi
             sleep 2

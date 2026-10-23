@@ -1,0 +1,25 @@
+name: Free AI and CS candidate collection
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: recent-candidates
+  cancel-in-progress: false
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pandas numpy
+      - name: Collect at most 500 anonymous free candidates
+        run: python scripts/collect_recent.py --output build/recent-candidates --pages 5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recent-ai-cs-candidates
+          path: build/recent-candidates
+          retention-days: 7
