@@ -46,8 +46,10 @@ ID and unavailable citation counts are distinct from zero.
 Each update is an immutable candidate. Promotion requires SQLite and artifact
 integrity, grounded summaries, fixed-query relevance within 0.005 of the parent,
 ANN recall at least 0.95, isolated serving RSS below 460 MiB, a Linux container
-under 512 MiB, and browser tests. Drift over 0.1 bits for at least 50 added
-community assignments blocks promotion. Source failures retain the previous
+under 512 MiB, and browser tests. Batch drift over 0.1 bits for at least 50 additions is a novelty warning.
+Cumulative whole-corpus drift over 0.1 bits from the frozen reference blocks
+promotion. Retrieval is checked against both the parent and a frozen initial
+reference, preventing small regressions from accumulating across releases. Source failures retain the previous
 release. These are engineering gates, not an independent relevance review.
 
 Verified parts are uploaded to a versioned public GitHub release. The serving
