@@ -1,0 +1,6 @@
+import React,{useEffect,useState} from 'react';
+export default function ReviewMatrix({papers}){
+ const [data,D]=useState([]),[error,E]=useState('');const ids=papers.map(p=>p.paper_id).join('|');
+ useEffect(()=>{const c=new AbortController();D([]);E('');Promise.all(papers.map(async p=>{const r=await fetch('/api/evidence?paper_id='+encodeURIComponent(p.paper_id),{signal:c.signal});if(!r.ok)throw Error('Review evidence unavailable.');return {paper:p,...await r.json()};})).then(D).catch(e=>{if(e.name!=='AbortError')E(e.message);});return()=>c.abort();},[ids]);
+ return <section><h3>Literature review matrix</h3><p>Abstract excerpts selected by keywords, with sentence references. Review these categories against the full paper; empty cells mean not identified.</p>{error&&<p role="alert">{error}</p>}<div className="matrix-scroll"><table><thead><tr><th>Category</th>{data.map(d=><th key={d.paper.paper_id}>{d.paper.title}</th>)}</tr></thead><tbody>{['question','methods','datasets','findings','limitations'].map(k=><tr key={k}><th>{k}</th>{data.map(d=><td key={d.paper.paper_id}>{d.matrix[k].length?d.matrix[k].map(r=><blockquote key={r.sentence}>{r.text}<cite>Abstract sentence {r.sentence}</cite></blockquote>):'Not identified in abstract'}</td>)}</tr>)}</tbody></table></div></section>;
+}

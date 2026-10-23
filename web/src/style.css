@@ -64,7 +64,7 @@ header,footer,.paper-card,.paper-insights section{border-color:var(--rg-border)}
 .lead,.corpus-line,.paper-meta,.paper-card p,.detail p,.evidence-note,.filters label,.results-heading>span,.feed-grid small,.neighbors small{color:var(--rg-text-muted)}
 .brand-mark,.eyebrow,h1 span{color:var(--rg-oxblood)}
 .primary{background:var(--rg-oxblood);color:white}.tag{background:var(--rg-sidebar);color:var(--rg-text)}
-button{color:inherit}.paper-footer button,.citation-links button,.neighbors button{color:var(--rg-text)}
+button{color:var(--rg-text);background:var(--rg-surface);border:1px solid var(--rg-border);border-radius:var(--rg-radius-control);padding:8px 12px;max-width:100%;white-space:normal;overflow-wrap:anywhere;}.paper-footer button,.citation-links button,.neighbors button{color:var(--rg-text)}
 :focus-visible{outline:3px solid var(--rg-oxblood)}[data-theme=dark] :focus-visible{outline-color:var(--rg-moss)}
 [data-theme=dark] .eyebrow,[data-theme=dark] h1 span,[data-theme=dark] .brand-mark{color:var(--rg-moss)}
 .neighbors svg{background:var(--rg-ink);border-radius:12px}.neighbors svg text{fill:var(--rg-paper)}.neighbors svg line{stroke:var(--rg-lilac);stroke-dasharray:5 4}.neighbors svg circle{fill:var(--rg-paper)}.neighbors svg .center{fill:var(--rg-oxblood);stroke:var(--rg-moss);stroke-width:3}
@@ -78,3 +78,18 @@ button{color:inherit}.paper-footer button,.citation-links button,.neighbors butt
 .impact-grid span,.detail .evidence-note{color:var(--rg-text-muted);}
 
 .library label{display:block;margin:12px 0}.library textarea{display:block;width:100%;background:var(--rg-surface);color:var(--rg-text);border:1px solid var(--rg-border);padding:12px}.library table{width:100%;text-align:left}blockquote{border-left:3px solid var(--rg-lilac);padding-left:16px}cite{display:block;font-size:12px}
+header{flex-wrap:wrap;gap:16px}nav{flex-wrap:wrap;align-items:center;gap:12px;max-width:100%}nav button{white-space:normal}.library{min-width:0;overflow-wrap:anywhere}.library input,.library select{max-width:100%}
+@media(max-width:760px){header{align-items:flex-start}nav{width:100%}.library table{font-size:12px}.library{padding:16px}.library .tools{flex-direction:column;align-items:stretch}}
+
+/* Neutral controls always carry an explicit, contrasting foreground. */
+button:not(.primary):hover{background:var(--rg-elevated);color:var(--rg-text);}
+button:disabled{opacity:1;color:var(--rg-text-muted);cursor:not-allowed;}
+textarea{background:var(--rg-surface);color:var(--rg-text);border:1px solid var(--rg-border);}
+input,select,textarea{color-scheme:light;}
+[data-theme="dark"] input,[data-theme="dark"] select,[data-theme="dark"] textarea{color-scheme:dark;}
+
+.neighbors svg .node-label{fill:var(--rg-ink);font-size:12px}.neighbors svg [role=button]{cursor:pointer}.neighbors svg [role=button]:focus circle{stroke:var(--rg-moss);stroke-width:4}
+
+.connection-map svg{width:100%;background:var(--rg-ink);border-radius:12px}.connection-map svg circle{fill:var(--rg-paper)}.connection-map svg .center{fill:var(--rg-oxblood);stroke:var(--rg-moss);stroke-width:3}.connection-map svg line{stroke:var(--rg-lilac)}.connection-map svg text{fill:var(--rg-ink)}.connection-map [role=button]{cursor:pointer}.connection-map [role=button]:focus circle{stroke:var(--rg-moss);stroke-width:4}
+
+.matrix-scroll{overflow-x:auto}.matrix-scroll table{border-collapse:collapse;width:100%;min-width:600px}.matrix-scroll td,.matrix-scroll th{border:1px solid var(--rg-border);padding:12px;vertical-align:top;text-align:left}.matrix-scroll blockquote{margin:8px 0;padding-left:10px}
