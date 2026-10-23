@@ -96,7 +96,7 @@ def create_app(engine_factory=None, web_root=None, requests_per_minute=120):
 
     @app.get('/readyz')
     def ready():
-        return {'status': 'ready', 'papers': app.state.engine.manifest['papers']}
+        return {'status': 'ready', 'papers': app.state.engine.manifest['papers'], 'release_sha256':getattr(app.state.engine,'release_sha256',None)}
 
     @app.get('/api/status')
     def status():

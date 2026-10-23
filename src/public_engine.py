@@ -22,6 +22,7 @@ def digest(path):
 class PublicEngine:
     def __init__(self, directory):
         self.directory = Path(directory).resolve()
+        self.release_sha256 = digest(self.directory/'release.json')
         self.manifest = json.loads((self.directory/'release.json').read_text())
         for name, expected in self.manifest['artifacts'].items():
             if Path(name).name != name or digest(self.directory/name) != expected:
@@ -141,6 +142,8 @@ class PublicEngine:
             for row in order[:top_k]:
                 result = dict(db.execute('SELECT * FROM papers WHERE row_id=?', (int(row),)).fetchone())
                 result.pop('row_id')
+                if self.manifest.get('schema_version',1)>=3:
+                    result.update(dict(db.execute('SELECT citation_count_available,citation_source FROM insights WHERE paper_id=?',(result['paper_id'],)).fetchone()))
                 terms = set(self.tokenize(query))
                 sentences = re.split(r'(?<=[.!?])\s+', result['abstract'])
                 ranked = [(len(terms & set(self.tokenize(s))), -i, s) for i, s in enumerate(sentences)]
@@ -167,11 +170,12 @@ class PublicEngine:
                 result.update(extra)
                 result['research_topics']=[dict(r) for r in db.execute('SELECT t.topic_key,t.name,t.papers,pt.score FROM research_topics t JOIN paper_topics pt USING(topic_key) WHERE pt.paper_id=? ORDER BY pt.score DESC,t.name',(paper_id,))]
                 result['citation_context']={
-                    'global_count':result['citation_count'],
+                    'global_count':result['citation_count'] if result.get('citation_count_available',1) else None,
+                    'source':result.get('citation_source') or 'OpenAlex',
                     'within_corpus_citing':db.execute('SELECT count(*) FROM citations WHERE target=?',(paper_id,)).fetchone()[0],
                     'within_corpus_references':db.execute('SELECT count(*) FROM citations WHERE source=?',(paper_id,)).fetchone()[0],
                     'recorded_references':result['reference_count'],
-                    'as_of':self.manifest['source_finished_at'],
+                    'as_of':result.get('observed_at') or self.manifest['source_finished_at'],
                     'scope':'OpenAlex citations at snapshot time. Corpus links are a subset; counts are not a measure of research quality.'}
                 result['connections']={}
                 for kind,join,where in [('cites','c.target=p.paper_id','c.source'),('cited_by','c.source=p.paper_id','c.target')]:
@@ -181,7 +185,7 @@ class PublicEngine:
     def feed(self, limit=12):
         with closing(self.connect()) as db:
             rows=[dict(r) for r in db.execute('SELECT p.paper_id,p.title,p.year,p.citation_count,i.publication_date FROM papers p JOIN insights i USING(paper_id) ORDER BY i.publication_date DESC,p.paper_id LIMIT ?',(limit,))]
-        return {'mode':'snapshot','live_updates':False,'as_of':self.manifest['source_finished_at'],'papers':rows}
+        return {**self.manifest.get('feed', {'mode':'snapshot','live_updates':False}), 'as_of':self.manifest.get('updated_at',self.manifest['source_finished_at']),'papers':rows}
 
     def neighborhood(self, paper_id, limit=20):
         with closing(self.connect()) as db:

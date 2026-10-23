@@ -93,7 +93,7 @@ def verify():
                     ROOT/'web/package.json',ROOT/'web/package-lock.json',ROOT/'web/playwright.config.js',
                     ROOT/'web/vite.config.js',ROOT/'web/index.html',ROOT/'Start ResearchGraph.command',ROOT/'Dockerfile',ROOT/'.dockerignore',
                     ROOT/'render.yaml',ROOT/'infra/render/main.tf',ROOT/'infra/render/.terraform.lock.hcl',
-                    ROOT/'.github/workflows/public-demo.yml', ROOT/'.github/workflows/recent-candidates.yml', ROOT/'infra/render/render.schema.json',
+                    ROOT/'.github/workflows/scheduled-atlas.yml', ROOT/'data/benchmark/effective.json', ROOT/'.github/workflows/public-demo.yml', ROOT/'.github/workflows/recent-candidates.yml', ROOT/'infra/render/render.schema.json',
                     *(ROOT/'deploy/release-parts').glob('*')]
     config_before = {str(p.relative_to(ROOT)): sha256(p) for p in config_paths}
 
@@ -180,6 +180,8 @@ def verify():
         release_hash=sha256(release/'release.json')
         command('section7_insights_incremental',['scripts/check_section7.py','--release',str(release),'--output',str(output/'section7.json')],timeout=600)
         report['section7']=json.loads((output/'section7.json').read_text())
+        command('scheduled_update_lifecycle',['scripts/check_update_pipeline.py','--source',str(release),'--output',str(output/'update_lifecycle.json')],timeout=600)
+        report['update_lifecycle']=json.loads((output/'update_lifecycle.json').read_text())
         command('deployment_config',['scripts/check_infra.py',str(output/'infrastructure.json')])
         report['infrastructure']=json.loads((output/'infrastructure.json').read_text())
         command('public_frontend_build',['run','build'],executable='npm',cwd=ROOT/'web')
