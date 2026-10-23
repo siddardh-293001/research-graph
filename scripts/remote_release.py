@@ -40,6 +40,7 @@ def fetch(parts,output,model_source):
         if Path(part['file']).name!=part['file'] or not part['file'].startswith('release-'):raise ValueError('Unsafe asset name')
         asset(part['file'],24*1024*1024)
     restore(parts,output)
+    if release['tag_name']!='atlas-'+digest(output/'release.json')[:16]:raise ValueError('Atlas tag does not match release hash')
     expected=json.loads((output/'release.json').read_text())['artifacts']['model.onnx']
     if digest(model_source)!=expected:raise ValueError('Published model is incompatible with this app')
     shutil.copyfile(model_source,output/'model.onnx')

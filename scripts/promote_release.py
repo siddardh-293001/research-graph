@@ -14,7 +14,6 @@ from scripts.remote_release import REPOSITORY
 
 def promote(parts,report):
     token=os.environ['GH_TOKEN']
-    if not os.environ.get('RENDER_API_KEY') or not os.environ.get('RENDER_SERVICE_ID'):raise ValueError('Configure Render deployment credentials before automatic promotion')
     parts=Path(parts);manifest=json.loads((parts/'manifest.json').read_text());gate=json.loads(Path(report).read_text())
     if gate.get('passed') is not True or gate['release_sha256']!=manifest['release_sha256']:raise ValueError('Verification report does not match candidate')
     for part in manifest['parts']:
@@ -43,14 +42,22 @@ def promote(parts,report):
             with urllib.request.urlopen(req,timeout=180) as response:response.read()
         except urllib.error.HTTPError as exc:raise RuntimeError('Release asset upload failed with HTTP '+str(exc.code)) from None
     api('/releases/'+str(created['id']),{'draft':False,'make_latest':'true'},'PATCH')
-    env=dict(os.environ,EXPECTED_RELEASE_SHA256=gate['release_sha256'],EXPECTED_PAPERS=str(gate['papers']))
-    result=subprocess.run([sys.executable,str(ROOT/'scripts/deploy_render.py')],env=env)
-    if result.returncode:
+    import time
+    url='https://researchgraph-sdu4.onrender.com'
+    success=False
+    for _ in range(42):
+        try:
+            with urllib.request.urlopen(url+'/readyz',timeout=45) as response:ready=json.load(response)
+            if ready.get('release_sha256')==gate['release_sha256'] and ready.get('papers')==gate['papers']:
+                req=urllib.request.Request(url+'/api/search',data=json.dumps({'query':'graph retrieval','mode':'hybrid','top_k':5}).encode(),headers={'Content-Type':'application/json'})
+                with urllib.request.urlopen(req,timeout=45) as response:success=bool(json.load(response)['results'])
+                if success:break
+        except (OSError,ValueError):pass
+        time.sleep(10)
+    if not success:
         api('/releases/'+str(created['id']),{'prerelease':True,'make_latest':'false'},'PATCH')
         if previous:api('/releases/'+str(previous['id']),{'make_latest':'true'},'PATCH')
-        # Rebuild using the previous pointer. If it also fails Render retains the last healthy instance.
-        rollback=subprocess.run([sys.executable,str(ROOT/'scripts/deploy_render.py')],env=dict(os.environ,EXPECTED_RELEASE_SHA256=gate['parent_release_sha256']))
-        raise RuntimeError('Promotion failed; previous release pointer restored. Rollback exit: '+str(rollback.returncode))
+        raise RuntimeError('Hosted refresh verification failed; previous release pointer restored')
     print(json.dumps({'promoted':tag,'release_sha256':gate['release_sha256'],'papers':gate['papers']}))
 
 if __name__=='__main__':
