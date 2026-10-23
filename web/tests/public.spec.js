@@ -26,6 +26,7 @@ test('a delayed paper request cannot reopen details after a new search', async (
   await page.getByRole('button',{name:'Find papers ↗'}).click();
   await finished;
   release();
+  await page.unrouteAll({behavior:'wait'});
   await expect(page.locator('article')).toHaveCount(20);
   await expect(page.getByRole('complementary',{name:'Paper details'})).toHaveCount(0);
 });
