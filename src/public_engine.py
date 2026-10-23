@@ -205,6 +205,9 @@ class PublicEngine:
                     forward=db.execute('SELECT 1 FROM citations WHERE source=? AND target=?',(paper_id,node['paper_id'])).fetchone()
                     backward=db.execute('SELECT 1 FROM citations WHERE source=? AND target=?',(node['paper_id'],paper_id)).fetchone()
                     node['citation_direction']='both' if forward and backward else 'cites' if forward else 'cited_by' if backward else None
-            for node in nodes:node.pop('abstract',None)
+            for node in nodes:
+                node.pop('abstract',None)
+                if self.manifest.get('schema_version',1)>=3:
+                    node.update(dict(db.execute('SELECT citation_count_available,citation_source FROM insights WHERE paper_id=?',(node['paper_id'],)).fetchone()))
             return {'nodes': nodes, 'edges': [{'source': paper_id, 'target': node['paper_id'], 'weight': float(edge['weight'])}
                                               for node, edge in zip(nodes[1:], edges)], 'scope': 'Strongest semantic neighbors; bounded ego graph.'}
