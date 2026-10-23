@@ -180,6 +180,7 @@ def verify():
         release_hash=sha256(release/'release.json')
         command('section7_insights_incremental',['scripts/check_section7.py','--release',str(release),'--output',str(output/'section7.json')],timeout=600)
         report['section7']=json.loads((output/'section7.json').read_text())
+        command('research_exploration',['scripts/check_exploration.py'],timeout=120)
         command('scheduled_update_lifecycle',['scripts/check_update_pipeline.py','--source',str(release),'--output',str(output/'update_lifecycle.json')],timeout=600)
         report['update_lifecycle']=json.loads((output/'update_lifecycle.json').read_text())
         command('deployment_config',['scripts/check_infra.py',str(output/'infrastructure.json')])

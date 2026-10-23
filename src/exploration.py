@@ -18,7 +18,9 @@ def browse(engine, query='', field='title', sort='newest', page=1, year_min=None
     with closing(engine.connect()) as db:
         total=db.execute('SELECT count(DISTINCT p.paper_id)'+source,args).fetchone()[0]
         rows=[dict(r) for r in db.execute('SELECT DISTINCT p.*'+source+' ORDER BY '+order+' LIMIT 20 OFFSET ?',args+[(page-1)*20])]
-    return {'results':rows,'total':total,'page':page,'page_size':20,'scope':'Field matching across this atlas; citation sorting uses snapshot counts.'}
+    with closing(engine.connect()) as db:
+        matching_ids=[r[0] for r in db.execute('SELECT DISTINCT p.paper_id'+source+' ORDER BY p.paper_id LIMIT 25000',args)]
+    return {'matching_ids':matching_ids,'release_sha256':getattr(engine,'release_sha256',None),'results':rows,'total':total,'page':page,'page_size':20,'scope':'Field matching across this atlas; citation sorting uses snapshot counts.'}
 
 
 def evidence(engine,paper_id,question=''):
@@ -56,4 +58,4 @@ def source_metadata(paper_id):
     work=json.loads(raw);location=work.get('best_oa_location') or {}
     url=location.get('pdf_url') or location.get('landing_page_url')
     if not isinstance(url,str) or urlparse(url).scheme not in {'https','http'}:url=None
-    return {'available':True,'source':paper_id,'updated_date':work.get('updated_date'),'citations_by_year':work.get('counts_by_year',[]),'open_access_url':url,'venue':((work.get('primary_location') or {}).get('source') or {}).get('display_name'),'scope':'Current source-reported metadata; annual citation coverage may be incomplete. Open-access link availability is reported by OpenAlex, not a guarantee that the remote file remains accessible.'}
+    return {'authors':[{'name':a.get('author',{}).get('display_name'),'id':a.get('author',{}).get('id'),'orcid':a.get('author',{}).get('orcid')} for a in work.get('authorships',[])],'available':True,'source':paper_id,'updated_date':work.get('updated_date'),'citations_by_year':work.get('counts_by_year',[]),'open_access_url':url,'venue':((work.get('primary_location') or {}).get('source') or {}).get('display_name'),'scope':'Current source-reported metadata; annual citation coverage may be incomplete. Open-access link availability is reported by OpenAlex, not a guarantee that the remote file remains accessible.'}
