@@ -1,0 +1,19 @@
+{
+  "commit": "f586211deca5339e03a5beb2c7ebca38625f0f77",
+  "deployment": "dep-dbeceg8m7kps73dej0q0",
+  "status": "passed",
+  "checks": 25,
+  "hosted_browser_scenarios": 9,
+  "ci_runs": [
+    40104460878,
+    40104460837
+  ],
+  "verified_behaviors": [
+    "isolated explorer and library routes",
+    "workspace reload",
+    "paper return to origin",
+    "browser history",
+    "synchronized notes",
+    "grounded paragraphs"
+  ]
+}
