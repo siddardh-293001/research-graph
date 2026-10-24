@@ -1,0 +1,15 @@
+{
+  "commit": "310585bcbd3acf0f9d1416468d67f53def970ed9",
+  "deployment": "dep-dbec518m7kps73ddkj1g",
+  "status": "passed",
+  "checks": 25,
+  "browser_scenarios": 8,
+  "ci_runs": [
+    40102722086,
+    40102722068
+  ],
+  "source_match_verified": true,
+  "prior_failed_run": "20261024T142842Z-a3cdcc11",
+  "prior_failure": "Serving verifier exited -11 after printing successful results; unchanged-source full rerun passed.",
+  "limitation": "Browser-local notes remain subject to device storage availability; native teardown crash was not reproduced in the rerun."
+}
