@@ -1,0 +1,18 @@
+{
+  "commit": "79902ff88f7b373e3f739a524a0030d15f3e6a8d",
+  "deployment": "dep-dbebb64s728c73bmggq0",
+  "local_verification": "20261024T133639Z-ac6d1775",
+  "status": "passed",
+  "ci_runs": [
+    40099014112,
+    40099013953
+  ],
+  "targeted_checks": [
+    "exact-name match",
+    "pagination",
+    "deduplicated coauthors",
+    "injection-safe name lookup",
+    "hosted collaborator navigation"
+  ],
+  "limitation": "Names are not verified identities; same-name people can be combined."
+}
