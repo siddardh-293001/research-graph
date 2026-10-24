@@ -126,3 +126,35 @@ test('paper routes hide home content and support reload and back', async ({page}
   await expect(page.getByRole('complementary',{name:'Paper details'})).toBeVisible();
   await expect(page.getByRole('region',{name:'Latest publications'})).toHaveCount(0);
 });
+
+test('notebook and review matrix preserve and synchronize each other’s edits',async({page,request})=>{
+ const response=await request.get('/api/browse');expect(response.ok()).toBeTruthy();
+ const papers=(await response.json()).results.slice(0,2);
+ await page.addInitScript(rows=>localStorage.setItem('researchgraph-reading-list',JSON.stringify(rows)),papers);
+ await page.goto('/');await page.getByRole('button',{name:'Reading list (2)',exact:true}).click();
+ for(const box of await page.getByRole('checkbox',{name:'Compare',exact:true}).all())await box.check();
+ const review=page.getByRole('textbox',{name:'Your methods review for '+papers[0].title,exact:true});
+ await review.fill('Evidence checked against source.');
+ const notebook=page.locator('details').filter({has:page.locator('summary').filter({hasText:papers[0].title})}).first();
+ await notebook.locator('summary').click();
+ await expect(notebook.getByRole('textbox',{name:'Review: methods for '+papers[0].title,exact:true})).toHaveValue('Evidence checked against source.');
+ await notebook.getByRole('textbox',{name:'Notes for '+papers[0].title,exact:true}).fill('General reading notes.');
+ await expect(review).toHaveValue('Evidence checked against source.');
+ await notebook.getByRole('textbox',{name:'Review: methods for '+papers[0].title,exact:true}).fill('Revised method review.');
+ await expect(review).toHaveValue('Revised method review.');
+ const stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('rg-notes')));
+ expect(stored[papers[0].paper_id].text).toBe('General reading notes.');
+ expect(stored[papers[0].paper_id].review_methods).toBe('Revised method review.');
+});
+
+test('document evidence cites the correct paragraph and backup rejects invalid versions',async({page})=>{
+ await page.goto('/');await page.getByRole('button',{name:'Graph retrieval for multi-hop reasoning ↗',exact:true}).click();
+ await page.locator('article h3 button').first().click();
+ await page.getByLabel('Paper text (.txt)',{exact:true}).setInputFiles({name:'evidence.txt',mimeType:'text/plain',buffer:Buffer.from('Background.\r\n\r\nThe evaluation reduced measurement error.')});
+ await page.getByLabel('Full-text question',{exact:true}).fill('measurement error');
+ await page.getByRole('button',{name:'Retrieve document evidence'}).click();
+ await expect(page.getByText('evidence.txt, paragraph 2',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Reading list (0)',exact:true}).click();
+ await page.getByLabel('Restore JSON backup').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});
+ await expect(page.getByRole('alert')).toContainText('Unsupported backup format.');
+});
