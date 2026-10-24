@@ -11,7 +11,7 @@ REPOSITORY='siddardh-293001/research-graph'
 
 
 def download(url,path,limit):
-    with urllib.request.urlopen(url,timeout=90) as response, Path(path).open('wb') as output:
+    with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'ResearchGraph/0.7'}),timeout=90) as response, Path(path).open('wb') as output:
         total=0
         while chunk:=response.read(1024*1024):
             total+=len(chunk)
@@ -19,19 +19,37 @@ def download(url,path,limit):
             output.write(chunk)
 
 
-def fetch(parts,output,model_source):
-    request=urllib.request.Request(f'https://api.github.com/repos/{REPOSITORY}/releases/latest',headers={'Accept':'application/vnd.github+json'})
+def latest_release():
+    request=urllib.request.Request(f'https://api.github.com/repos/{REPOSITORY}/releases/latest',headers={'Accept':'application/vnd.github+json','User-Agent':'ResearchGraph/0.7'})
     try:
-        with urllib.request.urlopen(request,timeout=30) as response:release=json.load(response)
+        with urllib.request.urlopen(request,timeout=30) as response:return json.load(response)
     except urllib.error.HTTPError as exc:
         if exc.code==404:return None
-        raise
+        if exc.code not in (403,429):raise
+    # Public web redirects do not share the anonymous REST API rate quota.
+    request=urllib.request.Request(f'https://github.com/{REPOSITORY}/releases/latest',headers={'User-Agent':'ResearchGraph/0.7'})
+    with urllib.request.urlopen(request,timeout=30) as response:
+        url=response.geturl()
+    prefix=f'https://github.com/{REPOSITORY}/releases/tag/'
+    if not url.startswith(prefix):raise ValueError('Unexpected latest release redirect')
+    tag=url[len(prefix):]
+    import re
+    if not re.fullmatch(r'atlas-[0-9a-f]{16}',tag):raise ValueError('Invalid public atlas tag')
+    return {'tag_name':tag,'draft':False,'prerelease':False,'assets':None}
+
+
+def fetch(parts,output,model_source):
+    release=latest_release()
+    if release is None:return None
     if not str(release.get('tag_name','')).startswith('atlas-') or release.get('draft') or release.get('prerelease'):raise ValueError('Not a production atlas release')
-    assets={a['name']:a for a in release['assets']};parts=Path(parts);output=Path(output);parts.mkdir(parents=True)
+    assets=None if release['assets'] is None else {a['name']:a for a in release['assets']};parts=Path(parts);output=Path(output);parts.mkdir(parents=True)
     def asset(name,limit):
-        record=assets.get(name)
-        if not record or record['size']>limit:raise ValueError('Missing or oversized atlas asset')
-        url=record['browser_download_url']
+        if assets is None:
+            url=f'https://github.com/{REPOSITORY}/releases/download/{release["tag_name"]}/{name}'
+        else:
+            record=assets.get(name)
+            if not record or record['size']>limit:raise ValueError('Missing or oversized atlas asset')
+            url=record['browser_download_url']
         if not url.startswith(f'https://github.com/{REPOSITORY}/releases/download/'):raise ValueError('Unexpected asset host or repository')
         download(url,parts/name,limit)
     asset('manifest.json',65536);manifest=json.loads((parts/'manifest.json').read_text())

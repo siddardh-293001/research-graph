@@ -11,7 +11,7 @@ import time
 import urllib.error
 import urllib.request
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from scripts.remote_release import fetch,REPOSITORY
+from scripts.remote_release import fetch,REPOSITORY,latest_release
 from scripts.restore_release import digest
 
 
@@ -50,7 +50,7 @@ def main():
                 shutil.rmtree(temp/'parts');return temp/'release'
             shutil.rmtree(temp);return None
         except Exception as exc:
-            print('Atlas refresh unavailable:',type(exc).__name__,flush=True);shutil.rmtree(temp,ignore_errors=True);return None
+            print('Atlas refresh unavailable:',type(exc).__name__,getattr(exc,'code',''),flush=True);shutil.rmtree(temp,ignore_errors=True);return None
     if enabled:
         candidate=download()
         if candidate:active=candidate
@@ -71,9 +71,9 @@ def main():
         if enabled and time.monotonic()>=next_check:
             next_check=time.monotonic()+300
             try:
-                with urllib.request.urlopen(f'https://api.github.com/repos/{REPOSITORY}/releases/latest',timeout=30) as response:latest=json.load(response)
+                latest=latest_release()
                 current='atlas-'+digest(active/'release.json')[:16]
-                if latest.get('tag_name')!=current:
+                if latest and latest.get('tag_name')!=current:
                     candidate=download()
                     if candidate and digest(candidate/'release.json')!=digest(active/'release.json'):
                         old=active;stop(child)
@@ -89,7 +89,7 @@ def main():
                             if not ready(child,digest(old/'release.json')):stop(child);sys.exit('Rollback failed')
                             shutil.rmtree(candidate.parent,ignore_errors=True)
                             print('Candidate startup failed; restored previous atlas',flush=True)
-            except (OSError,ValueError):pass
+            except (OSError,ValueError) as exc:print('Atlas poll unavailable:',type(exc).__name__,getattr(exc,'code',''),flush=True)
         time.sleep(1)
     stop(child)
 
