@@ -64,3 +64,19 @@ def source_metadata(paper_id):
     url=location.get('pdf_url') or location.get('landing_page_url')
     if not isinstance(url,str) or urlparse(url).scheme not in {'https','http'}:url=None
     return {'authors':[{'name':a.get('author',{}).get('display_name'),'id':a.get('author',{}).get('id'),'orcid':a.get('author',{}).get('orcid')} for a in work.get('authorships',[])],'available':True,'source':paper_id,'updated_date':work.get('updated_date'),'citations_by_year':work.get('counts_by_year',[]),'open_access_url':url,'venue':((work.get('primary_location') or {}).get('source') or {}).get('display_name'),'scope':'Current source-reported metadata; annual citation coverage may be incomplete. Open-access link availability is reported by OpenAlex, not a guarantee that the remote file remains accessible.'}
+
+
+def author_profile(engine,name,page=1):
+    """Exact recorded-name profile; identities cannot be inferred from names."""
+    from collections import Counter
+    with closing(engine.connect()) as db:
+        records=[dict(r) for r in db.execute('SELECT p.paper_id,p.title,p.year,p.citation_count,p.topic_name,i.authors FROM papers p JOIN insights i USING(paper_id) WHERE EXISTS (SELECT 1 FROM json_each(i.authors) a WHERE a.value=? COLLATE NOCASE) ORDER BY p.year DESC,p.paper_id',(name,))]
+    collaborators=Counter();topics=Counter();years=Counter()
+    for row in records:
+        collaborators.update(set(a for a in json.loads(row.pop('authors')) if a.casefold()!=name.casefold()))
+        topics[row['topic_name']]+=1;years[row['year']]+=1
+    return {'name':name,'total':len(records),'page':page,'page_size':20,'results':records[(page-1)*20:page*20],
+            'collaborators':[{'name':n,'shared_papers':c} for n,c in sorted(collaborators.items(),key=lambda x:(-x[1],x[0]))[:30]],
+            'themes':[{'name':n,'papers':c} for n,c in topics.most_common()],
+            'years':[{'year':y,'papers':c} for y,c in sorted(years.items())],
+            'scope':'Exact author-name matches in this atlas, not a verified person identity. Namesakes may be combined; spelling variants may be omitted. Collaborators are coauthor names on matching records.'}

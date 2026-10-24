@@ -150,6 +150,11 @@ def create_app(engine_factory=None, web_root=None, requests_per_minute=120):
         from src.exploration import browse
         return browse(app.state.engine,query,field,sort,page,year_min,year_max)
 
+    @app.get('/api/author')
+    def author(name: str=Query(min_length=1,max_length=300),page: int=Query(default=1,ge=1,le=1250)):
+        from src.exploration import author_profile
+        return author_profile(app.state.engine,name,page)
+
     @app.get('/api/evidence')
     def evidence(paper_id: str=Query(min_length=1,max_length=200),question: str=Query(default='',max_length=500)):
         from src.exploration import evidence
