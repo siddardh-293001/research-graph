@@ -58,3 +58,18 @@ class UpdateContractTests(unittest.TestCase):
             self.assertEqual(len(children),2)
             self.assertEqual(children[1].env['RESEARCHGRAPH_RELEASE'],str(bundled.resolve()))
             self.assertTrue(all(c.code==0 for c in children))
+
+class PublicReleaseFallbackTests(unittest.TestCase):
+    def test_api_rate_limit_uses_validated_public_redirect(self):
+        import urllib.error
+        from scripts.remote_release import latest_release
+        class Response:
+            def __enter__(self):return self
+            def __exit__(self,*args):pass
+            def geturl(self):return 'https://github.com/siddardh-293001/research-graph/releases/tag/atlas-0123456789abcdef'
+        with patch('urllib.request.urlopen',side_effect=[urllib.error.HTTPError('fixture',403,'rate limit',{},None),Response()]):
+            self.assertEqual(latest_release()['tag_name'],'atlas-0123456789abcdef')
+        class Wrong(Response):
+            def geturl(self):return 'https://example.com/releases/tag/atlas-0123456789abcdef'
+        with patch('urllib.request.urlopen',side_effect=[urllib.error.HTTPError('fixture',429,'rate limit',{},None),Wrong()]):
+            with self.assertRaises(ValueError):latest_release()
