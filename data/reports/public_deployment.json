@@ -1,0 +1,350 @@
+{
+  "verified_live": true,
+  "verified_at": "2026-10-24T15:56:00.677300+00:00",
+  "url": "https://researchgraph-sdu4.onrender.com",
+  "runtime_commit": "82b60a7f9d4fae251ae7e93360edbbcc9b98a992",
+  "deploy_id": "dep-dbed5ijncjis73dsfafg",
+  "service_id": "srv-dbd12a3rjlhs73f0048g",
+  "workspace_id": "tea-dbb5bjnavr4c73fvbs30",
+  "plan": "free",
+  "instances": 1,
+  "release_sha256": "6371c9e9639a6c362b89bd322ac4463a9cef550499adc5b505ded5d7a2dd0a1f",
+  "papers": 20217,
+  "automatic_promotion": true,
+  "schedule": "Every six hours; delays possible",
+  "dry_run": 40106830304,
+  "failed_rollback_run": 40107116914,
+  "successful_production_run": 40108517452,
+  "candidate_verification": {
+    "passed": true,
+    "parent_release_sha256": "31e5535e8518f04146072e5482dc668fcccee683fc2da068ff4df588311bae69",
+    "release_sha256": "6371c9e9639a6c362b89bd322ac4463a9cef550499adc5b505ded5d7a2dd0a1f",
+    "papers": 20217,
+    "queries": 50,
+    "mean_metric_differences": {
+      "bm25": {
+        "ndcg_at_10": 0.00581030686606479,
+        "recall_at_20": 0.0
+      },
+      "dense": {
+        "ndcg_at_10": 0.0,
+        "recall_at_20": 0.0
+      },
+      "hybrid": {
+        "ndcg_at_10": 0.0019503317879906667,
+        "recall_at_20": 0.0
+      }
+    },
+    "cumulative_metric_differences": {
+      "bm25": {
+        "ndcg_at_10": 0.005810306866064874,
+        "recall_at_20": 0.0
+      },
+      "dense": {
+        "ndcg_at_10": 0.0,
+        "recall_at_20": 0.0
+      },
+      "hybrid": {
+        "ndcg_at_10": 0.0019503317879906445,
+        "recall_at_20": 0.0
+      }
+    },
+    "ann_recall_at_10": 1.0,
+    "serving_memory": {
+      "passed": true,
+      "peak_rss_mib": 371.04296875,
+      "gate_mib": 460,
+      "platform": "linux",
+      "scope": "Separate serving process: long queries, filtered exact search and full 64-entry result cache. Host OS, not a Linux container memory limit."
+    },
+    "limitations": [
+      "Incomplete provisional relevance labels; publication-date polling misses historical corrections.",
+      "New community/topic assignments are provisional frozen-label neighbor votes."
+    ]
+  },
+  "local_verification": "20261024T153932Z-3aa1852f",
+  "ci_runs": [
+    40108044429,
+    40108044374
+  ],
+  "browser": {
+    "initial_passed": 10,
+    "initial_total": 11,
+    "remaining_recheck_passed": true,
+    "reason": "Fixture download timeout after HTTP 200"
+  },
+  "research_themes": 1939,
+  "http": {
+    "ready": {
+      "status": "ready",
+      "papers": 20217,
+      "release_sha256": "6371c9e9639a6c362b89bd322ac4463a9cef550499adc5b505ded5d7a2dd0a1f"
+    },
+    "queries": [
+      {
+        "query": "multimodal graph reasoning",
+        "elapsed_ms": 372.74,
+        "server_search_ms": 13.064,
+        "cached": false
+      },
+      {
+        "query": "software migration language models",
+        "elapsed_ms": 189.89,
+        "server_search_ms": 17.001,
+        "cached": false
+      },
+      {
+        "query": "clinical retrieval evaluation",
+        "elapsed_ms": 389.93,
+        "server_search_ms": 11.482,
+        "cached": false
+      },
+      {
+        "query": "robot learning representation",
+        "elapsed_ms": 114.9,
+        "server_search_ms": 11.982,
+        "cached": false
+      },
+      {
+        "query": "citation networks research",
+        "elapsed_ms": 98.98,
+        "server_search_ms": 16.024,
+        "cached": false
+      },
+      {
+        "query": "adversarial robustness retrieval",
+        "elapsed_ms": 205.32,
+        "server_search_ms": 15.966,
+        "cached": false
+      }
+    ],
+    "scope": "Six sequential queries on a warm free host; client timings include network/TLS, not a sustained-load benchmark."
+  },
+  "resource_metrics": {
+    "resourceId": "srv-dbd12a3rjlhs73f0048g",
+    "timeRange": {
+      "start": "2026-10-24T15:47:00Z"
+    },
+    "metrics": [
+      {
+        "type": "memory_usage",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sw556"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:47:00Z",
+                "value": 280870900
+              }
+            ]
+          },
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sbtpn"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:48:00Z",
+                "value": 270323700
+              },
+              {
+                "timestamp": "2026-10-24T15:49:00Z",
+                "value": 270323700
+              },
+              {
+                "timestamp": "2026-10-24T15:50:00Z",
+                "value": 270360580
+              },
+              {
+                "timestamp": "2026-10-24T15:51:00Z",
+                "value": 270364670
+              },
+              {
+                "timestamp": "2026-10-24T15:52:00Z",
+                "value": 270376960
+              },
+              {
+                "timestamp": "2026-10-24T15:53:00Z",
+                "value": 278638600
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "memory_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sw556"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:47:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-24T15:48:00Z",
+                "value": 536870900
+              }
+            ]
+          },
+          {
+            "labels": [
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sbtpn"
+              },
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              }
+            ],
+            "unit": "bytes",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:49:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-24T15:50:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-24T15:51:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-24T15:52:00Z",
+                "value": 536870900
+              },
+              {
+                "timestamp": "2026-10-24T15:53:00Z",
+                "value": 536870900
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "cpu_limit",
+        "data": [
+          {
+            "labels": [
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sw556"
+              }
+            ],
+            "unit": "cpu",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:47:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-24T15:48:00Z",
+                "value": 0.15
+              }
+            ]
+          },
+          {
+            "labels": [
+              {
+                "field": "service",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "resource",
+                "value": "srv-dbd12a3rjlhs73f0048g"
+              },
+              {
+                "field": "instance",
+                "value": "srv-dbd12a3rjlhs73f0048g-sbtpn"
+              }
+            ],
+            "unit": "cpu",
+            "values": [
+              {
+                "timestamp": "2026-10-24T15:49:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-24T15:50:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-24T15:51:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-24T15:52:00Z",
+                "value": 0.15
+              },
+              {
+                "timestamp": "2026-10-24T15:53:00Z",
+                "value": 0.15
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Publication-window polling does not catch all historical changes.",
+    "Brief HTTP unavailability observed during supervised restart.",
+    "Free hosting may sleep; source schedules may be delayed.",
+    "Tier M 200,000-paper capacity remains unbuilt."
+  ]
+}
