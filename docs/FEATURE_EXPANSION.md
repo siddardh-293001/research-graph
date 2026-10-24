@@ -48,3 +48,8 @@ store. Each field update merges against the latest persisted notes; same-browser
 and cross-tab storage notifications refresh both views. Restore also uses the
 latest stored notes. Eight browser regression scenarios include alternating
 notebook/matrix edits, grounded paragraph citations and invalid-backup rejection.
+
+Workspace navigation uses #explore and #library URLs. These views hide homepage
+sections and the main search form. Opening a paper remembers its originating
+workspace for the Back control. Nine browser scenarios cover workspace isolation,
+refresh, browser history, review preservation, and grounded document passages.
