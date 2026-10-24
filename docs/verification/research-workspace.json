@@ -1,0 +1,20 @@
+{
+  "local_verification_status": "passed",
+  "checks": 24,
+  "verified_commit": "52ca16637229786425d0d9634d19c768d7b811ad",
+  "published_source_matches": true,
+  "ci_runs": [
+    40096874241,
+    40096874233
+  ],
+  "hosted_browser_tests": 6,
+  "hosted_new_features": [
+    "graph expansion and back",
+    "local document passage retrieval"
+  ],
+  "limitations": [
+    "Local document retrieval is extractive plain-text lookup, not generated Q&A.",
+    "Author names in local metadata may be ambiguous.",
+    "Sparse citation connections are exploratory leads, not proven research gaps."
+  ]
+}
