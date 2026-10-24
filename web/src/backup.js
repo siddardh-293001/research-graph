@@ -9,7 +9,7 @@ export function mergeBackup(value, papers, notes) {
   for(const p of imported){
     const n=value.notes[p.paper_id];if(!n)continue;
     if(typeof n!=='object'||Array.isArray(n))throw Error('Invalid notes.');
-    const safe={};for(const k of ['collection','tags','text','status'])if(n[k]!==undefined){if(typeof n[k]!=='string'||n[k].length>10000)throw Error('Invalid note field.');safe[k]=n[k];}
+    const safe={};for(const k of ['collection','tags','text','status','review_question','review_methods','review_datasets','review_findings','review_limitations'])if(n[k]!==undefined){if(typeof n[k]!=='string'||n[k].length>10000)throw Error('Invalid note field.');safe[k]=n[k];}
     if(!Object.hasOwn(mergedNotes,p.paper_id))Object.defineProperty(mergedNotes,p.paper_id,{value:safe,enumerable:true,writable:true,configurable:true});
   }
   return {papers:[...new Map([...imported,...papers].map(p=>[p.paper_id,p])).values()],notes:mergedNotes};
