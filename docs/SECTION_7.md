@@ -1,81 +1,63 @@
-# Section 7A: paper evidence and incremental foundations
+# Section 7: scheduled research atlas and Tier M
 
-The local release enriches the existing 20,000-paper snapshot with abstract-only
-extractive summaries, authors, keywords, global citation counts, within-corpus
-citation context, and directed references/citing-paper navigation. Semantic
-neighbors expose cosine similarity, shared terms, community membership and any
-recorded citation direction. Similarity is not a citation or evidence of agreement.
+Verified scheduled updates are operational. The first successful production run
+40108517452 published atlas-6371c9e9639a6c36 and the free Render host adopted its
+exact SHA-256 6371c9e9639a6c362b89bd322ac4463a9cef550499adc5b505ded5d7a2dd0a1f:
+20,217 papers, up from the bundled 20,000-paper seed. Repository Actions variable
+ENABLE_AUTO_PROMOTION is true. The workflow runs every six hours; provider
+scheduling and source indexing delays apply.
 
-Topic discovery now exposes 1,919 positive-score OpenAlex research themes,
-separately from the ten fitted NMF topics. These are additional labels on the
-existing selective corpus, not evidence of broader collection coverage.
+The pipeline polls OpenAlex, arXiv and Crossref anonymously, stages bounded
+candidates, deduplicates DOI/arXiv/OpenAlex identities, skips inadequate abstracts,
+encodes new/changed text and rebuilds BM25, HNSW and sparse neighbors. Frozen
+community/topic labels use provisional neighbor votes. Observed corrections and
+retractions are supported; publication-window polling misses historical changes.
+Missing citation counts are distinct from zero. No paid inference is used.
 
-The incremental foundation includes a transactional identity-aware ledger,
-idempotent batches, stale-update rejection, retraction handling, bounded neighbor
-assignment and Jensen–Shannon distribution drift. A historical 1,200-paper test
-used 960 initial and 240 added papers: AMI versus full rebuilding was 0.65394,
-new-paper AMI 0.62739 and drift 0.03016 bits. This supports experimentation, not
-a claim of equivalent incremental and full communities.
+Promotion requires artifact/SQLite integrity, grounded summaries, a fixed
+50-query benchmark against both parent and frozen initial reference (maximum
+0.005 metric regression), ANN Recall@10 >=0.95, isolated serving RSS <=460 MiB,
+a Linux container limited to 512 MiB and eleven browser scenarios. Batch topic
+drift above 0.1 bits is a novelty warning; cumulative corpus drift above 0.1 bits
+from the frozen reference blocks promotion. Provisional labels still need
+independent relevance review.
 
-A bounded anonymous candidate collector and daily GitHub workflow are prepared.
-They stage at most 500 source rows without credentials or paid fallback. Candidate
-collection is not publication: embedding, graph, drift and relevance checks must
-pass before promotion. The feed explicitly represents the frozen snapshot.
-Scheduling is not operational until the workflow is published and tested.
+The production candidate measured ANN recall 1.0, Linux serving RSS 371.04 MiB,
+and no benchmark regression: hybrid nDCG@10 increased about 0.00195. Source
+metadata and corpus coverage are selective; these engineering checks do not
+establish complete coverage or research quality.
 
-Tier M (200,000 papers), automatic release promotion and hosted Section 7
-verification remain pending. Keep the free hosting plan and original legacy data.
-Local targeted evidence is in data/reports/section7.json. Full verification also
-runs scripts/check_section7.py and the enriched paper browser scenario.
+Versioned public GitHub release assets are checksummed and restored into a new
+directory. A single-process supervisor polls every five minutes, restarts search
+for a new release, and restores its previous local release on failed startup.
+GitHub promotion verifies hosted hash/count/search and restores the previous
+release pointer on failure. Brief HTTP unavailability during restart was observed;
+this is not zero-downtime hosting. Free Render idle sleep still applies.
 
-Full verification passed all 22 checks on the final local implementation.
-A real anonymous request staged 100 candidates; first attempt returned HTTP 504.
-No live promotion or Tier M claim is made. Portable evidence is under docs/verification/section7-*.json.
+The first promotion (40107116914) failed hosted adoption and rolled back. The
+fetch path now includes a validated public GitHub latest-release redirect when
+anonymous REST requests receive 403/429, and HTTP status diagnostics. The second
+production run completed successfully, including hosted adoption. No Render API
+key is needed for data updates. Code changes still need a normal deployment.
 
-## Section 7B: scheduled end-to-end pipeline
+The enriched paper interface includes abstract summaries, source authors and
+keywords, global citation counts, corpus citation context, directed references,
+semantic connections and 1939 multi-label OpenAlex themes. Review tools and
+limits are detailed in FEATURE_EXPANSION.md.
 
-The scheduled-atlas workflow polls OpenAlex, arXiv and Crossref every six hours.
-It deduplicates observed identities, skips inadequate abstracts, encodes new or
-changed text, rebuilds packed BM25 postings and a sparse HNSW neighbor index,
-and applies frozen-label topic/community votes. Corrections and observed
-retractions are supported; publication-window polling does not discover all
-historical corrections or retractions. Supplemental Crossref/arXiv observations
-do not overwrite an existing OpenAlex record. arXiv versions share a canonical
-ID and unavailable citation counts are distinct from zero.
+Verification evidence: docs/verification/automatic-updates.json and the release's
+verification.json. Ten of eleven hosted browser scenarios passed initially; one
+fixture download exceeded 10 seconds despite HTTP 200 and passed unchanged on
+recheck. Sampled host memory was about 268 MiB under the 512 MiB limit; this is
+not a sustained-load peak. Six sequential warm search requests are recorded in
+data/reports/live-update-http.json.
 
-Each update is an immutable candidate. Promotion requires SQLite and artifact
-integrity, grounded summaries, fixed-query relevance within 0.005 of the parent,
-ANN recall at least 0.95, isolated serving RSS below 460 MiB, a Linux container
-under 512 MiB, and browser tests. Batch drift over 0.1 bits for at least 50 additions is a novelty warning.
-Cumulative whole-corpus drift over 0.1 bits from the frozen reference blocks
-promotion. Retrieval is checked against both the parent and a frozen initial
-reference, preventing small regressions from accumulating across releases. Source failures retain the previous
-release. These are engineering gates, not an independent relevance review.
+## Remaining Tier M work
 
-Verified parts are uploaded to a versioned public GitHub release. The serving
-supervisor checks the latest release every five minutes, restores and checksums
-it in a fresh directory, then restarts one search process. Failed startup restores
-the previous local release. GitHub promotion checks the hosted hash, paper count
-and search; failure restores the previous release pointer. No Render deployment
-secret or paid inference service is needed for data refresh. Code changes still
-need a normal verified Render deployment. Free Render idle sleep still applies.
-
-Activation: publish scheduled-atlas.yml, deploy the supervisor, run the workflow
-with promotion disabled, inspect its checks, then set the repository Actions
-variable ENABLE_AUTO_PROMOTION=true. The workflow uses its short-lived built-in
-GitHub token. It retains small verification artifacts for three days. Provider
-schedules may be delayed; this is scheduled freshness, not an instant feed.
-
-The live source smoke test returned 236 candidates in three anonymous requests;
-218 passed abstract checks. The local 20,218-paper candidate passed 50-query
-relevance checks and five browser scenarios; sampled ANN recall was 1.0 and
-isolated serving RSS about 284 MiB on macOS. Linux/hosted checks are required
-before claiming public activation. Growth is capped at 25,000 served papers
-until a separate Tier M capacity evaluation passes. The 200,000-paper tier is
-not yet built.
-
-The supervisor path removes the need for a Render deployment credential in
-GitHub. GitHub retains its built-in repository token for publishing release
-assets. A previously requested RENDER_API_KEY secret is unnecessary for data
-refresh. Same-timestamp citation-count changes are accepted without re-encoding
-unchanged abstracts; conflicting content at the same timestamp blocks promotion.
+The serving cap remains 25,000 papers. The 200,000-paper collection, embedding,
+indexing, memory/performance capacity tests and incremental-vs-full comparison
+are not complete. No paid compute, disks, subscriptions or API credits are
+authorized. The historical 1,200-paper incremental experiment measured overall
+AMI 0.65394 and new-paper AMI 0.62739; it does not establish equivalent full and
+incremental communities at Tier M. Section 7 as a whole remains incomplete until
+those capacity and research gates pass. Preserve the original legacy artifacts.
