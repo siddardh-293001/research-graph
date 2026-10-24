@@ -42,3 +42,9 @@ Paragraph retrieval is regression-tested for LF and CRLF blank-line separation;
 reported paragraph numbers refer to the imported text document. Researcher notes
 never overwrite extracted source evidence. scripts/check_review.mjs runs in
 src.verify and checks paragraph grounding and review-note backup preservation.
+
+Review preservation: notebook and comparison-matrix editors share a synchronized
+store. Each field update merges against the latest persisted notes; same-browser
+and cross-tab storage notifications refresh both views. Restore also uses the
+latest stored notes. Eight browser regression scenarios include alternating
+notebook/matrix edits, grounded paragraph citations and invalid-backup rejection.
