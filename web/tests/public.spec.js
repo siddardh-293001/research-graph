@@ -180,3 +180,32 @@ test('explorer and reading workspace have isolated routes and return navigation'
  await expect(page.getByRole('heading',{name:'Research notebook',exact:true})).toBeVisible();
  await page.goBack();await expect(page).toHaveURL(/#paper=/);
 });
+
+test('explorer preserves result pages and saves only matching search criteria',async({page,request})=>{
+ const response=await request.get('/api/browse?page=2');const paper=(await response.json()).results[0];
+ await page.goto('/#explore');await page.getByRole('button',{name:'Browse atlas',exact:true}).click();
+ await expect(page.getByText(/matches · page 1\./)).toBeVisible();
+ await page.getByRole('button',{name:'Next page',exact:true}).click();await expect(page.getByText(/matches · page 2\./)).toBeVisible();
+ await page.getByRole('button',{name:'Save search',exact:true}).click();
+ await page.getByLabel('Search text',{exact:true}).fill('Unsubmitted edit');
+ await expect(page.getByRole('button',{name:'Save search',exact:true})).toBeDisabled();
+ await page.getByRole('button',{name:paper.title,exact:true}).click();
+ await expect(page.getByRole('complementary',{name:'Paper details'})).toBeVisible();
+ await page.getByRole('button',{name:'Close paper details'}).click();
+ await expect(page).toHaveURL(/#explore$/);await expect(page.getByText(/matches · page 2\./)).toBeVisible();
+ await expect(page.getByLabel('Search text',{exact:true})).toHaveValue('Unsubmitted edit');
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('rg-searches')));expect(saved[0].query).toBe('');
+ await page.getByRole('button',{name:'Remove saved search All papers',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Saved: All papers (title)',exact:true})).toHaveCount(0);
+});
+
+test('late explorer responses cannot replace a newer search',async({page})=>{
+ let release;const gate=new Promise(resolve=>release=resolve);
+ await page.route('**/api/browse?*',async route=>{const slow=new URL(route.request().url()).searchParams.get('query')==='slow';if(slow)await gate;await route.fulfill({json:{total:0,results:[],matching_ids:[],release_sha256:'fixture',scope:slow?'OLD RESPONSE':'LATEST RESPONSE'}}).catch(()=>{});});
+ await page.goto('/#explore');await page.getByLabel('Search text',{exact:true}).fill('slow');
+ const pending=page.waitForRequest(r=>r.url().includes('query=slow'));
+ await page.getByRole('button',{name:'Browse atlas',exact:true}).click();await pending;
+ await page.getByLabel('Search text',{exact:true}).fill('fast');await page.getByRole('button',{name:'Searching atlas…',exact:true}).click();
+ await expect(page.getByText(/LATEST RESPONSE/)).toBeVisible();release();await page.unrouteAll({behavior:'wait'});
+ await expect(page.getByText(/LATEST RESPONSE/)).toBeVisible();await expect(page.getByText(/OLD RESPONSE/)).toHaveCount(0);
+});
