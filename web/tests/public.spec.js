@@ -132,6 +132,7 @@ test('notebook and review matrix preserve and synchronize each other’s edits',
  const papers=(await response.json()).results.slice(0,2);
  await page.addInitScript(rows=>localStorage.setItem('researchgraph-reading-list',JSON.stringify(rows)),papers);
  await page.goto('/');await page.getByRole('button',{name:'Reading list (2)',exact:true}).click();
+ await expect(page.getByRole('checkbox',{name:'Compare',exact:true})).toHaveCount(2);
  for(const box of await page.getByRole('checkbox',{name:'Compare',exact:true}).all())await box.check();
  const review=page.getByRole('textbox',{name:'Your methods review for '+papers[0].title,exact:true});
  await review.fill('Evidence checked against source.');
@@ -157,4 +158,25 @@ test('document evidence cites the correct paragraph and backup rejects invalid v
  await page.getByRole('button',{name:'Reading list (0)',exact:true}).click();
  await page.getByLabel('Restore JSON backup').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});
  await expect(page.getByRole('alert')).toContainText('Unsupported backup format.');
+});
+
+test('explorer and reading workspace have isolated routes and return navigation',async({page,request})=>{
+ const response=await request.get('/api/browse');const papers=(await response.json()).results.slice(0,1);
+ await page.addInitScript(rows=>localStorage.setItem('researchgraph-reading-list',JSON.stringify(rows)),papers);
+ await page.goto('/');await page.getByRole('button',{name:'Research explorer',exact:true}).click();
+ await expect(page).toHaveURL(/#explore$/);
+ await expect(page.getByRole('heading',{name:'Research explorer',exact:true})).toBeVisible();
+ await expect(page.locator('.intro')).toHaveCount(0);
+ await expect(page.getByRole('region',{name:'Latest publications'})).toHaveCount(0);
+ await expect(page.getByRole('region',{name:'Search papers'})).toHaveCount(0);
+ await page.getByRole('button',{name:'Reading list (1)',exact:true}).click();
+ await expect(page).toHaveURL(/#library$/);await page.reload();
+ await expect(page.getByRole('heading',{name:'Research notebook',exact:true})).toBeVisible();
+ await page.locator('details').filter({has:page.locator('summary').filter({hasText:papers[0].title})}).first().locator('summary').click();
+ await page.getByRole('button',{name:'Open paper',exact:true}).click();
+ await expect(page.getByRole('complementary',{name:'Paper details'})).toBeVisible();
+ await page.getByRole('button',{name:'Close paper details'}).click();
+ await expect(page).toHaveURL(/#library$/);
+ await expect(page.getByRole('heading',{name:'Research notebook',exact:true})).toBeVisible();
+ await page.goBack();await expect(page).toHaveURL(/#paper=/);
 });
