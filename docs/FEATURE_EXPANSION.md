@@ -53,3 +53,12 @@ Workspace navigation uses #explore and #library URLs. These views hide homepage
 sections and the main search form. Opening a paper remembers its originating
 workspace for the Back control. Nine browser scenarios cover workspace isolation,
 refresh, browser history, review preservation, and grounded document passages.
+
+Explorer workflow: the active query, results and page remain mounted while a
+paper is open. Saved searches require the form to match displayed-result
+criteria and include all matching IDs for the release. Older requests are
+aborted and cannot replace newer results. Pagination uses the displayed query
+even if the form has unsubmitted edits. Saved queries can be removed. Eleven
+browser scenarios include preservation, saved-query correctness and deliberately
+delayed response cancellation. Explorer state persists within the current tab
+session; saved queries persist in local storage.
