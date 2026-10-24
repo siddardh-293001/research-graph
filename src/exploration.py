@@ -42,6 +42,11 @@ def trends(engine):
     with closing(engine.connect()) as db:
         years=[dict(r) for r in db.execute('SELECT year,topic_name,count(*) AS papers FROM papers GROUP BY year,topic_name ORDER BY year,topic_name')]
         gaps=[dict(r) for r in db.execute('SELECT a.topic_name AS topic_a,b.topic_name AS topic_b,count(*) AS links FROM citations c JOIN papers a ON a.paper_id=c.source JOIN papers b ON b.paper_id=c.target WHERE a.topic_id!=b.topic_id GROUP BY a.topic_id,b.topic_id ORDER BY links,a.topic_id,b.topic_id LIMIT 12')]
+        sizes={r['topic_name']:r['papers'] for r in db.execute('SELECT topic_name,count(*) AS papers FROM papers GROUP BY topic_name')}
+    for pair in gaps:
+        pair['topic_a_papers']=sizes[pair['topic_a']]
+        pair['topic_b_papers']=sizes[pair['topic_b']]
+        pair['links_per_10000_possible_pairs']=round(10000*pair['links']/(pair['topic_a_papers']*pair['topic_b_papers']),6)
     return {'years':years,'leads':gaps,'scope':'Selective corpus counts, not field-wide growth. Sparse observed cross-topic citation links are exploration leads, not proof of a research gap; coverage and topic size confound them.'}
 
 
