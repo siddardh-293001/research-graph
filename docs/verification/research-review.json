@@ -1,0 +1,21 @@
+{
+  "commit": "4e990538920986912c5a584eeb7fc53a766df26e",
+  "deployment": "dep-dbebhknavr4c73acifv0",
+  "status": "passed",
+  "checks": 25,
+  "ci_runs": [
+    40099972477,
+    40099972433
+  ],
+  "review_checks": [
+    "LF/CRLF paragraph citations",
+    "no-match evidence",
+    "review-note backup merge",
+    "persistent UI review notes",
+    "JSON export includes review notes"
+  ],
+  "limits": [
+    "Researcher notes are stored on this browser.",
+    "Extracted evidence remains abstract-based; uploaded text retrieval is extractive."
+  ]
+}
