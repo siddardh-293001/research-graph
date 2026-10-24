@@ -1,0 +1,21 @@
+{
+  "commit": "387e72bd36c2a2cdc5c8dcfb06120d970bc3709c",
+  "deployment": "dep-dbeck7avcj2c73ch8nk0",
+  "status": "passed",
+  "checks": 25,
+  "hosted_browser_scenarios": 11,
+  "ci_runs": [
+    40105340879,
+    40105340838
+  ],
+  "verified_behaviors": [
+    "Explorer page and query survive paper navigation",
+    "saved searches match displayed criteria",
+    "saved-query removal",
+    "aborted late responses cannot overwrite newer results"
+  ],
+  "limitations": [
+    "Unsaved Explorer state lasts only for the current application session.",
+    "Saved queries and notes remain browser-local."
+  ]
+}
