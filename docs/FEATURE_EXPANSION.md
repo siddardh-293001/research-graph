@@ -20,9 +20,9 @@ Limits are part of the interface:
   matches names and may combine distinct people.
 - Full-text support is plain-text passage retrieval, not PDF parsing or generated
   Q&A. Matrix categories are keyword-based excerpts requiring researcher review.
-- Topic evolution is a year/topic table; sparse cross-topic citations are leads,
-  not proven research gaps. Normalized gap scoring and interactive trend charts
-  remain future enhancements.
+- Topic evolution includes a selectable publication-year chart. Cross-topic
+  citation density is normalized by possible paper pairs; it remains a coverage-
+  dependent exploration measure, not proof of a research gap.
 - Backups restore paper identities; opening papers refreshes live metadata.
   Reading lists and notes remain device-local. No cloud account or sync.
 - New-match badges compare observed identities across releases, not publication
@@ -31,6 +31,7 @@ Limits are part of the interface:
 Verification includes scripts/check_exploration.py in src.verify, literal-query
 and pagination tests, browser navigation regressions, and manual automated
 feature scenarios for saved searches, graph navigation, local document passage
-retrieval and invalid-backup rejection. Broader author collaboration networks,
+retrieval and invalid-backup rejection. Author profiles now include paginated exact-name matches, coauthor counts and
+theme counts. Verified identity reconciliation across the frozen corpus,
 editable evidence classification and full-text generated Q&A remain unimplemented;
 this release must not be described as complete coverage of all advanced ideas.
