@@ -9,7 +9,9 @@ JSON restoration preserving existing records.
 Paper tools include an expandable 12-node reference/citing/semantic map with
 center history, corpus citation chronology, anonymous on-demand OpenAlex
 annual counts/open-access links/author identifiers, and an abstract evidence
-lookup. Comparison includes a two-paper literature matrix with source sentences.
+lookup. Comparison includes a two-paper literature matrix with source sentences and
+separate editable researcher notes for five review categories. Review notes
+are stored locally and included in JSON backup/restore and CSV export.
 User-supplied text documents up to 2 MB can be searched for supporting passages
 entirely in the browser. No paid model or server-side document upload is used.
 
@@ -33,5 +35,10 @@ and pagination tests, browser navigation regressions, and manual automated
 feature scenarios for saved searches, graph navigation, local document passage
 retrieval and invalid-backup rejection. Author profiles now include paginated exact-name matches, coauthor counts and
 theme counts. Verified identity reconciliation across the frozen corpus,
-editable evidence classification and full-text generated Q&A remain unimplemented;
+automatic identity reconciliation and full-text generated Q&A remain unimplemented;
 this release must not be described as complete coverage of all advanced ideas.
+
+Paragraph retrieval is regression-tested for LF and CRLF blank-line separation;
+reported paragraph numbers refer to the imported text document. Researcher notes
+never overwrite extracted source evidence. scripts/check_review.mjs runs in
+src.verify and checks paragraph grounding and review-note backup preservation.
